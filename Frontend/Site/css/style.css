@@ -1,0 +1,43 @@
+:root{
+    /*Collors*/
+    --primary: rgb(0, 0, 0);
+    --secondary: rgb(255, 255, 255);
+    --tertiary: rgb(255, 255, 0);
+    --quaternary: rgb(255, 0, 0);
+}
+
+body{
+    margin: 0px;
+}
+
+header{
+    background-color: var(--primary);
+    display: flex;
+    padding: 10px;
+    align-items: center;
+
+    ._menu{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ._logo img{
+        width: 100px;
+        height: auto;
+    }
+    
+    a{
+        text-decoration: none;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: var(--secondary);
+        transition: color 0.3s ease;
+    }
+
+    a:hover{
+        color:var(--quaternary);
+    }  
+}
+
+footer{
+    display: flex;
+}

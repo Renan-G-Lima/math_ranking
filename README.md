@@ -18,9 +18,22 @@ Fornecer através da plataforma um ambiente que:
 
 # 👨‍🎓Sobre nós👨‍🎓
 ## 🎨Frontend🎨
-- Diogo XXXXX - Link do github - experiência até o momento.
+- Diogo Zoboli
 
-- João Victor Oliveira Siqueira - [Github](https://github.com/justjuaum)
+[GitHub](https://github.com/zobolidiogo) | [LinkedIn](https://linkedin.com/in/zobolidiogo)
+
+Sou Técnico em Ciência de Dados formado pelo CEDUP Timbó (2025) e atualmente curso Engenharia de Software na Uninter. Aos 18 anos, já tenho experiência profissional como Analista de Dados, onde alcancei 85% de melhoria na taxa de conversão através de análise de dados e IA generativa.
+
+Minha stack atual inclui Python, SQL, Power BI e Machine Learning. Estou completando o CS50 (Harvard) e me especializando em Inteligência Artificial com python.
+
+O Math Rank é um dos meus primeiros projetos full stack em grupo, onde terei experiência e aprenderei como cada parte da solução funciona.
+
+Meu objetivo é me tornar Cientista de Dados, criando soluções preditivas que ajudem na tomada de decisões.
+
+- João Victor Oliveira Siqueira
+
+[Github](https://github.com/justjuaum)
+
     - Sou estudante de Engenharia da Computação, atualmente no primeiro ano de curso durante
 o desenvolvimento desta plataforma. Possuo base até o momento em lógica de programação
 com JavaScript, um pouco de html e css e estou fazendo alguns cursos de Java no momento. 
