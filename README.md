@@ -41,7 +41,13 @@ O Math Rank é o pontapé inicial que dei para entrar de vez no mundo do desenvo
 software e espero que o projeto possa ser de grande utilidade para muitas pessoas e marque
 positivamente o começo de minha jornada!.
 
-- Miguel XXXXX - Link do github - experiência até o momento.
+- Miguel Martins Silva
+[GitHub](https://github.com/miguelmartinssilva) 
+[Linkedln](https://www.linkedin.com/in/miguel-martins-87902a3a6/)
+
+Sou estudante de Análise e Desenvolvimento de Sistemas e Engenharia de Software, com atuação em design gráfico e forte interesse no desenvolvimento de soluções digitais. Tenho foco na construção de projetos que unem tecnologia, criatividade e experiência do usuário, buscando sempre evoluir minhas habilidades em programação, desenvolvimento web e boas práticas de software.
+Neste GitHub compartilho projetos, experimentos e estudos desenvolvidos ao longo da minha jornada na área de tecnologia, com o objetivo de aprimorar minhas competências como desenvolvedor e contribuir com soluções que gerem valor para pessoas e negócios.
+
 
 ## ⚙️Backend⚙️
 - Caiky XXXXX - Link do github - experiência até o momento.
