@@ -1,0 +1,244 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #000000;  /* Fundo escuro principal */
+    color: #e0e0e0;             /* Texto claro */
+}
+
+.container {
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header e navegação */
+header {
+    background-color: #000000;   /* Tom mais claro que o fundo */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+._logo img {
+    display: block;
+    filter: brightness(0.9);     /* Ajuste para logo claro em fundo escuro */
+}
+
+._menu a, ._login a {
+    text-decoration: none;
+    color: #e0e0e0;              /* Links claros */
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+._menu a:hover, ._login a:hover {
+    color: #bb86fc;               /* Roxo suave como destaque */
+}
+
+._login a:last-child {
+    background-color: #bb86fc;    /* Roxo como cor de ação */
+    color: #121212;               /* Texto escuro para contraste */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
+
+._login a:last-child:hover {
+    background-color: #9b67db;    /* Tom mais escuro no hover */
+    color: #121212;
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #cccccc;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #bb86fc;    /* Roxo destaque */
+    color: #121212;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: #bb86fc;
+    border-color: #bb86fc;
+}
+
+.btn-primary {
+    background-color: #bb86fc;
+    color: #121212;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Categorias */
+.categoraes {
+    padding: 4rem 0;
+    background-color: #121212;    /* Mesmo fundo do body */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #bb86fc;          /* Roxo */
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+.card-grid {
+    justify-content: center;  /* para grid com menos colunas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: #1e1e1e;    /* Cards mais escuros */
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;       /* Borda sutil */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: #bb86fc;               /* Roxo */
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.card p {
+    color: #b0b0b0;               /* Cinza claro */
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    background-color: #0a0a0a;    /* Mais escuro que o body */
+    color: #aaa;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin: 2rem auto;   /* espaçamento vertical e centralização em bloco */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ._menu, ._login {
+        margin-top: 1rem;
+    }
+
+    ._menu a, ._login a {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    ._menu a, ._login a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    ._login a:last-child {
+        display: inline-block;
+        margin-left: 0;
+    }
+}
