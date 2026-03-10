@@ -68,10 +68,12 @@ Tenho interesse em tecnologias como visão computacional, firmware, drivers e si
 - Caiky XXXXX - Link do github - experiência até o momento.
 
 ## 🗄️Banco de dados🗄️
-- Vinicius XXXXX - Link do github - experiência até o momento.
+- Vinicius Eloi
+  
+[Github](https://github.com/vini0112) - [LinkedIn](https://www.linkedin.com/in/vin%C3%ADcius-silva-26b715321)
 
 ## Funcionalidades - MVP (Minimum Viable Product)
-- V.0️⃣.0️⃣.1️⃣
+    - ✅Modelagem do banco de dados
     - ✅Cadastro de usuários;
     - ✅Login;
     - ✅Listagem de desafios matemáticos;
