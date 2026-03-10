@@ -42,6 +42,7 @@ software e espero que o projeto possa ser de grande utilidade para muitas pessoa
 positivamente o começo de minha jornada!.
 
 - Miguel Martins Silva
+
 [GitHub](https://github.com/miguelmartinssilva) 
 [Linkedln](https://www.linkedin.com/in/miguel-martins-87902a3a6/)
 
@@ -50,8 +51,21 @@ Neste GitHub compartilho projetos, experimentos e estudos desenvolvidos ao longo
 
 
 ## ⚙️Backend⚙️
+- Renan Lima
+[GitHub](https://github.com/CodeTangent) 
+[Linkedln](https://www.linkedin.com/in/renan-gabriel-lima/)
+
+Sou Analista de TI com experiência em suporte empresarial, infraestrutura e desenvolvimento de soluções para automação de processos. Ao longo da minha atuação profissional tive contato direto com ambientes de produção e demandas reais de usuários, o que contribuiu para uma visão prática sobre como sistemas precisam funcionar no dia a dia.
+
+Também possuo certificações em Cybersecurity (CS50 – Harvard) e Oracle Cloud Infrastructure Foundations com foco em Inteligência Artificial.
+
+Trabalho principalmente com Python e C# no desenvolvimento de aplicações e APIs, além de experiência com bancos de dados SQL Server e PostgreSQL. Tenho especial interesse em arquitetura de sistemas e na integração entre software e infraestrutura, buscando desenvolver soluções que sejam ao mesmo tempo eficientes e viáveis de operar em ambientes reais.
+
+O Math Rank é um projeto que idealizei e também meu primeiro projeto colaborativo de desenvolvimento. Além de contribuir diretamente no backend, estou envolvido na definição da arquitetura da aplicação e na organização do desenvolvimento do projeto.
+
+Tenho interesse em tecnologias como visão computacional, firmware, drivers e sistemas inteligentes, especialmente em áreas onde software e hardware se encontram.
+
 - Caiky XXXXX - Link do github - experiência até o momento.
-- Renan XXXXX - Link do github - experiência até o momento.
 
 ## 🗄️Banco de dados🗄️
 - Vinicius XXXXX - Link do github - experiência até o momento.
