@@ -30,10 +30,28 @@ header {
     justify-content: space-between;
 }
 
-._logo img {
-    display: block;
-    filter: brightness(0.9); /* Ajuste para logo claro em fundo escuro */
-    width: 50px;    
+.primary_color {
+    color: #00c100;
+}
+
+.secondary_color {
+    color: #45595a;
+}
+
+._logo {
+    font-weight: bold;
+}
+
+#logo_name {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#logo_name span:hover {
+    color: #00ff00;
+    text-shadow: 0 0 5px rgb(255, 255, 255);               /* Roxo suave no hover */
 }
 
 ._menu a, ._login a {
@@ -124,8 +142,8 @@ header {
 
 /* Footer */
 footer {
-    background-color: #0a0a0a;    /* Mais escuro que o body */
-    color: #aaa;
+    background-color: #008500;    /* Mais escuro que o body */
+    color: #ffffff;
     text-align: center;
     padding: 1.8rem;
     font-size: 0.9rem;
