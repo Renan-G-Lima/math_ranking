@@ -10,7 +10,10 @@ body {
     line-height: 1.6;
     background-color: #000000;  /* Fundo escuro principal */
     color: #e0e0e0;            /* Texto claro */ 
-    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .container {
