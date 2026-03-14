@@ -66,13 +66,6 @@ def authenticate_user(request, method):
         senha = request.get(PASSWORD_PARAM)
 
         # Gera o hash e pega a senha no banco de dados 
-        #hash = generate_password_hash(senha)
-
-        # TEMPORÁRIO
-        #------ 
-        #db["hash"] = hash
-        #------
-
         user_db_hash = get_db_hash(email)
         
         # Se o hash existir, compara, senão retorna
@@ -82,9 +75,19 @@ def authenticate_user(request, method):
             return {"success":"Usuário autenticado."}
         else:
             return {"error":"Email ou senha inválidos."}
-
-
     elif method == "Google":
+        ...
+
+def register(request_data, request_method):
+    email = request_data.get(EMAIL_PARAM)
+    if request_method == "google":
+        ...
+    elif request_method == "Default":
+        # Checa se está no banco de dados
+        if get_db_hash(email):
+            return "Já está registrado"
+        
+        # Se não registra o usuário e a senha no banco de dados
         ...
 
 def register_user(request_data):
@@ -95,7 +98,7 @@ def register_user(request_data):
         return jsonify({"error": "Dados enviados de maneira inconvencional"})
     
     # Checa se conseguiu registrar ou não
-    registration_complete = register_user(request_data,request_method)
+    registration_complete = register(request_data,request_method)
     if registration_complete == False:
         return jsonify({"error":"Email ou Senha inválidos"})
 

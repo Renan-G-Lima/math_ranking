@@ -1,6 +1,6 @@
 from flask import Flask, request
-from helper import *
-from config import app
+from app.modules.helper import *
+from app.modules.config import app
 
 
 
