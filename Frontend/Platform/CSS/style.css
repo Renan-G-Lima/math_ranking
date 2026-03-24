@@ -67,7 +67,7 @@ header {
 }
 
 ._menu a:hover{
-    color: #00ff00;               /* Roxo suave como destaque */
+    color: #00c100;               /* Roxo suave como destaque */
 }
 
 ._dashboard-grid {
@@ -229,9 +229,8 @@ header {
     transform: translateY(0px); 
 }
 .card:hover {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
     animation: up 1s ease;
-    animation-fill-mode: forwards;
+    box-shadow: 0 15px 30px #ffffff;
 }
 
 @keyframes up{
@@ -260,12 +259,16 @@ footer {
     background-color: #1f1f1f;    /* Mais escuro que o body */
     color:#00ff00; 
     text-align: center;
-    padding: 1.8rem;
+    padding: 2rem;
     font-size: 0.9rem;
     border-top: 1px solid #333;
 }
 
 footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;    
 }
