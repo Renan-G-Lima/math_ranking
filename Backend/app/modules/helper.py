@@ -2,7 +2,7 @@ from flask import redirect, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from config import EMAIL_PARAM, PASSWORD_PARAM, OAUTH_PARAM
-
+from email_validator import validate_email, EmailNotValidError
 db = {
     "email":"opa@gmail.com",
     "hash":"scrypt:32768:8:1$SRbaynN1oyijm4oa$da0f0e766343f1996ff9b2471cde112c93af416bd3ee791dc9b2367b1ab981ce59917f6b779794b6afc99eeb81f0b789e1ccd07dc0e0ef9944283b67abffef66" 
@@ -34,7 +34,13 @@ def check_input(request):
 
     # Checa se a entrada é do tipo login tradicional
     if email and password:
-        login_method = "Default"
+        # Se for um email válido, continua, senão marca inválido
+        try:
+            validate_email(email)
+        except EmailNotValidError:
+            login_method = "Invalid"
+        else:
+            login_method = "Default"
     # Checa se a entrada é oauth do google, se não for, retorna inválido
     elif google_token:
         login_method = "Google"
@@ -81,7 +87,7 @@ def authenticate_user(request, method):
 def register(request_data, request_method):
     email = request_data.get(EMAIL_PARAM)
     if request_method == "google":
-        ...
+         ...
     elif request_method == "Default":
         # Checa se está no banco de dados
         if get_db_hash(email):

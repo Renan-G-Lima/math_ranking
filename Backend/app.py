@@ -19,7 +19,7 @@ def login():
 
         # Recebe a requisição do usuário
         request_data = request.json
-        action = request_data.get("action")
+        action = request_data.get("btn_action")
 
         # Se for Registro
         if action == "register":
