@@ -6,14 +6,8 @@ user_badge = [
     {"email": "user2", "password": "123"}
 ]
 
-def login():
-    user_data = request.json or {}
-
-    for user in user_badge:
-        if (
-            user_data.get("email") == user["email"]
-            and user_data.get("password") == user["password"]
-        ):
-            return jsonify(True)
-
-    return jsonify(False)
+def validate_user(email, password):
+    return any(
+        email == user["email"] and password == user["password"]
+        for user in user_badge
+    )

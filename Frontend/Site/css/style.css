@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background-color: #000000;  /* Fundo escuro principal */
-    color: #e0e0e0;             /* Texto claro */
+    color: #ffffff;             /* Texto claro */
 }
 
 .container {
@@ -30,8 +30,16 @@ header {
     justify-content: space-between;
 }
 
+.primary_color {
+    color: #00c100;
+}
+
+.secondary_color {
+    color: #45595a;
+}
+
 ._logo img {
-    width: 150px;
+    width: 175px;
     display: block;
     filter: brightness(0.9);     /* Ajuste para logo claro em fundo escuro */
 }
@@ -45,11 +53,11 @@ header {
 }
 
 ._menu a:hover, ._login a:hover {
-    color: #bb86fc;               /* Roxo suave como destaque */
+    color: #00ff00;               /* Roxo suave como destaque */
 }
 
 ._login a:last-child {
-    background-color: #bb86fc;    /* Roxo como cor de ação */
+    background-color: #00ff00;    /* Roxo como cor de ação */
     color: #121212;               /* Texto escuro para contraste */
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -57,8 +65,8 @@ header {
 }
 
 ._login a:last-child:hover {
-    background-color: #9b67db;    /* Tom mais escuro no hover */
-    color: #121212;
+    background-color: #008500;    /* Tom mais escuro no hover */
+    color: #ffffff;
 }
 
 /* Hero section */
@@ -103,12 +111,12 @@ header {
 
 .btn:hover {
     background-color: transparent;
-    color: #bb86fc;
-    border-color: #bb86fc;
+    color: #00ff00;
+    border-color: #008500;
 }
 
 .btn-primary {
-    background-color: #bb86fc;
+    background-color: #00ff00;
     color: #121212;
 }
 
@@ -140,7 +148,7 @@ header {
     display: block;
     width: 80px;
     height: 4px;
-    background: #bb86fc;          /* Roxo */
+    background: #008500;          /* Roxo */
     margin: 0.5rem auto 0;
     border-radius: 2px;
 }
@@ -148,7 +156,7 @@ header {
 .card-grid {
     justify-content: center;  /* para grid com menos colunas */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
     gap: 2rem;
 }
 
@@ -162,9 +170,41 @@ header {
     border: 1px solid #333;       /* Borda sutil */
 }
 
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 1rem;
+}
+
+.social-item {
+    display: flex;
+    align-items: center; /* alinha verticalmente */
+    gap: 8px; /* espaço entre logo e texto */
+    text-decoration: none;
+    color: #00ff00;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+.social-item img {
+    width: 24px; /* tamanho ideal */
+    height: 24px;
+    transition: 0.3s;
+}
+
+.social-item:hover img {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(1000%) hue-rotate(80deg);
+}
+
+.social-item:hover {
+    color: #ffffff;
+}
+
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+    box-shadow: 0 15px 30px #36ff36
 }
 
 .card i {
@@ -175,7 +215,7 @@ header {
 
 .card h3 {
     margin-bottom: 0.5rem;
-    color: #ffffff;
+    color: #36ff36;
 }
 
 .card p {
@@ -185,15 +225,42 @@ header {
 
 /* Footer */
 footer {
-    background-color: #0a0a0a;    /* Mais escuro que o body */
-    color: #aaa;
+    text-decoration: none;
+    background-color: #000000;    /* Mais escuro que o body */
+    color: #60ff60;
     text-align: center;
     padding: 2rem;
     font-size: 0.9rem;
     border-top: 1px solid #333;
+    justify-content: space-between;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #00ff00;
+}
+
+footer .about_container {
+    text-align: justify;
+    max-width: 100%;
+}
+
+footer img {
+    width: 300px;
+    margin-top: 1rem;
 }
 
 footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
 }

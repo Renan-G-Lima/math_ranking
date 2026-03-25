@@ -1,3 +1,4 @@
+//API's
 async function login(){
     let _email = document.getElementById("email").value;
     let _password = document.getElementById("password").value;
@@ -22,4 +23,19 @@ async function login(){
         console.log("Error: ", e.message);
     }
 
+}
+
+//Estilization
+
+function alternateEye(){
+    const pass = document.getElementById("password");
+    const eye = document.getElementById("btn-senha");
+    
+    if(pass.type === 'password'){
+        pass.setAttribute("type", "text");
+        eye.classList.replace('bi-eye', 'bi-eye-slash');
+    }else{
+        pass.setAttribute("type", "password");
+        eye.classList.replace('bi-eye-slash', 'bi-eye');
+    }
 }
