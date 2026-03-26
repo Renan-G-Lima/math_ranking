@@ -34,6 +34,7 @@ header {
     justify-content: space-between;
 }
 
+
 .primary_color {
     color: #00c100;
 }
@@ -82,7 +83,7 @@ header {
 
 ._content-login{
     display: flex;
-    width: 280px;
+    width: 800px;
     height: 450px;
     background-color: #2a2a2a;
     box-shadow: inset 5px 5px 10px rgba(0,0,0,0.5);
@@ -90,8 +91,14 @@ header {
     margin-left: auto;
     margin-right: auto;
     border-radius: 2em;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 59px;
+    margin-bottom: 60px;
 }
-
+._content-login a:hover{
+    cursor: pointer;
+}
 ._login {
     margin-top: 110px;
     display: flex;
@@ -110,12 +117,12 @@ header {
 
 ._login input{
     display: flex;
-    width: 250px;
+    width: 290px;
     line-height: 40px;
     border: 0;
     outline: 0;
     font-size: 20px;
-    padding: 0 50px 0 20px;
+    padding: 0 10px 0 10px;
     margin-left: auto;
     margin-right: auto;
     background: none;
@@ -124,20 +131,19 @@ header {
 
 ._login input:focus{
     box-shadow: 0px 1px 0px  rgba(30, 255, 0, 0.5);
-
 }
 
 .login-option{
     display: flex;
     width: 90%;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .login-option a{
-        text-align: left;
-        font-size: 11px;
-        flex-direction: row;
-    }
+    text-align: left;
+    font-size: 11px;
+    flex-direction: row;
+}
 
 .login-option button{
     display: flex;
@@ -153,13 +159,12 @@ header {
     color: #15ff00;
 }
 
-
 .password-div i {
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
     color: #414141;
     position: absolute;
-    right: 7%;
+    right: 12%;
     top: 35%;
 }
 
@@ -169,6 +174,69 @@ header {
 .password-div{
     position: relative;
 }
+
+.create-option{
+    display: flex;
+    width: 92%;
+    margin-top: 10px;
+}
+
+.create-option a{
+    text-align: left;
+    font-size: 11px;
+    flex-direction: row;
+}
+
+.create-option button{
+    display: flex;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    color:white;
+    cursor: pointer;
+}
+
+.create-option button:hover{
+    color: #15ff00;
+}
+
+._form_login{
+    visibility: inherit;
+}
+
+.Box{
+    z-index: 1;
+    background: linear-gradient(90deg, #15ff00, #272727, #000000, #15ff00);
+    background-size: 400% 100%;
+    
+    position: absolute;
+    width: 400px;
+    height: 450px;
+    right: 20.4%;
+    top: 19.3%;
+    border-radius: 0 2em 2em 0em;
+    
+    animation: moveColor 10s linear infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideLoginRegister{
+    0% {transform: translateX(0px); border-radius: 0 2em 2em 0em;}
+    100%{transform: translateX(-400px); border-radius: 2em 0  0 2em;}
+}
+
+
+@keyframes slideLoginLogin{
+    0% {transform: translateX(0px); border-radius: 0 2em 2em 0em;}
+    100%{transform: translateX(-400px); border-radius: 2em 0  0 2em;}
+}
+
+@keyframes moveColor{
+    0%{background-position: 0px 0px;}
+    100%{background-position: 1600px 0%;}
+}
+
 .usercard {
     background-color: #1e1e1e;    /* Cards mais escuros */
     border-radius: 10px;
@@ -236,7 +304,6 @@ header {
 @keyframes up{
     0% { opacity: 1; transform: translateY(0px); }
     100% { opacity: 1; transform: translateY(-10px); }
-    
 }
 .card i {
     font-size: 2.5rem;
@@ -256,12 +323,35 @@ header {
 
 /* Footer */
 footer {
-    background-color: #1f1f1f;    /* Mais escuro que o body */
-    color:#00ff00; 
+    text-decoration: none;
+    background-color: #000000;    /* Mais escuro que o body */
+    color: #60ff60;
     text-align: center;
     padding: 2rem;
     font-size: 0.9rem;
     border-top: 1px solid #333;
+    justify-content: space-between;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #00ff00;
+}
+
+footer .about_container {
+    text-align: justify;
+    max-width: 100%;
+}
+
+footer img {
+    width: 300px;
+    margin-top: 1rem;
 }
 
 footer .container {
@@ -270,14 +360,8 @@ footer .container {
     justify-content: space-between;
     gap: 40px;
     max-width: 1200px;
-    margin: 0 auto;    
+    margin: 0 auto;
 }
-
-h1 {
-    text-align: center;
-    margin: 2rem auto;   /* espaçamento vertical e centralização em bloco */
-}
-
 /* Responsividade */
 @media (max-width: 1200px){
     ._dashboard-grid {

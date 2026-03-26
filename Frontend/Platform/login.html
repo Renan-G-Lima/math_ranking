@@ -10,8 +10,28 @@
 <body>
     <header>
         <div class="_logo">
-            <a href="./home.html">
-                <img alt="logo" src="IMG/icon_dark_theme.png">
+            <a href="./login.html" id="logo_name">
+                <span class="secondary_color" id="nome_titulo">
+                    &lt;
+                </span>
+                <span class="primary_color">
+                    /
+                </span>
+                <span>M</span>
+                <span>Δ</span>
+                <span>T</span>
+                <span>H</span>
+                <span>&nbsp;</span>
+                <span>R</span>
+                <span>Δ</span>
+                <span>N</span>
+                <span>K</span>
+                <span>I</span>
+                <span>N</span>
+                <span>G</span>
+                <span class="secondary_color">
+                    &gt;
+                </span>
             </a>
         </div>
 
@@ -21,28 +41,61 @@
             <a href="./team.html">Equipe</a>
         </div>
     </header>
-<div class="_content-login">
-    <div class="_login">
-        <form class="._form_login" action="button" method="POST">
-            <div>
-                <label type="email" >Usúario</label>
-                <input type="email" id="email" placeholder="email@exaple.com" name="username" required>
-            </div>
-            <div class="password-div">
-                <label type="password">Senha</label>
-                <input type="password" autocomplete="" id="password" placeholder="***********" name="password" required>
-                <i class="bi bi-eye" id="btn-senha" onclick="alternateEye()"></i>
-            </div>
-            <div class="login-option">
-                <a>não tem uma conta? clique aqui para criar.</a>
-                <button type="submit" onclick="login()">Entrar</button>
-            </div>
-        </form>
+<div class="Box" id="Box"></div>
+<div class="conteiner_login">
+    <div class="_content-login">
+        <div class="_login">
+            <form class="_form_login" action="/login" method="POST" value="login">
+                <div>
+                    <label type="email" >E-mail</label>
+                    <input type="email" id="email" placeholder="email@exaple.com" name="username" required>
+                </div>
+                <div class="password-div">
+                    <label type="password">Senha</label>
+                    <input type="password" autocomplete="" id="password" placeholder="***********" name="password" required>
+                    <i class="bi bi-eye" id="btn-senha" onclick="alternateEye()"></i>
+                </div>
+                <div class="login-option">
+                    <a onclick="toggleAnimation('login')">não tem uma conta? clique aqui para criar.</a>
+                    <button type="submit" name="btn_action" value="login">Entrar</button>
+                </div>
+            </form>
+        </div>
+        <div class="_login">
+            <form class="_form_createAcc" action="/register" method="POST" value="register">
+                <div>
+                    <label class="_form_label" type="email" >E-mail</label>
+                    <input type="email" id="emailR" placeholder="email@exaple.com" name="username" required>
+                </div>
+                <div class="password-div">
+                    <label type="password">Digite sua senha</label>
+                    <input type="password" autocomplete="" id="passwordR" placeholder="***********" name="password" required>
+                    <label type="password">Confirme sua senha</label>
+                    <input type="password" autocomplete="" id="passwordC" placeholder="***********" name="Confirmation" required>
+                </div>
+                <div class="create-option">
+                    <a onclick="toggleAnimation('register')">Já possui uma conta? clique aqui para Entrar.</a>
+                    <button type="submit" name="btn_action" value="login">Registrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
 <footer>
-    Todos os direitos reservados. Math Rank &copy; 2026.
+    <div class="container">
+        <div class="logo_footer">
+            <img alt="logo" src="IMG/icon_dark_theme.png">
+        </div>
+        <p class="about_container">
+            Math Ranking é uma plataforma interativa voltada  para estudantes, entusiastas e profissionais que  desejam praticar matemática por meio da resolução de desafios. A aplicação oferece problemas de diferentes níveis de dificuldade, permitindo que os usuários evoluam gradualmente conforme seu longo do tempo.Além disso, conta com um sistema de ranking competitivo, no qual os participantes podem comparar seus resultados com outros  usuários, incentivando o engajamento contínuo e tornando o aprendizado mais dinâmico por meio da gamificação.
+        </p>
+    </div>
+    <div>
+        <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
+        <p>
+            Desenvolvido pela equipe <a href="../Site/team.html"><b>math_ranking</b></a>.
+        </p>
+    </div>
 </footer>
     <script src="SCRIPT/script.js"></script>
     </body>

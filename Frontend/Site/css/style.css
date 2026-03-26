@@ -11,6 +11,9 @@ body {
     background-color: #000000;  /* Fundo escuro principal */
     color: #ffffff;             /* Texto claro */
 }
+.container-login{
+    justify-content: center;
+}
 
 .container {
     justify-content: center;
