@@ -9,7 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Define a chave secreta de sessões
-app.secret_key = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # Parâmetros do login tradicional
 EMAIL_PARAM = "email"

@@ -1,5 +1,5 @@
 
-def validate_submissions(data):
+def validate_submission(data):
     try:
         x = int(data.get("x"))
         y = int(data.get("y"))

@@ -1,7 +1,7 @@
 from flask import redirect, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-from config import EMAIL_PARAM, PASSWORD_PARAM, OAUTH_PARAM
+from .config import EMAIL_PARAM, PASSWORD_PARAM, OAUTH_PARAM
 from email_validator import validate_email, EmailNotValidError
 db = {
     "email":"opa@gmail.com",
