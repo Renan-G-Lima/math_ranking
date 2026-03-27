@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from .service import login_user
-from ..modules.helper import *
+from ..utils.helper import *
 
 user_blueprint = Blueprint("user", __name__)
 
@@ -12,6 +12,9 @@ user_blueprint = Blueprint("user", __name__)
 #
 #    return jsonify(False)
 
+@user_blueprint.route("/", methods=["GET"])
+def homepage():
+    return "<h1>Linda Página de Login</h1>"
 
 @user_blueprint.route("/login", methods=["GET","POST"])
 def login():
