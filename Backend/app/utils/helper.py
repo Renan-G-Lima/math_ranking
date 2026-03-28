@@ -8,13 +8,36 @@ db = {
     "hash":"scrypt:32768:8:1$SRbaynN1oyijm4oa$da0f0e766343f1996ff9b2471cde112c93af416bd3ee791dc9b2367b1ab981ce59917f6b779794b6afc99eeb81f0b789e1ccd07dc0e0ef9944283b67abffef66" 
 }
 
+
 # Função para pegar o Hash no banco de dados
 def get_db_hash(email):
     # Enquanto não pega no banco de dados
     if db["email"] == email:
         return db["hash"]
 
+def get_db_email(email):
+    if db["email"] == email:
+        return True
+    
+# Função para saber se o usuário já está registrado no banco de dados
+def check_user(request_data):
+    # Pega o email da requisição
+    email = request_data.get("email")
 
+    # Checa se as entradas são válidas
+    is_valid = check_input(request_data)
+
+    if type(is_valid) != list:
+        return is_valid
+    
+    # Checa se o email já está registrado
+    if get_db_email(email):
+        return jsonify({"status_code":"401"})
+
+    # Se não estiver registrado, dá continuidade
+    return jsonify({"status_code":"200"})
+
+# Função pra saber se o usuário está logado
 def is_logged_in():
     # Se estiver logado
     if session["user_id"]:
@@ -22,32 +45,38 @@ def is_logged_in():
     
     # Caso contrário
     return False
+
+
 # Função para conferir se a entrada é válida
 def check_input(request):
     
     # Define inválido por padrão
-    login_method = "Invalid"
+    login = ["Default","Valid"]
     
+    # Procura por algum campo email, senha e google_token
     email = request.get(EMAIL_PARAM)
     password = request.get(PASSWORD_PARAM)
     google_token = request.get(OAUTH_PARAM)
 
-    # Checa se a entrada é do tipo login tradicional
+    # Checa se a entrada é o email e senha tradicional 
     if email and password:
         # Se for um email válido, continua, senão marca inválido
         try:
             validate_email(email)
         except EmailNotValidError:
-            login_method = "Invalid"
-        else:
-            login_method = "Default"
-    # Checa se a entrada é oauth do google, se não for, retorna inválido
+            return jsonify({"status_code":"401"})
+        
+        # Se a senha tiver o tamanho certo, continua
+        if 6 < len(password) < 12:
+            return jsonify({"status_code":"401"})
+        
+    # Checa se a entrada é oauth do google
     elif google_token:
-        login_method = "Google"
+        login[0] = "Google"
     else:
-        login_method = "Invalid"
+        return jsonify({"status_code":"400"})
     
-    return login_method
+    return login
 
 # Função para garantir que páginas acessadas necessitem de login 
 def login_required(f):
@@ -66,6 +95,7 @@ def register_user(request, method):
     # Se não estiver, salva no banco de dados
     ...
 
+# Função para autenticar o usuário, fornecendo uma sessão
 def authenticate_user(request, method):
     if method == "Default":
         email = request.get(EMAIL_PARAM)
@@ -84,6 +114,7 @@ def authenticate_user(request, method):
     elif method == "Google":
         ...
 
+# Função para registrar o usuário no banco de dados
 def register(request_data, request_method):
     email = request_data.get(EMAIL_PARAM)
     if request_method == "google":
@@ -96,33 +127,35 @@ def register(request_data, request_method):
         # Se não registra o usuário e a senha no banco de dados
         ...
 
+# Função que orquesta o fluxo de registro
 def register_user(request_data):
     # Checa o método que o usuário escolheu
     request_method = check_input(request_data)
 
-    if request_method == "Invalid":
-        return jsonify({"error": "Dados enviados de maneira inconvencional"})
+
+    if type(request_method) != list:
+        return request_method
     
     # Checa se conseguiu registrar ou não
-    registration_complete = register(request_data,request_method)
+    registration_complete = register(request_data,request_method[0])
     if registration_complete == False:
         return jsonify({"error":"Email ou Senha inválidos"})
 
     # Se der tudo certo loga o usuário
-    resposta = authenticate_user(request_data,request_method)
+    resposta = authenticate_user(request_data,request_method[0])
 
     return jsonify(resposta)
 
     
 
-
+# Função que realiza o login do usuário
 def login_user(request_data):
 
-    # Checa o método que o usuário escolheu
+    # Checa se a entrada é válida
     request_method = check_input(request_data)
 
-    if request_method == "Invalid":
-        return jsonify({"error": "Dados enviados de maneira inconvencional"})
+    if type(request_method) != list:
+        return request_method
 
     # Autentica o usuário com o método e os dados de entrada
     resposta = authenticate_user(request_data, request_method)

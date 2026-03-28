@@ -38,8 +38,20 @@ def login():
         
 @user_blueprint.route("/register", methods=["POST"])
 def register():
-    # Recebe a requisição do usuário
+    # Recebe a requisição do usuário 
     request_data = request.get_json()
+    
+    # Checa se o usuário fornecido já está no banco de dados
+    is_valid_response = check_user(request_data)
 
-    # Loga o usuário e retorna se deu certo
-    return register_user(request_data)
+    # Se for o segundo botão de registro, cadastra o usuário.
+    if request_data.get("btn_action") == "register_user":
+        
+        # Tenta registrar o usuário e retorna se deu certo
+        return register_user(request_data)
+    
+    # Retorna se a entrada é válida
+    return is_valid_response
+    
+    
+    
