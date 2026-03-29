@@ -25,7 +25,6 @@ async function login(){
     catch(e){
         console.log("Error: ", e.message);
     }
-
 }
 
 async function register(){

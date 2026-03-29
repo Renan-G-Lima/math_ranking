@@ -47,8 +47,3 @@ function toggleAnimation(type){
         });
     }
 }
-
-document.querySelector('._form_login').addEventListener('submit', function(event) {
-    event.preventDefault();
-    login();
-});
