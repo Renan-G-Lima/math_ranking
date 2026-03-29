@@ -226,7 +226,6 @@ header {
     100%{transform: translateX(-400px); border-radius: 2em 0  0 2em;}
 }
 
-
 @keyframes slideLoginLogin{
     0% {transform: translateX(0px); border-radius: 0 2em 2em 0em;}
     100%{transform: translateX(-400px); border-radius: 2em 0  0 2em;}
@@ -321,6 +320,69 @@ header {
     font-size: 0.95rem;
 }
 
+
+/*Pagina de lista de desafios*/
+._content-list{
+    width: 1000px;
+    height: 500px;
+    align-self: center;
+    margin: 20px;
+    display: flex;
+}
+
+._challenge_list{
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    padding: 10px;
+    background-color: rgb(31, 31, 31);
+    border-radius: 2em 0em 0em 2em;
+}
+._challenge_list-item{
+    background-color: rgb(95, 95, 95);
+    display: flex;
+    width: 95%;
+    height: 30px;
+    margin-top:0.5em;
+    align-self: center;
+    border-radius: 0.3em;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+._challenge_list-item:hover{
+    border: 2px solid #00ff00;
+}
+
+._challenge_list-item #challenge{
+    min-width: 95%;
+    align-content: center;
+    padding-left: 10px;
+}
+
+._challenge_list-item #status{
+    text-align: center;
+    align-self: center;
+    width: 50px;
+}
+._challenge_summary{
+    background-color: rgba(141, 141, 141, 0.507);
+    width: 500px;
+    height: 500px;
+    border-radius: 0em 2em 2em 0em;
+    text-align: center;
+}
+
+._challenge_summary h2, h3{
+    color: #00ff00;
+}
+._challenge_summary p{
+    text-align: justify;
+    margin-left: 5px;
+    margin-right: 5px;
+}
 /* Footer */
 footer {
     text-decoration: none;
@@ -360,8 +422,10 @@ footer .container {
     justify-content: space-between;
     gap: 40px;
     max-width: 1200px;
+    max-height: 200px;
     margin: 0 auto;
 }
+
 /* Responsividade */
 @media (max-width: 1200px){
     ._dashboard-grid {
@@ -389,6 +453,7 @@ footer .container {
         gap: 1rem;
     }
 }
+
 @media (max-width: 992px){
     ._dashboard-grid {
         grid-template-columns: 300px 1fr;
