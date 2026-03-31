@@ -17,3 +17,14 @@ PASSWORD_PARAM = "password"
 
 #Parâmetros do login Oauth
 OAUTH_PARAM = ""
+
+# Váriaáveis que identificam o projeto no Google Bloud
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+
+# URL de Callback após aautenticação
+REDIRECT_URI = "http://localhost:5000/callback"
+
+# URL para acessar a autenticação do Google
+GOOGLE_API_URL = "https://accounts.google.com/o/oauth2/v2/auth"
+GOOGLE_API_TOKEN_URL = "https://oauth2.googleapis.com/token"
