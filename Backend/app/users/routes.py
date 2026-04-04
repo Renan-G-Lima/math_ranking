@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, redirect, session, url_for
-from .service import login_user, is_logged_in, check_user, register_user, get_oauth_data
-from ..utils.config import GOOGLE_API_URL
+import requests
+from .service import login_user, is_logged_in, check_user, register_user, get_access_token, get_user_info
+from ..utils.config import *
 
 user_blueprint = Blueprint("user", __name__)
 
@@ -34,8 +35,7 @@ def login():
         # Loga o usuário e retorna se deu certo
         return login_user(request_data)
         
-
-
+# Rota para registrar um usuário de maneira tradicional
 @user_blueprint.route("/register", methods=["POST"])
 def register():
     # Recebe a requisição do usuário 
@@ -54,40 +54,38 @@ def register():
     return is_valid_response
     
 
-@user_blueprint.route("/callback",methods=["GET","POST"])
-def callback():
-    # Recebe a requisição
-    auth_code = request.args.get("code")
-    if auth_code:
-        return "Callback recebido"
-    
-    return "AUTHORIZATION CODE não foi recebido"
 
-# Rota necessária para autorizar o login do oauth
-@user_blueprint.route("/authorize", methods=["POST"])
-def authorize():
-    # Recebe a requisição do usuário 
-    request_data = request.form.get("oauth")
-    
-    # Se o usuário tentar acessar o endpoint de autorizar sem fornecer um método
-    if request_data != "google":
-        # Redireciona para a página de login
-        return redirect("/login")
-    # Pega os dados necessários
-    data = get_oauth_data(request_data)
-
-    # Pega o client id, reirect_uri e o escopo
-    client_id = data["client_id"]
-    redirect_uri = data["redirect_uri"]
-    scope = data["scope"]
+# Rota para autorizar o login do oauth Google
+@user_blueprint.route("/authorize/google", methods=["POST"])
+def login_google_authorize():
 
     # Prepara a url de autorização
     auth_url = GOOGLE_API_URL + "?"
-    auth_url += f"client_id={client_id}"
-    auth_url += f"&redirect_uri={redirect_uri}"
-    auth_url += f"&scope={scope}"
+    auth_url += f"client_id={GOOGLE_CLIENT_ID}"
+    auth_url += f"&redirect_uri={GOOGLE_REDIRECT_URI}"
+    auth_url += f"&scope={GOOGLE_SCOPE}"
     auth_url += "&response_type=code"
 
     # Se der tudo certo, envia para a página de autorização
     return redirect(auth_url)
 
+    
+    
+# Receber a resposta da autorização de login do Google
+@user_blueprint.route("/callback/google",methods=["GET","POST"])
+def login_google_callback():
+    
+    # Recebe o código de autorização
+    auth_code = request.args.get("code")
+    
+    # Se recebeu esse código
+    if auth_code:
+        # Envia para o authentication server para pegar o acess token
+        access_token = get_access_token(auth_code, "Google")
+        
+        # Obtém as informações principais do usuário com o token
+        response = get_user_info(access_token, "Google")
+        
+        return response.json()
+    
+    return "AUTHORIZATION CODE não foi recebido"

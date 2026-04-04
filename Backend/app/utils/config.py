@@ -19,12 +19,14 @@ PASSWORD_PARAM = "password"
 OAUTH_PARAM = ""
 
 # Váriaáveis que identificam o projeto no Google Bloud
-CLIENT_ID = os.getenv("CLIENT_ID")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
-# URL de Callback após aautenticação
-REDIRECT_URI = "http://localhost:5000/callback"
 
 # URL para acessar a autenticação do Google
 GOOGLE_API_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 GOOGLE_API_TOKEN_URL = "https://oauth2.googleapis.com/token"
+# URL de Callback após aautenticação
+GOOGLE_REDIRECT_URI = "http://localhost:5000/callback/google"
+
+GOOGLE_SCOPE = "openid email"

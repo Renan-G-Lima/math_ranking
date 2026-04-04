@@ -1,9 +1,9 @@
+import requests
 from flask import redirect, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from ..utils.config import *
 from email_validator import validate_email, EmailNotValidError
-
 from .user_test import validate_user
 
 db = {
@@ -20,9 +20,6 @@ def login_user(data):
         return {"status": "success"}
     return {"status": "error", "message": "Invalid credentials"}
 
-
-
-
 # Função para pegar o Hash de um email no banco de dados
 def get_db_hash(email):
     # Enquanto não pega no banco de dados
@@ -33,8 +30,8 @@ def get_db_hash(email):
 def get_db_email(email):
     if db["email"] == email:
         return True
-def get_oauth_data():
-    return {"client_id":CLIENT_ID,"client_secret":CLIENT_SECRET,"redirect_uri":REDIRECT_URI,"scope":"openid"}# Função para saber se o usuário já está registrado no banco de dados
+
+# Função para saber se o usuário já está registrado no banco de dados
 def check_user(request_data):
     # Pega o email da requisição
     email = request_data.get("email")
@@ -61,6 +58,30 @@ def is_logged_in():
     # Caso contrário
     return False
 
+# Função para trocar um código de autorização por um código de autenticação
+def get_access_token(auth_code, method=None):
+    if method == "Google":
+        # Envia para o authentication server para pegar o acess token
+        response = requests.post(GOOGLE_API_TOKEN_URL,data={
+            "code": auth_code,
+            "grant_type":"authorization_code",
+            "client_id": GOOGLE_CLIENT_ID,
+            "client_secret": GOOGLE_CLIENT_SECRET,
+            "redirect_uri": GOOGLE_REDIRECT_URI,
+        })
+
+        # Pega o token de acesso retornado
+        access_token = response.json()["access_token"]
+        
+        return access_token
+
+# Função para pegar informações do usuário a partir de um código de autenticaçãop
+def get_user_info(code, method=None):
+    if method == "Google":
+        response = requests.post("https://www.googleapis.com/oauth2/v3/userinfo",headers={
+            "authorization": f"Bearer {code}"
+        })
+        return response
 
 # Função para conferir se a entrada é válida
 def check_input(request):
@@ -127,6 +148,9 @@ def authenticate_user(request, method):
         else:
             return {"error":"Email ou senha inválidos."}
     elif method == "Google":
+        # Checa se o usuário está no banco de dados
+        # Se estiver, loga
+        # Se não estiver, cria um novo
         ...
 
 # Função para registrar o usuário no banco de dados
