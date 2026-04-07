@@ -1,0 +1,187 @@
+/*================================= Login/Criacao de conta =================================*/
+._content-login{
+    display: flex;
+    width: 800px;
+    height: 450px;
+    background-color: #2a2a2a;
+    box-shadow: inset 5px 5px 10px rgba(0,0,0,0.5);
+
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2em;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 59px;
+    margin-bottom: 60px;
+}
+._content-login a:hover{
+    cursor: pointer;
+}
+._login {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2em;
+    text-align: left;
+    padding: 0.3rem;
+    height: 1.4em;
+    font-size: 15px;
+}
+
+._login label{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+._login input{
+    display: flex;
+    width: 290px;
+    line-height: 40px;
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    padding: 0 10px 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+    box-shadow: 0px 1px 0px  rgba(0,0,0,0.5);
+}
+
+._login input:focus{
+    box-shadow: 0px 1px 0px  rgba(30, 255, 0, 0.5);
+}
+
+.login-option{
+    display: flex;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.login-option a{
+    text-align: left;
+    font-size: 11px;
+    flex-direction: row;
+}
+
+.login-option button{
+    display: flex;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    color:white;
+    cursor: pointer;
+}
+
+.login-option button:hover{
+    color: #15ff00;
+}
+
+._other-login-option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+._logo-container{
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+._logo-container i{
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+._logo-container i:hover {
+    color: #15ff00;
+}
+
+.password-div i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #414141;
+    position: absolute;
+    right: 12%;
+    top: 35%;
+}
+
+.password-div i:hover {
+    color: #15ff00;
+}
+.password-div{
+    position: relative;
+}
+
+.create-option{
+    display: flex;
+    width: 92%;
+    margin-top: 10px;
+}
+
+.create-option a{
+    text-align: left;
+    font-size: 11px;
+    flex-direction: row;
+}
+
+.create-option button{
+    display: flex;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    color:white;
+    cursor: pointer;
+}
+
+.create-option button:hover{
+    color: #15ff00;
+}
+
+._form_login{
+    visibility: inherit;
+}
+.Box{
+    position: absolute;
+
+    z-index: 1;
+    background: linear-gradient(90deg, #15ff00, #272727, #000000, #15ff00);
+    background-size: 400% 100%;
+    align-self:flex-end;
+    width: 400px;
+    height: 450px;
+
+    border-radius: 0 2em 2em 0em;
+    transform: translateX(50%);
+
+
+    animation: moveColor 10s linear infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveColor{
+    0%{background-position: 0px 0px;}
+    100%{background-position: 1600px 0%;}
+}
+
+/*================================= Responsividade =================================*/
+
+@media (max-width: 768px) {
+    ._content-login{
+        width: 600px;
+        height: 450px;
+        margin-left: 2.5rem;
+        gap:10px;
+
+    }
+
+    .Box{
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    
+}

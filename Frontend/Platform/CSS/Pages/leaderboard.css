@@ -1,0 +1,117 @@
+/*================================= Leaderboard =================================*/
+.dashboard {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .top-3 {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+  }
+  
+  .card-ranking {
+    width: 120px;
+    background-color: #7c7c7c;
+    text-align: center;
+    border-radius: 8px 8px 8px 8px;
+    padding: 10px;
+    position: relative;
+  }
+  .card-ranking:hover {
+      animation: up 2s ease;
+  }
+  .first {
+    height: 300px;
+  }
+  
+  .first:hover {
+      box-shadow: 0 15px 30px #ffff20;    
+  }
+  
+  .second {
+    height: 220px;
+  }
+  
+  .second:hover {
+      box-shadow: 0 15px 30px #cacaca;    
+  }
+  
+  .third {
+    height: 180px;
+  }
+  
+  .third:hover {
+      box-shadow: 0 15px 30px #eb953f;    
+  }
+  
+  .medal {
+    width: 50px;
+    margin: 10px 0;
+  }
+  
+  .crown {
+    width: 80px;
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .username {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .points {
+    font-size: 14px;
+  }
+  
+  .leaderboard-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .leaderboard-table thead {
+    background-color: #008500;
+    color: white;
+  }
+  
+  .leaderboard-table th {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .leaderboard-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #676767
+  }
+  
+  .leaderboard-table tbody tr:nth-child(even) {
+    background-color: #b2ffb2;
+  }
+  
+  .leaderboard-table tbody tr:hover {
+    background-color: #dcdcdc;
+    transition: 0.2s;
+  }
+  
+  .leaderboard-table td:first-child {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .leaderboard-table td:last-child {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  /*================================= Responsividade =================================*/

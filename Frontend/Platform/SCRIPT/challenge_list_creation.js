@@ -1,13 +1,13 @@
 function createItemOnList(ID, name, finished){
-    const listElement = document.querySelector('._challenge_list');
+    const listElement = document.querySelector('._studi_list');
     
     const item = document.createElement('div');
-    item.classList.add('_challenge_list-item');
+    item.classList.add('_studi_list-item');
     item.id = ID;
     item.setAttribute('onmouseover','summaryChanger(this)');
     
     const challenge = document.createElement('p');
-    challenge.id = "challenge";
+    challenge.id = "studi";
     challenge.textContent = name;
 
     const status = document.createElement('p');

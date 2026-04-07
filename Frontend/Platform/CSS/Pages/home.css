@@ -1,0 +1,180 @@
+/*================================= Home =================================*/
+._dashboard-grid {
+    justify-content: center;  /* para grid com menos colunas */
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+    background-color: #000000;
+    margin: 8px;
+}
+
+.usercard {
+    background-color: #1e1e1e;    /* Cards mais escuros */
+    border-radius: 10px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #333;      /* Borda sutil */
+    font-size: 10px;
+    align-content: center;
+}
+
+.item-container{
+    background-color: #4f4f4f;
+    display: flex;
+    padding: 0.5rem;
+    margin: 0.2rem;
+    border-radius: 2em;
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+.content-item-container{
+    background-color: #2a2a2a;
+    display: block;
+    border-radius: 2em;
+    text-align: center;
+    padding: 0.3rem;
+    height: 1.4em;
+    box-shadow: inset 5px 5px 10px rgba(0,0,0,0.5);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+
+}
+.challenges {
+    background-color: #1e1e1e;    /* Cards mais escuros */
+    border-radius: 10px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #333;      /* Borda sutil */
+}
+
+.grid-challenges{
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 1rem;
+}
+
+.card{
+    background-color: #0a0a0a45;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    align-content: center;
+    border-radius: 2rem;
+    transform: translateY(0px); 
+}
+.card:hover {
+    animation: up 1s ease;
+    box-shadow: 0 15px 30px #00c100;
+}
+
+@keyframes up{
+    0% { opacity: 1; transform: translateY(0px); }
+    100% { opacity: 1; transform: translateY(-10px); }
+}
+.card i {
+    font-size: 2.5rem;
+    color: #bb86fc;               /* Roxo */
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.card p {
+    color: #b0b0b0;               /* Cinza claro */
+    font-size: 0.95rem;
+}
+
+/*================================= Responsividade =================================*/
+
+@media (max-width: 1200px){
+    ._dashboard-grid {
+        grid-template-columns: 300px 1fr;
+        font-size: small;
+    }
+
+    .usercard {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 60%;
+    }
+
+    .challenges {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .grid-challenges{
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 992px){
+    ._dashboard-grid {
+        grid-template-columns: 300px 1fr;
+        font-size: small;
+    }
+
+    .usercard {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 60%;
+    }
+
+    .challenges {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .grid-challenges{
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    ._dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .usercard {
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+    }
+
+    .challenges {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .grid-challenges{
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+    }
+}
