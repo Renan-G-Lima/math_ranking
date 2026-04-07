@@ -343,7 +343,10 @@ h1 {
         display: inline-block;
         margin-left: 0;
     }
-    
+
+    .container-login{
+        width: 50%;
+    }
     footer .container {
         display: flex;
         align-items: center;

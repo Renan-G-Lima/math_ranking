@@ -204,31 +204,22 @@ header {
 ._form_login{
     visibility: inherit;
 }
-
 .Box{
+    position: absolute;
+
     z-index: 1;
     background: linear-gradient(90deg, #15ff00, #272727, #000000, #15ff00);
     background-size: 400% 100%;
-    
-    position: absolute;
+    align-self:flex-end;
     width: 400px;
     height: 450px;
-    right: 20.4%;
-    top: 19.3%;
+
     border-radius: 0 2em 2em 0em;
-    
+    transform: translateX(50%);
+
+
     animation: moveColor 10s linear infinite;
     animation-fill-mode: forwards;
-}
-
-@keyframes slideLoginRegister{
-    0% {transform: translateX(0px); border-radius: 0 2em 2em 0em;}
-    100%{transform: translateX(-400px); border-radius: 2em 0  0 2em;}
-}
-
-@keyframes slideLoginLogin{
-    0% {transform: translateX(0px); border-radius: 0 2em 2em 0em;}
-    100%{transform: translateX(-400px); border-radius: 2em 0  0 2em;}
 }
 
 @keyframes moveColor{
@@ -383,6 +374,7 @@ header {
     margin-left: 5px;
     margin-right: 5px;
 }
+
 /* Footer */
 footer {
     text-decoration: none;
@@ -422,8 +414,11 @@ footer .container {
     justify-content: space-between;
     gap: 40px;
     max-width: 1200px;
-    max-height: 200px;
     margin: 0 auto;
+}
+
+.team-Footer{
+    margin: 100px;
 }
 
 /* Responsividade */
@@ -487,6 +482,18 @@ footer .container {
         align-items: center;
     }
 
+    ._content-login{
+        width: 600px;
+        height: 450px;
+        margin-left: 2.5rem;
+        gap:10px;
+
+    }
+
+    .Box{
+        width: 300px;
+    }
+
     ._dashboard-grid {
         grid-template-columns: 1fr;
     }
@@ -508,11 +515,31 @@ footer .container {
         grid-template-columns: repeat(3,1fr);
         gap: 1rem;
     }
+    footer .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    } 
+    footer img {
+        width: 200px;
+        height: auto;
+    }
+}
+@media (max-width: 564px) {
+    header {
+        flex-direction:column;
+    }
 }
 
 @media (max-width: 480px) {
+    ._content-login{
+        animation: login 3s ease;
+    }
     ._menu a, ._login a {
-        display: flex;
+        flex-direction: column;
         justify-content: center;
         margin: 0.5rem 0;
     }
@@ -521,5 +548,20 @@ footer .container {
         display: inline-block;
         margin-left: 0;
     }
+
+    footer .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    @keyframes login{
+        0%{transform: translateX(0%)};
+        100%{transform: translateX(-900px)};
+    }
+    
 }
 

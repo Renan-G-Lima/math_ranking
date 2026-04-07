@@ -14,36 +14,49 @@ function alternateEye(){
 
 function toggleAnimation(type){
     const box = document.getElementById("Box");
-
-    if(type === "login"){
-        box.animate([
-            {
-                transform: "translateX(0px)", 
-                borderRadius: "0 2em 2em 0em",
-            },
-            {
-                transform: "translateX(-400px)", 
-                borderRadius: "2em 0 0 2em",
-            }
-        ], {
-            duration: 800,
-            fill: "forwards",
-            easing: "ease-in-out"
-        });
-    }else if(type === "register"){
-        box.animate([
-            {
-                transform: "translateX(-400px)", 
-                borderRadius: "2em 0 0 2em",
-            },
-            {
-                transform: "translateX(0px)", 
-                borderRadius: "0 2em 2em 0em",
-            }
-        ], {
-            duration: 800,
-            fill: "forwards",
-            easing: "ease-in-out"
-        });
+    if(layoutStyle === 0){
+        if(type === "login"){
+            box.animate([
+                {
+                    transform: "translateX(50%)", 
+                    borderRadius: "0 2em 2em 0em",
+                },
+                {
+                    transform: "translateX(-50%)", 
+                    borderRadius: "2em 0 0 2em",
+                }
+            ], {
+                duration: 800,
+                fill: "forwards",
+                easing: "ease-in-out"
+            });
+        }else if(type === "register"){
+            box.animate([
+                {
+                    transform: "translateX(-50%)", 
+                    borderRadius: "2em 0 0 2em",
+                },
+                {
+                    transform: "translateX(50%)", 
+                    borderRadius: "0 2em 2em 0em",
+                }
+            ], {
+                duration: 800,
+                fill: "forwards",
+                easing: "ease-in-out"
+            });
+        }
     }
+
 }
+
+window.addEventListener('resize', function(){
+    let width = window.innerWidth;
+
+    if(width <= 480){
+        return layoutStyle = 1;
+    }
+    return layoutStyle = 0;
+});
+
+let layoutStyle = 0;
