@@ -159,6 +159,27 @@ header {
     color: #15ff00;
 }
 
+._other-login-option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+._logo-container{
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+._logo-container i{
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+._logo-container i:hover {
+    color: #15ff00;
+}
+
 .password-div i {
     font-size: 20px;
     cursor: pointer;
@@ -556,11 +577,6 @@ footer .container {
         gap: 40px;
         max-width: 1200px;
         margin: 0 auto;
-    }
-
-    @keyframes login{
-        0%{transform: translateX(0%)};
-        100%{transform: translateX(-900px)};
     }
     
 }
