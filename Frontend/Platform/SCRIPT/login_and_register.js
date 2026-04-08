@@ -1,7 +1,7 @@
 import {connection_link} from './connection_link.js';
 
 const CL = new connection_link();
-const url = CL.getUrl();
+const urlLogin = CL.getUrl("/login");
 
 async function login(){
     const _email = document.getElementById("email").value;
@@ -9,7 +9,7 @@ async function login(){
 
     const dataLogin = {email: _email, password: _password}
     try {
-        const response = await fetch(url,{
+        const response = await fetch(urlLogin,{
             method: 'POST',
             headers: {'Content-type' : 'application/json',}, 
             body: JSON.stringify(dataLogin),
@@ -20,13 +20,14 @@ async function login(){
         if(response.ok && data){
             return window.location.href= 'home.html';
         }
-        alert("Usuário incorreto"); 
+        alert("Usuário incorreto"); //Precisa fazer alterar o elemento do DOM.
     }
     catch(e){
         console.log("Error: ", e.message);
     }
 }
 
+const urlRegister = CL.getUrl("/register");
 async function register(){
     const _email = document.getElementById(emailR).value;
     const _password = document.getElementById(passwordR).value;
@@ -34,15 +35,15 @@ async function register(){
 
     const dataRegister = {email: _email, password: _password, confirmation: _confirmation}
     try {
-        const response = await fetch(url,{
+        const response = await fetch(urlRegister,{
             method: 'POST',
             headers: {'Content-type' : 'application/json',}, 
-            body: JSON.stringify({dataRegister}),
+            body: JSON.stringify(dataRegister),
         })
 
-        if(response.ok){
-            const data = await response.json();
-            localStorage.setItem('acess_token', response.token);
+        const data = await response.json();
+
+        if(response.ok && data){
             window.location.href = "home.html";
         }
     }
