@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/style.css">
+     <link rel="stylesheet" href="{{ url_for('static', filename='/Site/css/style.css') }}">
     <title>Equipe</title>
 </head>
     <body>
         <header>
             <div class="_logo">
                 <a href="./home.html">
-                    <img alt="logo" src="IMG/icon_dark_theme.png">
+                    <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
                 </a>
             </div>
 
         <div class="_menu">
-            <a href="./home.html">Início</a>
-            <a href="./about.html">Sobre</a>
-            <a href="./team.html">Equipe</a>
+            <a href="/">Início</a>
+            <a href="about">Sobre</a>
+            <a href="team">Equipe</a>
         </div>
 
         <div class="_login">
-            <a href="../Platform/login.html">Entrar</a>
-            <a href="../Platform/login.html">Criar conta</a>
+            <a href="login">Entrar</a>
+            <a href="login">Criar conta</a>
         </div>
         </header>
 
@@ -37,11 +37,11 @@
                             Graduando em Engenharia de Software, autodidata e entusiasta de tecnologia, com interesse em desenvolvimento e Cybersecurity. Possui experiência com Python, HTML, CSS, JavaScript e fundamentos de redes e Linux, buscando evolução contínua.</p>
                         <p class="social-links">
                             <a href="https://www.linkedin.com/in/caiky-souza" target="_blank" class="social-item">
-                                <img src="IMG/linkedin_logo.png" alt="LinkedIn">
+                                <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
                             </a>
 
                             <a href="https://github.com/Caiky-Souza" target="_blank" class="social-item">
-                                <img src="IMG/github_logo.png" alt="GitHub">
+                                <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
                             </a>
                         </p>
                     </div>
@@ -54,11 +54,11 @@
                         </p>
                         <p class="social-links">
                             <a href="https://www.linkedin.com/in/zobolidiogo/" target="_blank" class="social-item">
-                                <img src="IMG/linkedin_logo.png" alt="LinkedIn">
+                                <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
                             </a>
 
                             <a href="https://github.com/zobolidiogo" target="_blank" class="social-item">
-                                <img src="IMG/github_logo.png" alt="GitHub">
+                                <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
                             </a>
                         </p>
                     </div>
@@ -71,7 +71,7 @@
                         </p>
                         <p class="social-links">
                             <a href="https://github.com/justjuaum/" target="_blank" class="social-item">
-                                <img src="IMG/github_logo.png" alt="GitHub">
+                                <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
                             </a>
                         </p>
                     </div>
@@ -84,11 +84,11 @@
                         </p>
                         <p class="social-links">
                             <a href="https://www.linkedin.com/in/miguel-martins-87902a3a6/" target="_blank" class="social-item">
-                                <img src="IMG/linkedin_logo.png" alt="LinkedIn">
+                                <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
                             </a>
 
                             <a href="https://github.com/miguelmartinssilva" target="_blank" class="social-item">
-                                <img src="IMG/github_logo.png" alt="GitHub">
+                                <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
                             </a>
                         </p>
                     </div>
@@ -100,11 +100,11 @@
                         </p>
                         <p class="social-links">
                             <a href="https://www.linkedin.com/in/renan-gabriel-lima/" target="_blank" class="social-item">
-                                <img src="IMG/linkedin_logo.png" alt="LinkedIn">
+                                <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
                             </a>
 
                             <a href="https://github.com/CodeTangent" target="_blank" class="social-item">
-                                <img src="IMG/github_logo.png" alt="GitHub">
+                                <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
                             </a>
                         </p>
                     </div>
@@ -116,10 +116,10 @@
                         </p>
                         <p class="social-links">
                             <a href="https://www.linkedin.com/in/vinícius-eloi-26b715321/" target="_blank" class="social-item">
-                                <img src="IMG/linkedin_logo.png" alt="LinkedIn">
+                                <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
                             </a>
                             <a href="https://github.com/vini0112" target="_blank" class="social-item">
-                                <img src="IMG/github_logo.png" alt="GitHub">
+                                <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
                             </a>
                         </p>
                     </div>
@@ -130,7 +130,7 @@
         <footer>
         <div class="container">
             <div class="logo_footer">
-                <img alt="logo" src="IMG/icon_dark_theme.png">
+                <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
             </div>
             <p class="about_container">
                 Math Ranking é uma plataforma interativa voltada para estudantes, entusiastas e profissionais que desejam praticar matemática por meio da resolução de desafios. A aplicação oferece problemas de diferentes níveis de dificuldade, permitindo que os usuários evoluam gradualmente conforme seu desempenho, enquanto acompanham seu progresso ao longo do tempo. Além disso, conta com um sistema de ranking competitivo, no qual os participantes podem comparar seus resultados com outros usuários, incentivando o engajamento contínuo e tornando o aprendizado mais dinâmico por meio da gamificação.
@@ -139,7 +139,7 @@
         <div>
             <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
             <p>
-                Desenvolvido pela equipe <a href="./team.html">math_ranking</a>.
+                Desenvolvido pela equipe <a href="team">math_ranking</a>.
             </p>
         </div>
     </footer>

@@ -22,8 +22,17 @@ user_blueprint = Blueprint("user", __name__)
 
 @user_blueprint.route("/", methods=["GET"])
 def homepage():
-    return render_template("Platform/pages/home.html")
+    if is_logged_in():
+        return render_template("Platform/pages/index.html")
+    return render_template("Site/index.html")
 
+@user_blueprint.route("/team", methods=["GET"])
+def team():
+    return render_template("Site/team.html")
+
+@user_blueprint.route("/about", methods=["GET"])
+def about():
+    return render_template("Site/about.html")
 
 @user_blueprint.route("/login", methods=["GET", "POST"])
 def login():

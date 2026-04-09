@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="icon" type="image/png" href="IMG/icon_dark_theme.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/Site/css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
     <title>Sobre o projeto</title>
 </head>
 <body>
     <header>
         <div class="_logo">
                 <a href="./home.html">
-                    <img alt="logo" src="IMG/icon_dark_theme.png">
+                    <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
                 </a>
             </div>
 
         <div class="_menu">
-            <a href="./home.html">Início</a>
-            <a href="./about.html">Sobre</a>
-            <a href="./team.html">Equipe</a>
+            <a href="/">Início</a>
+            <a href="about">Sobre</a>
+            <a href="team">Equipe</a>
         </div>
 
         <div class="_login">
-            <a href="../Platform/login.html">Entrar</a>
-            <a href="../Platform/login.html">Criar conta</a>
+            <a href="login">Entrar</a>
+            <a href="login">Criar conta</a>
         </div>
 
         <section class="hero">
@@ -37,7 +37,7 @@
                     evolução e competir com outros participantes através de um 
                     sistema de ranking.
                 </p>
-                <a href="../Platform/login.html" class="btn btn-primary fade-in">Começar agora</a>
+                <a href="login" class="btn btn-primary fade-in">Começar agora</a>
             </div>
         </section>
     </header>
@@ -45,7 +45,7 @@
     <footer>
         <div class="container">
             <div class="logo_footer">
-                <img alt="logo" src="IMG/icon_dark_theme.png">
+                <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
             </div>
             <p class="about_container">
                 Math Ranking é uma plataforma interativa voltada 
@@ -66,7 +66,7 @@
         <div>
             <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
             <p>
-                Desenvolvido pela equipe <a href="./team.html">math_ranking</a>.
+                Desenvolvido pela equipe <a href="team">math_ranking</a>.
             </p>
         </div>
     </footer>
