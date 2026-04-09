@@ -1,32 +1,27 @@
-console.log("ta funfando");
-
 import {connection_link} from './connection_link.js';
 
 const CL = new connection_link();
 const url = CL.getUrl("/ranking");
 
-console.log("ta funfando");
-/*
-async function top3ranking() {
-    try {
-        const response = await fetch(url);
-        const list = await response.json();
-
-        list.forEach((user, index) => {
-            if (index < 3) {
-
-            }
-        })
-    } catch (error) {
-        console.log("Erro ao carregar top 3 do ranking:", error);
-    }
-}
-*/
-
 async function loadLeaderboard() {
     try {
         const response = await fetch(url);
         const list = await response.json();
+
+        if (list.length >= 3) {
+            const first = list[0];
+            const second = list[1];
+            const third = list[2];
+
+            document.querySelector(".card-ranking.first .username").textContent = first.nick;
+            document.querySelector(".card-ranking.first .points").textContent = `${first.pontos} pontos`;
+
+            document.querySelector(".card-ranking.second .username").textContent = second.nick;
+            document.querySelector(".card-ranking.second .points").textContent = `${second.pontos} pontos`;
+
+            document.querySelector(".card-ranking.third .username").textContent = third.nick;
+            document.querySelector(".card-ranking.third .points").textContent = `${third.pontos} pontos`;
+        }
 
         const tbody = document.querySelector(".leaderboard-table tbody");
         tbody.innerHTML = "";
