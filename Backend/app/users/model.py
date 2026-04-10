@@ -9,11 +9,10 @@ cur = get_connection().cursor
 
 # Função para pegar o Hash de um email no banco de dados
 def get_db_hash(email):
-    ...
     # Enquanto não pega no banco de dados
     #cur.execute("SELECT password_hash FROM usuarios WHERE email = ?", (email))
-    #if db["email"] == email:
-        #return db["hash"]
+    if db["email"] == email:
+        return db["hash"]
 
 
 # Função para pegar um determinado email no banco de dados
