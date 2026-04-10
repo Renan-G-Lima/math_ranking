@@ -10,14 +10,14 @@ from .model import *
 from .user_test import validate_user
 
 
-def login_user(data):
-    if (
-        (email := data.get("email"))
-        and (password := data.get("password"))
-        and validate_user(email, password)
-    ):
-        return {"status": "success"}
-    return {"status": "error", "message": "Invalid credentials"}
+#def login_user(data):
+#    if (
+#        (email := data.get("email"))
+#        and (password := data.get("password"))
+#        and validate_user(email, password)
+#    ):
+#        return {"status": "success"}
+#    return {"status": "error", "message": "Invalid credentials"}
 
 
 # Função para saber se o usuário já está registrado no banco de dados
@@ -86,28 +86,32 @@ def check_input(request, oauth=None):
 
     # Define inválido por padrão
     login = ["Default", "Valid"]
-
+    print(request)
     # Procura por algum campo email, senha e google_token
-    email = request.get(EMAIL_PARAM)
-    password = request.get(PASSWORD_PARAM)
-
+    try:
+        email = request.get(EMAIL_PARAM)
+        password = request.get(PASSWORD_PARAM)
+    except:
+        email = None
+        password = None
+        pass
     # Checa se a entrada é o email e senha tradicional
     if email and password:
         # Se for um email válido, continua, senão marca inválido
         try:
             validate_email(email)
         except EmailNotValidError:
-            return jsonify({"status_code": "400"})
+            return {"status_code": "400"}, 400
 
         # Se a senha tiver o tamanho certo, continua
         if 6 < len(password) < 12:
-            return jsonify({"status_code": "400"})
+            return {"status_code": "400"}, 400
 
     # Checa se a entrada é oauth do google
     elif oauth == "google":
         login[0] = "Google"
     else:
-        return jsonify({"status_code": "400"})
+        return {"status_code": "400"}, 400
 
     return login
 
@@ -133,7 +137,7 @@ def register_user(request, method):
 
 # Função para autenticar o usuário, fornecendo uma sessão
 def authenticate_user(request, method):
-    if method == "Default":
+    if method[0] == "Default":
         email = request.get(EMAIL_PARAM)
         senha = request.get(PASSWORD_PARAM)
 
@@ -141,15 +145,15 @@ def authenticate_user(request, method):
         user_db_hash = get_db_hash(email)
 
         # Se o hash existir, compara, senão retorna
-
+        
         if user_db_hash and check_password_hash(user_db_hash, senha):
             session["user_id"] = email
-            return {"success": "Usuário autenticado."}
+            return {"success": "Usuário autenticado."},200
         else:
-            return {"error": "Email ou senha inválidos."}
-    elif method == "Google":
+            
+            return {"error": "Email ou senha inválidos."},400
+    elif method[0] == "Google":
         # Checa se o usuário está no banco de dados
-
         # Se estiver, loga
         # Se não estiver, cria um novo
         ...
@@ -192,12 +196,12 @@ def login_user(request_data, oauth=None):
 
     # Checa se a entrada é válida
     request_method = check_input(request_data, oauth)
-
+  
     if type(request_method) != list:
         return request_method
-
+   
     # Autentica o usuário com o método e os dados de entrada
     resposta = authenticate_user(request_data, request_method)
-
+    
     # Retorna o resultado
-    return jsonify(resposta)
+    return jsonify(resposta[0]), resposta[1]

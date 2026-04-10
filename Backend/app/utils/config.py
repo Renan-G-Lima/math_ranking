@@ -28,6 +28,6 @@ GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 GOOGLE_API_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 GOOGLE_API_TOKEN_URL = "https://oauth2.googleapis.com/token"
 # URL de Callback após aautenticação
-GOOGLE_REDIRECT_URI = "http://localhost:5000/callback/google"
+GOOGLE_REDIRECT_URI = "http://localhost:5500/callback/google"
 
 GOOGLE_SCOPE = "openid email"

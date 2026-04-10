@@ -44,7 +44,7 @@ async function register(){
         const data = await response.json();
 
         if(response.ok && data){
-            window.location.href = "home.html";
+            window.location.href = "/";
         }
     }
     catch(e){
