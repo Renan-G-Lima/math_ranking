@@ -1,5 +1,5 @@
 import {connection_link} from './connection_link.js';
-
+console.log("teste");
 const CL = new connection_link();
 const urlLogin = CL.getUrl("/login");
 
@@ -18,9 +18,9 @@ async function login(){
         const data = await response.json();
 
         if(response.ok && data){
-            return window.location.href= 'home.html';
-        }
+            return console.log(response && data);
         alert("Usuário incorreto"); //Precisa fazer alterar o elemento do DOM.
+        }
     }
     catch(e){
         console.log("Error: ", e.message);
@@ -56,3 +56,10 @@ document.querySelector('._form_login').addEventListener('submit', function(event
     event.preventDefault();
     login();
 });
+
+const urlOAuth = CL.getUrl("/authorize/google");
+
+document.querySelector("#oauth").addEventListener("click", () => {
+    console.log(urlOAuth);
+    window.location.href = urlOAuth;
+})
