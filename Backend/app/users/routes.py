@@ -23,7 +23,7 @@ user_blueprint = Blueprint("user", __name__)
 @user_blueprint.route("/", methods=["GET"])
 def homepage():
     if is_logged_in():
-        return render_template("Platform/pages/index.html")
+        return render_template("Platform/pages/home.html")
     return render_template("Site/index.html")
 
 @user_blueprint.route("/team", methods=["GET"])
@@ -73,7 +73,7 @@ def register():
 
 
 # Rota para autorizar o login do oauth Google
-@user_blueprint.route("/authorize/google", methods=["POST"])
+@user_blueprint.route("/authorize/google", methods=["GET"])
 def login_google_authorize():
 
     # Prepara a url de autorização
