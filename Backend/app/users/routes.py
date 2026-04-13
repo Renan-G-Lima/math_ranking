@@ -34,6 +34,29 @@ def team():
 def about():
     return render_template("Site/about.html")
 
+# João aqui defini as rotas abaixo pra ir testando o front, não sei se está certo, qualquer coisa apagar ela ou mover. 
+# plataforma.
+@user_blueprint.route("/perfil", methods=["GET"])
+def perfil():
+    return render_template("Platform/pages/perfil.html")
+
+@user_blueprint.route("/leaderboard", methods=["GET"])
+def leaderboard():
+    return render_template("Platform/pages/leaderboard.html")
+
+@user_blueprint.route("/settings", methods=["GET"])
+def settings():
+    return render_template("Platform/pages/settings.html")
+
+@user_blueprint.route("/challenges", methods=["GET"])
+def challenges():
+    return render_template("Platform/pages/challenges.html")
+
+# Especificamente dos estudos.
+@user_blueprint.route("/summStudy", methods=["GET"])
+def summStudy():
+    return render_template("Platform/pages/prop/summ.html")
+
 @user_blueprint.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":

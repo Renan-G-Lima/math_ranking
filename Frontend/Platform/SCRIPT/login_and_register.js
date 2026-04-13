@@ -18,9 +18,9 @@ async function login(){
         const data = await response.json();
 
         if(response.ok && data){
-            return console.log(response && data);
-        alert("Usuário incorreto"); //Precisa fazer alterar o elemento do DOM.
+           return window.location.href = "/";
         }
+        alert("Usuário incorreto"); //Precisa fazer alterar o elemento do DOM.
     }
     catch(e){
         console.log("Error: ", e.message);
