@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/Pages/home.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Settings</title>
 </head>
-<body>
-    <h1>Aqui estarão as configurações da plataforma</h1>
-</body>
+    <body>
+        <header>
+            <div class="_logo">
+                <a href="/" id="logo_name">
+                    <span class="secondary_color">
+                        &lt;
+                    </span>
+                    <span class="primary_color">
+                        /
+                    </span>
+                    <span>M</span>
+                    <span>Δ</span>
+                    <span>T</span>
+                    <span>H</span>
+                    <span>&nbsp;</span>
+                    <span>R</span>
+                    <span>Δ</span>
+                    <span>N</span>
+                    <span>K</span>
+                    <span>I</span>
+                    <span>N</span>
+                    <span>G</span>
+                    <span class="secondary_color">
+                        &gt;
+                    </span>
+                </a>
+            </div>
+                <div class="_menu">
+                    <a href="perfil" aria-label="link"><i class="bi bi-person-badge-fill"></i></a>
+                    <a href="/" aria-label="link"><i class="bi bi-house-fill"></i></a>
+                    <a href="challenges" aria-label="link"><i class="bi bi-plus-slash-minus"></i></a>
+                    <a href="leaderboard" aria-label="link"><i class="bi bi-list-stars"></i></a>
+                    <a href="settings" aria-label="link"><i class="bi bi-gear-fill"></i></a>
+                    <a href="team" aria-label="link"><i class="bi bi-box-arrow-left"></i></a>
+                </div>
+            </header>
+            <main>
+                <h1>Aqui estarão as configurações da plataforma</h1>
+            </main>
+            <footer>
+                <div class="container">
+                    <div class="logo_footer">
+                        <img alt="logo" src="{{ url_for('static', filename='/Platform/IMG/icon_dark_theme.png') }}">
+                    </div>
+                    <p class="about_container">
+                        Math Ranking é uma plataforma interativa voltada  para estudantes, entusiastas e profissionais que  desejam praticar matemática por meio da resolução de desafios. A aplicação oferece problemas de diferentes níveis de dificuldade, permitindo que os usuários evoluam gradualmente conforme seu longo do tempo.Além disso, conta com um sistema de ranking competitivo, no qual os participantes podem comparar seus resultados com outros  usuários, incentivando o engajamento contínuo e tornando o aprendizado mais dinâmico por meio da gamificação.
+                    </p>
+                </div>
+                <div>
+                    <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
+                    <p>
+                        Desenvolvido pela equipe <a href="team"><b>math_ranking</b></a>.
+                    </p>
+                </div>
+            </footer>
+    </body>
 </html>
