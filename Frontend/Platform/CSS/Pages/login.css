@@ -28,6 +28,11 @@
     font-size: 15px;
 }
 
+.hidden-message{
+    color: red;
+    text-align: center;
+}
+
 ._login label{
     padding-left: 10px;
     padding-top: 10px;

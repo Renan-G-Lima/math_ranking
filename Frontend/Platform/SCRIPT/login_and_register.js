@@ -20,12 +20,23 @@ async function login(){
         if(response.ok && data){
            return window.location.href = "/";
         }
-        alert("Usuário incorreto"); //Precisa fazer alterar o elemento do DOM.
+        showElementsOnError(true);
     }
     catch(e){
         console.log("Error: ", e.message);
     }
 }
+
+document.querySelector("#email").addEventListener('focus', () =>{
+    showElementsOnError(false);
+})
+
+document.querySelector('._form_login').addEventListener('submit', function(event) {
+    event.preventDefault();
+    login();
+});
+
+
 
 const urlRegister = CL.getUrl("/register");
 async function register(){
@@ -52,9 +63,9 @@ async function register(){
     }
 }
 
-document.querySelector('._form_login').addEventListener('submit', function(event) {
+document.querySelector("._form_createAcc").addEventListener('submit', function(event) {
     event.preventDefault();
-    login();
+    register();
 });
 
 document.querySelector('._form_createAcc').addEventListener('submit', function(event) {
@@ -68,3 +79,25 @@ document.querySelector("#oauth").addEventListener("click", () => {
     console.log(urlOAuth);
     window.location.href = urlOAuth;
 })
+
+function showElementsOnError(bool){
+    if(bool){
+        document.querySelector(".hidden-message").innerHTML = "Usário ou login incorretos."
+        const em = document.querySelector("#email");
+        em.style.border = "solid 1px red";
+        em.style.borderRadius = "0.5rem";
+    
+        const ps = document.querySelector("#password");
+        ps.style.border = "solid 1px red";
+        ps.style.borderRadius = "0.5rem";
+    }else{
+        document.querySelector(".hidden-message").innerHTML = ""
+        const em = document.querySelector("#email");
+        em.style.border = "";
+        em.style.borderRadius = "";
+    
+        const ps = document.querySelector("#password");
+        ps.style.border = "";
+        ps.style.borderRadius = "";
+    }
+}
