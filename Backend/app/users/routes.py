@@ -8,19 +8,11 @@ from .service import (
     login_user,
     register_user,
 )
-from .model import db_test
+
 
 user_blueprint = Blueprint("user", __name__)
-db_test()
-# @user_blueprint.route("/login", methods=["POST"])
-# def login():
-#    if (data := request.get_json()):
-#        result = login_user(data)
-#        return jsonify(result["status"] == "success")
-#
-#    return jsonify(False)
 
-# Rota para a homepage
+
 @user_blueprint.route("/", methods=["GET"])
 def homepage():
     if is_logged_in():
@@ -61,6 +53,7 @@ def challenges():
 @user_blueprint.route("/summStudy", methods=["GET"])
 def summStudy():
     return render_template(SUMM_URL)
+
 
 # Rota para login do usuário
 @user_blueprint.route("/login", methods=["GET", "POST"])

@@ -1,31 +1,46 @@
 from ..database.connect import *
+from datetime import datetime
 
-db = {
-    "email": "opa@gmail.com",
-    "hash": "scrypt:32768:8:1$SRbaynN1oyijm4oa$da0f0e766343f1996ff9b2471cde112c93af416bd3ee791dc9b2367b1ab981ce59917f6b779794b6afc99eeb81f0b789e1ccd07dc0e0ef9944283b67abffef66",
-}
 
-def db_test():
+
+
+def insert_default_user(email, hash, time, nick="ADICIONAR NICK AQUI NA LINHA 7"):
+
+    # Inicia a conexão com o banco de dados
     connection = get_connection()
     cur = connection.cursor()
+    
+    # Adicionao usuário e salva
+    cur.execute("INSERT INTO usuarios (email, nick, email_verified, password_hash, created_at) VALUES (%s,%s, %s, %s, %s)",(email, nick, False, hash, time))
+    connection.commit()
 
-    teste = cur.execute("SELECT u.email FROM usuarios u")
-    print(teste)
+    # Fecha a conexão
     cur.close()
     connection.close()
-db_test()
+
 # Função para pegar o Hash de um email no banco de dados
 def get_db_hash(email):
     # Enquanto não pega no banco de dados
     #cur.execute("SELECT password_hash FROM usuarios WHERE email = ?", (email))
-    if db["email"] == email:
-        return db["hash"]
 
+    # Inicia a conexão com o banco de dados
+    connection = get_connection()
+    cur = connection.cursor()
 
-# Função para pegar um determinado email no banco de dados
-def get_db_email(email):
-    if db["email"] == email:
-        return True
+    # Tenta pegar o Hash pelo Email
+    try:
+        cur.execute("SELECT password_hash FROM usuarios WHERE email = %s", (email,))
+        hash = cur.fetchone()[0]
 
+        # Fecha a conexão
+        cur.close()
+        connection.close()
+    # Se der erro é porque não encontrou
+    except:
+        return False
+
+    if hash:
+        return hash
 
 def get_db_auth(code): ...
+
