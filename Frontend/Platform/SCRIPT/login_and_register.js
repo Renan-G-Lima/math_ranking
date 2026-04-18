@@ -29,15 +29,15 @@ async function login(){
 
 const urlRegister = CL.getUrl("/register");
 async function register(){
-    const _email = document.getElementById(emailR).value;
-    const _password = document.getElementById(passwordR).value;
-    const _confirmation = document.getElementById(passwordC).value;
+    const _email = document.getElementById("emailR").value;
+    const _password = document.getElementById("passwordR").value;
+    const _confirmation = document.getElementById("passwordC").value;
 
     const dataRegister = {email: _email, password: _password, confirmation: _confirmation}
     try {
         const response = await fetch(urlRegister,{
             method: 'POST',
-            headers: {'Content-type' : 'application/json',}, 
+            headers: {'Content-type' : 'application/json'}, 
             body: JSON.stringify(dataRegister),
         })
 
@@ -55,6 +55,11 @@ async function register(){
 document.querySelector('._form_login').addEventListener('submit', function(event) {
     event.preventDefault();
     login();
+});
+
+document.querySelector('._form_createAcc').addEventListener('submit', function(event) {
+    event.preventDefault();
+    register();
 });
 
 const urlOAuth = CL.getUrl("/authorize/google");

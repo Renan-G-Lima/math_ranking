@@ -9,34 +9,23 @@ from ..utils.config import *
 from .model import *
 from .user_test import validate_user
 
-
-#def login_user(data):
-#    if (
-#        (email := data.get("email"))
-#        and (password := data.get("password"))
-#        and validate_user(email, password)
-#    ):
-#        return {"status": "success"}
-#    return {"status": "error", "message": "Invalid credentials"}
-
-
 # Função para saber se o usuário já está registrado no banco de dados
 def check_user(request_data):
+    # Checa se as entradas são válidas
+    request_type, is_valid = check_input(request_data)
+
     # Pega o email da requisição
     email = request_data.get("email")
 
-    # Checa se as entradas são válidas
-    is_valid = check_input(request_data)
-
-    if type(is_valid) != list:
-        return is_valid
+    if not is_valid:
+        return jsonify("Dados inseridos são incorretos", 400)
 
     # Checa se o email já está registrado
-    if get_db_email(email):
-        return jsonify({"status_code": "401"})
+    if email_registered(email):
+        return jsonify({"error": "Dados inseridos são incorretos"}, 401)
 
     # Se não estiver registrado, dá continuidade
-    return jsonify({"status_code": "200"})
+    return jsonify({"status":"Sucesso"},200)
 
 
 # Função pra saber se o usuário está logado
@@ -136,6 +125,7 @@ def register(request_data, request_method):
     if request_method == "Default":
         # Checa se está no banco de dados
         if get_db_hash(email):
+
             return "Já está registrado"
 
         try:
@@ -148,7 +138,8 @@ def register(request_data, request_method):
             return True
             
         except:
-            return {"Ocorreu algum erro ao cadastrar usuário"}, 400
+
+            return "Ocorreu algum erro ao cadastrar usuário"
         
         
 
@@ -159,11 +150,11 @@ def register_user(request_data, oauth=None):
 
     if is_valid == False:
         return jsonify("Não foi reconhecido nenhum dos métodos de registro", 400)
-
+ 
     # Checa se conseguiu registrar ou não
     registration_complete = register(request_data, request_method)
     if registration_complete != True:
-        return jsonify(registration_complete), registration_complete[1]
+        return jsonify(registration_complete, 400)
     
     
     

@@ -91,7 +91,7 @@ def logout():
 def register():
     # Recebe a requisição do usuário
     request_data = request.get_json()
-
+    
     # Checa se o usuário fornecido já está no banco de dados
     is_valid_response = check_user(request_data)
 
@@ -99,10 +99,15 @@ def register():
     if request_data.get("btn_action") == "register_user":
 
         # Tenta registrar o usuário e retorna se deu certo
+     
         return register_user(request_data)
+        
 
     # Retorna se a entrada é válida
-    return is_valid_response
+
+    #return is_valid_response
+
+    return register_user(request_data)
 
 
 # Rota para autorizar o login do oauth Google
