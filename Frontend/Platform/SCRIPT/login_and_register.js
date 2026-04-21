@@ -60,7 +60,7 @@ async function register(){
     try {
         const response = await fetch(urlRegister,{
             method: 'POST',
-            headers: {'Content-type' : 'application/json',}, 
+            headers: {'Content-type' : 'application/json'}, 
             body: JSON.stringify(dataRegister),
         })
 
@@ -76,6 +76,11 @@ async function register(){
 }
 
 document.querySelector("._form_createAcc").addEventListener('submit', function(event) {
+    event.preventDefault();
+    register();
+});
+
+document.querySelector('._form_createAcc').addEventListener('submit', function(event) {
     event.preventDefault();
     register();
 });

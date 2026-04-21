@@ -8,19 +8,11 @@ from .service import (
     login_user,
     register_user,
 )
-from .model import db_test
+
 
 user_blueprint = Blueprint("user", __name__)
-db_test()
-# @user_blueprint.route("/login", methods=["POST"])
-# def login():
-#    if (data := request.get_json()):
-#        result = login_user(data)
-#        return jsonify(result["status"] == "success")
-#
-#    return jsonify(False)
 
-# Rota para a homepage
+
 @user_blueprint.route("/", methods=["GET"])
 def homepage():
     if is_logged_in():
@@ -62,6 +54,7 @@ def challenges():
 def summStudy():
     return render_template(SUMM_URL)
 
+
 # Rota para login do usuário
 @user_blueprint.route("/login", methods=["GET", "POST"])
 def login():
@@ -98,7 +91,7 @@ def logout():
 def register():
     # Recebe a requisição do usuário
     request_data = request.get_json()
-
+    
     # Checa se o usuário fornecido já está no banco de dados
     is_valid_response = check_user(request_data)
 
@@ -106,10 +99,15 @@ def register():
     if request_data.get("btn_action") == "register_user":
 
         # Tenta registrar o usuário e retorna se deu certo
+     
         return register_user(request_data)
+        
 
     # Retorna se a entrada é válida
-    return is_valid_response
+
+    #return is_valid_response
+
+    return register_user(request_data)
 
 
 # Rota para autorizar o login do oauth Google
