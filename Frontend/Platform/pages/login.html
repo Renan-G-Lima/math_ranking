@@ -43,14 +43,14 @@
             <a href="team">Equipe</a>
         </div>
     </header>
-<div class="conteiner_login">
+<div class="_conteiner_login">
     <div class="_content-login">
         <div class="_login">
             <form class="_form_login">
                 <div>
                     <div class="hidden-message"></div>
                     <label type="email" >E-mail</label>
-                    <input type="text" id="email" placeholder="email@exaple.com" name="email" required>
+                    <input type="text" id="email"  autocomplete="off" placeholder="email@exaple.com" name="email" required>
                 </div>
                 <div class="password-div">
                     <label type="password">Senha</label>
@@ -71,16 +71,20 @@
         </div>
         <div class="Box" id="Box"></div>
         <div class="_login">
-            <form class="_form_createAcc">
+            <form class="_form_createAcc" id="registerOptions">
                 <div>
                     <label class="_form_label" type="email" >E-mail</label>
-                    <input type="email" id="emailR" placeholder="email@exaple.com" name="username" required>
+                    <input type="email" id="emailR" placeholder="email@exaple.com" name="email" required>
+                    <label class="_form_label" type="username" >Username</label>
+                    <input type="email" id="usernameR" placeholder="Username" name="username" required>
                 </div>
                 <div class="password-div">
                     <label type="password">Digite sua senha</label>
                     <input type="password" autocomplete="" id="passwordR" placeholder="***********" name="password" required>
                     <label type="password">Confirme sua senha</label>
                     <input type="password" autocomplete="" id="passwordC" placeholder="***********" name="Confirmation" required>
+                    <label type="text">Digite sua área de atuação ou estudos.</label>
+                    <input type="text" id="roleR" placeholder="Ex: Eng. de Software" name="Role" required>
                 </div>
                 <div class="create-option">
                     <a onclick="toggleAnimation('register')">Já possui uma conta? clique aqui para Entrar.</a>

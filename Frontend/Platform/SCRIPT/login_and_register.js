@@ -40,11 +40,23 @@ document.querySelector('._form_login').addEventListener('submit', function(event
 
 const urlRegister = CL.getUrl("/register");
 async function register(){
-    const _email = document.getElementById("emailR").value;
-    const _password = document.getElementById("passwordR").value;
-    const _confirmation = document.getElementById("passwordC").value;
+    if(!checkPass){
+        Event.preventDefault();
+        return //fazer mostrar que as senhas estão diferentes.
+    }
+    
+    const _email = document.querySelector("#emailR").value;
+    const _password = document.querySelector("#passwordR").value;
+    const _username = document.querySelector("#usernameR").value;
+    const _role = document.querySelector("#roleR").value;
+    
+    const dataRegister = {
+        email: _email, 
+        password: _password, 
+        username: _username, 
+        role: _role
+    };
 
-    const dataRegister = {email: _email, password: _password, confirmation: _confirmation}
     try {
         const response = await fetch(urlRegister,{
             method: 'POST',
@@ -74,6 +86,16 @@ document.querySelector("#oauth").addEventListener("click", () => {
     console.log(urlOAuth);
     window.location.href = urlOAuth;
 })
+
+function checkPass(){
+    const pass = document.querySelector("#passwordR").value;
+    const conf = document.querySelector("#passwordC").value;
+
+    if(p === c){ 
+        return true;
+    }
+    return false;
+}
 
 function showElementsOnError(bool){
     if(bool){
