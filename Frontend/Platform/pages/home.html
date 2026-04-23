@@ -48,41 +48,36 @@
     </header>
     <section class="_dashboard-grid">
         <div class="usercard">
-            <h1>Seu resumo</h1>
+            <div class="_user-info">
+                <div class="_profile-mask">
+                    <img alt="perfil" src="{{ url_for('static', filename='/Platform/IMG/profile_default.png') }}">
+                </div>
+                <div class="_infos">
+                    <h1>Olá, @user</h1>
+                    <h2>Posição atual no ranking:</h2>
+                    <h1>#Position</h1>
+                </div>
+            </div>
             <div class="user-data">
                 <div class="item-container">
                     <h2>Pontuação atual:</h2>
-                    <div class="content-item-container">
-                        <p>00000000</p>
-                    </div>
+                    <p>00000000</p>
                 </div>
                 <div class="item-container">
-                    <h2>Ranking: </h2>
-                    <div class="content-item-container">
-                        <p>00000000</p>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <h2>Resolvidos: </h2>
-                    <div class="content-item-container">
-                        <p>00000000</p>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <h2>Desafios resolvidos: </h2>
-                    <div class="content-item-container">
-                        <p>X</p>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <h2>Venceu:</h2>
-                    <div class="content-item-container">
-                        <p>X</p>
-                    </div>
-                    <h2>Perdeu:</h2>
-                    <div class="content-item-container">
-                        <p>X</p>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Venceu</td>
+                                <td>Perdeu</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
