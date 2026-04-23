@@ -1,4 +1,6 @@
 # ⚡<\Math Rank>⚡
+Projeto em desenvolvimento.
+
 Plataforma online para resolução de desafios matemáticos e competição por ranking que busca 
 tornar o aprendizado da matemática mais interativo, competitivo e motivador.
 
