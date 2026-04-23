@@ -1,4 +1,5 @@
 /*================================= Home =================================*/
+/*Box geral - todos os itens do body estão dentro dela*/
 ._dashboard-grid {
     display: flex;
     background-color: #000000;
@@ -6,7 +7,8 @@
     margin-bottom: 2em;
     justify-content: center;
 }
-
+/*====================================================*/
+/*Card do usuário*/
 .usercard {
     background-color: #1e1e1e;    /* Cards mais escuros */
     border-radius: 2px;
@@ -17,48 +19,52 @@
     min-width: 50vh;
     min-height: 40vw;
 }
+    /*Foto do usário e daodos iniciais*/
+    ._profile-mask img{
+        display: flex;
+        mask-image: radial-gradient(black 70%, transparent 10%);
+        width: 100px;
+        image-rendering:optimizeQuality;
+    }
+    ._user-info{
+        margin: 0;
+        padding: 10px;
+        background-color: #4f4f4f;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-._profile-mask img{
-    display: flex;
-    mask-image: radial-gradient(black 70%, transparent 10%);
-    width: 100px;
-    image-rendering:optimizeQuality;
-}
-._user-info{
-    margin: 0;
-    padding: 10px;
-    background-color: #4f4f4f;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+    ._infos{ 
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
 
-._infos{ 
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-.item-container{
-    display: flex;
-    background-color: #4f4f4f;
-    padding: 0.5rem;
-    margin: 0.3rem;
-    border-radius: 0.5em;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
+    /*Conteúdos gerais relacionados ao usuário*/
+    .item-container{
+        display: flex;
+        background-color: #4f4f4f;
+        padding: 0.5rem;
+        margin: 0.3rem;
+        border-radius: 0.5em;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
 
-.item-container p{
-    width: 50%;
-    font-size: 20px;
-}
+    .item-container p{
+        width: 50%;
+        font-size: 20px;
+    }
 
-.item-container table{
-    width: 100%;
-    font-size: 25px;
-}
+    .item-container table{
+        width: 100%;
+        font-size: 25px;
+    }
+/*====================================================*/
+/*Listagem de links gerais, dashboard*/
 .challenges {
     background-color: #1e1e1e;    /* Cards mais escuros */
     border-radius: 10px;
