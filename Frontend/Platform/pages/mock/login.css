@@ -1,0 +1,159 @@
+/*=============RESET DO CSS=================*/
+/* 1. Use box-sizing para facilitar layouts */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Remova margens padrão */
+  body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+    margin: 0;
+  }
+  
+  /* 3. Estilos básicos para listas e imagens */
+  ul[class], ol[class] {
+    list-style: none;
+    padding: 0;
+  }
+  
+  body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+/*=======================================================*/
+._general-conteiner {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*BOX ANIMATION CONFIGS*/
+._box{
+    background: red;
+    width: 1000px;
+    height: 100vh;
+
+    background: linear-gradient(90deg, #15ff00, #272727, #000000, #15ff00);
+    background-size: 400% 100%;
+
+    animation: moveColor 10s linear infinite;
+}
+
+@keyframes moveColor{
+    0%{background-position: 0px 0px;}
+    100%{background-position: 3800px 0%;}
+}
+
+/*LOGIN CONFIGS*/
+._login-div{
+    min-width: 25rem;
+    min-height: 100vh;
+    background-color: #2a2a2a;
+    color: white;
+    align-content: center;
+}
+    ._login-div img{
+        position: absolute;
+        top: 0;
+        justify-self: center;
+        width: 150px;
+    }
+    ._login-div{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    /*FORM CONFIGS*/
+    ._login-div form{
+        margin: 100px 20px 20px 20px;
+        display: flex; 
+        align-items: left;
+        flex-direction: column;
+    }
+
+    ._login-div form label{
+        margin-top: 10px;
+    }
+
+    ._login-div form input{
+        padding: 20px;
+        border: 0;
+        outline: 0;
+    }
+
+    ._password-div input{
+        width: 360px;
+        
+    }
+
+    ._password-div input:focus{
+        box-shadow: inset 5px 0px 0px  rgba(30, 255, 0, 0.5);
+    }
+
+    
+    ._login-div form #btn-senha{
+        position: absolute;
+        right: 30px;
+        top: 53.5%;
+        color: #505050;
+        font-size: 30px;
+    }
+
+    ._password-div #btn-senha:hover{
+        color: #15ff00;
+    }
+
+    ._login-div form button{
+        margin-top: 10px;
+        padding: 15px;
+
+        align-self: end;
+        padding: 15px 20px;
+
+        background: none;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        color:white;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    ._login-div form button:hover{
+        color: #15ff00;
+    }
+    /*AUTH Buttons CONFIGS*/
+    ._auth-button{
+        margin-top: 10px;
+
+        justify-self: center;
+        padding: 10px 17px;
+
+        border-radius: 5px;
+
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+
+        cursor: pointer;
+    }
+    ._login-div i{
+        font-size: 40px;
+        transition: color 0.2s ease;
+    }
+    
+    ._login-div i:hover{
+        color: #15ff00;
+    }
+
+    ._login-div p{
+        text-align: center;
+    }
+
+    /*=======================================================*/
+._captcha{
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid red;
+}
+/*=======================================================*/
