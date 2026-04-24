@@ -111,6 +111,16 @@ def register():
 
 
 # Rota para autorizar o login do oauth Google
+@user_blueprint.route("/info/user", methods=["GET"])
+def get_user():
+
+    email = session["user_id"]
+
+    info = get_user(email)
+    
+    return jsonify(info)
+
+# Rota para autorizar o login do oauth Google
 @user_blueprint.route("/authorize/google", methods=["GET"])
 def login_google_authorize():
 
