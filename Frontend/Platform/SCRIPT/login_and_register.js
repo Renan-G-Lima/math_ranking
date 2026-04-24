@@ -54,7 +54,7 @@ async function register(){
         email: _email, 
         password: _password, 
         username: _username, 
-        role: _role
+        curso: _role
     };
 
     try {
@@ -80,10 +80,6 @@ document.querySelector("._form_createAcc").addEventListener('submit', function(e
     register();
 });
 
-document.querySelector('._form_createAcc').addEventListener('submit', function(event) {
-    event.preventDefault();
-    register();
-});
 
 const urlOAuth = CL.getUrl("/authorize/google");
 

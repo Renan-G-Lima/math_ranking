@@ -15,6 +15,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # Parâmetros do login tradicional
 EMAIL_PARAM = "email"
 PASSWORD_PARAM = "password"
+NICK_PARAM = "username"
+CURSO_PARAM = "curso"
 
 # Parâmetros do login Oauth
 OAUTH_PARAM = ""

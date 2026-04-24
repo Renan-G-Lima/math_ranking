@@ -121,7 +121,12 @@ def register(request_data, request_method):
 
     email = request_data.get(EMAIL_PARAM)
     password = request_data.get(PASSWORD_PARAM)
-    
+    nick = request_data.get(NICK_PARAM)
+    try:
+        curso = request_data.get(CURSO_PARAM)
+    except:
+        curso = "Nenhum"
+
     if request_method == "Default":
         # Checa se está no banco de dados
         if get_db_hash(email):
@@ -133,7 +138,7 @@ def register(request_data, request_method):
             date = datetime.now()
 
             # Adiciona novo usuário na tabela de maneira tradicional
-            insert_default_user(email, hash, date)
+            insert_default_user(email, hash, date, nick, curso)
             
             return True
             
@@ -146,7 +151,7 @@ def register(request_data, request_method):
 # Função que orquesta o fluxo de registro
 def register_user(request_data, oauth=None):
     # Checa o método que o usuário escolheu
-    request_method, is_valid = check_input(request_data, oauth)
+    request_method, is_valid = check_input(request_data, oauth, register=True)
 
     if is_valid == False:
         return jsonify("Não foi reconhecido nenhum dos métodos de registro", 400)
@@ -182,7 +187,7 @@ def login_user(request_data, oauth=None):
 
 
 # Função para conferir se a entrada é válida
-def check_input(request, oauth=None):
+def check_input(request, oauth=None, register=False):
 
     # Define Inválido por padrão
     login_type = "Default"
@@ -218,5 +223,22 @@ def check_input(request, oauth=None):
             
             login_type = "Default"
             is_valid = True
+    #Se for registro, checa se enviou o resto
+    if register:
+        try:
+            nick = request.get(NICK_PARAM)
+            
+        except:
+            nick = None
+            
+        
+        try:
+            curso = request.get(CURSO_PARAM)
+        except:
+            curso = None
+
+        if not nick:
+            return {"Não foi fornecido nick"} , 400
+    
 
     return login_type, is_valid
