@@ -3,16 +3,37 @@ from datetime import datetime
 import random
 
 
+def get_user(email):
+    # Enquanto não pega no banco de dados
+    #cur.execute("SELECT password_hash FROM usuarios WHERE email = ?", (email))
 
+    # Inicia a conexão com o banco de dados
+    connection = get_connection()
+    cur = connection.cursor()
 
-def insert_default_user(email, hash, time, nick=None):
+    # Tenta pegar o Hash pelo Email
+    try:
+        cur.execute("SELECT nick FROM usuarios WHERE email = %s", (email,))
+        nick = cur.fetchone()[0]
+
+        # Fecha a conexão
+        cur.close()
+        connection.close()
+    # Se der erro é porque não encontrou
+    except:
+        return False
+
+    if nick:
+        return {"nick":nick}
+
+def insert_default_user(email, hash, time, nick, curso):
     nick = str(random.randint(1, 10000000000))
     # Inicia a conexão com o banco de dados
     connection = get_connection()
     cur = connection.cursor()
     try:
         # Adicionao usuário e salva
-        cur.execute("INSERT INTO usuarios (email, nick, email_verified, password_hash, created_at) VALUES (%s,%s, %s, %s, %s)",(email, nick, False, hash, time))
+        cur.execute("INSERT INTO usuarios (email, nick, curso, email_verified, password_hash, created_at) VALUES (%s,%s, %s, %s, %s, %s)",(email, nick, curso, False, hash, time))
         connection.commit()
     except Exception as e:
         print(e)
