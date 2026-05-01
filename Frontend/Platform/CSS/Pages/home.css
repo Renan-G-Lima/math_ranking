@@ -6,18 +6,22 @@
     gap: 0.5em;
     margin-bottom: 2em;
     justify-content: center;
+    align-content: center;
+    margin-right: 10px;
 }
 /*====================================================*/
 /*Card do usuário*/
 .usercard {
-    background-color: #1e1e1e;    /* Cards mais escuros */
+    background-color: #1e1e1e;
     border-radius: 2px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    border: 1px solid #333;      /* Borda sutil */
+    border: 1px solid #333;
     font-size: 10px;
     min-width: 50vh;
     min-height: 40vw;
+    border-radius: 1em;
+    margin-left: 10px;
 }
     /*Foto do usário e daodos iniciais*/
     ._profile-mask img{
@@ -33,6 +37,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        border-radius: 0.8em 0.8em 0em 0em;
     }
 
     ._infos{ 
@@ -65,43 +70,47 @@
     }
 /*====================================================*/
 /*Listagem de links gerais, dashboard*/
-.challenges {
-    background-color: #1e1e1e;    /* Cards mais escuros */
+.dashboard{
+    background-color: #1e1e1e;
+    width: 75%;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     padding: 1rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    border: 1px solid #333;      /* Borda sutil */
+    border: 1px solid #333;
 }
 
-.grid-challenges{
-    justify-content: center;
+.grid-dashboard{
     display: grid;
-    grid-template-columns: repeat(7,1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(4,1fr);
+    gap: 0.5rem;
+    place-items: center;
 }
 
 .card{
+    text-decoration: none;
+    color: white;
     background-color: #0a0a0a45;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
+
     text-align: center;
     align-content: center;
+
     border-radius: 2rem;
-    transform: translateY(0px); 
+
+    margin-top:20px;
+
+    transition: 0.4s ease;
 }
 .card:hover {
-    animation: up 1s ease;
-    box-shadow: 0 15px 30px #00c100;
+    box-shadow: 0px 0px 10px 0px #00c100;
+    transform: translateY(-10px);
+    color: #00c100;
 }
 
-@keyframes up{
-    0% { opacity: 1; transform: translateY(0px); }
-    100% { opacity: 1; transform: translateY(-10px); }
-}
 .card i {
     font-size: 2.5rem;
-    color: #bb86fc;               /* Roxo */
     margin-bottom: 1rem;
 }
 
@@ -111,7 +120,7 @@
 }
 
 .card p {
-    color: #b0b0b0;               /* Cinza claro */
+    color: #b0b0b0;
     font-size: 0.95rem;
 }
 
@@ -123,50 +132,15 @@
         font-size: small;
     }
 
-    .usercard {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        height: 60%;
-    }
-
-    .challenges {
-        width: 100%;
+    .dashboard {
         margin-left: auto;
         margin-right: auto;
     }
     
-    .grid-challenges{
+    .grid-dashboard{
         justify-content: center;
         display: grid;
-        grid-template-columns: repeat(4,1fr);
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 992px){
-    ._dashboard-grid {
-        grid-template-columns: 300px 1fr;
-        font-size: small;
-    }
-
-    .usercard {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        height: 60%;
-    }
-
-    .challenges {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .grid-challenges{
-        justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
+        grid-template-columns: repeat(3,1fr);
         gap: 1rem;
     }
 }
@@ -182,21 +156,15 @@
         grid-template-columns: 1fr;
     }
 
-    .usercard {
-        margin-left: auto;
-        margin-right: auto;
-        height: 100%;
-    }
-
-    .challenges {
+    .dashboard {
         margin-left: auto;
         margin-right: auto;
     }
     
-    .grid-challenges{
+    .grid-dashboard{
         justify-content: center;
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(1,1fr);
         gap: 1rem;
     }
 }
