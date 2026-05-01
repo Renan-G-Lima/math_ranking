@@ -44,15 +44,21 @@ def leaderboard():
 def settings():
     return render_template(SETTINGS_URL)
 
-# Rota da os desafios
+# Rota dos desafios
 @user_blueprint.route("/challenges", methods=["GET"])
 def challenges():
     return render_template(CHALLENGES_URL)
+
+# Rota da calculadora
+@user_blueprint.route("/calculator", methods=["GET"])
+def calculator():
+    return render_template(CALCULATOR_URL)
 
 # Especificamente dos estudos.
 @user_blueprint.route("/summStudy", methods=["GET"])
 def summStudy():
     return render_template(SUMM_URL)
+    
 
 
 # Rota para login do usuário
