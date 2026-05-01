@@ -36,7 +36,7 @@ class Calculator{
             case "*" : return result.innerHTML += "*";
             case "/" : return result.innerHTML += "/";
             case "(" : return result.innerHTML += "*(";
-        }
+        } 
     }
 
     //checks if de last entrie on result is a operator, case yes, remove the last item and substitues for a new operator.
