@@ -137,6 +137,18 @@ class CreatorSumProblem:
         else:
             raise ValueError("Invalid difficulty")
         
+    # Invoca as operações criadas até o momento
+    def generate(self):
+        operations = [
+            self.sum_generator,
+            self.sub_generator,
+            self.mul_generator,
+            self.div_generator
+        ]
+
+        selected_operation = random.choice(operations)
+        return selected_operation()
+    
         """
-        Necessário alterar o submission pois o mesmo vai quebrar por não estar preparado para aceitar valores float
+        Necessário alterar o submission pois o mesmo vai quebrar por não estar preparado para aceitar a função criada na classe para divisão
         """
