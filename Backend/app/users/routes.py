@@ -8,6 +8,7 @@ from .service import (
     login_user,
     register_user,
 )
+from .model import get_db_user_info
 
 
 user_blueprint = Blueprint("user", __name__)
@@ -164,3 +165,11 @@ def login_google_callback():
         return response
 
     return "AUTHORIZATION CODE não foi recebido"
+@user_blueprint.route("/user/info", methods=["GET"])
+def get_info():
+    id = session["user_id"]
+    print(id)
+    if id:
+        info = get_db_user_info(id)
+        return jsonify(info)
+        

@@ -2,6 +2,30 @@ from ..database.connect import *
 from datetime import datetime
 import random
 
+def get_db_user_info(id):
+    # Inicia a conexão com o banco de dados
+    connection = get_connection()
+    cur = connection.cursor()
+  
+    # Tenta pegar informações pelo ID
+    try:
+        cur.execute("SELECT email, nick, curso FROM usuarios WHERE usr_id = %s", (id,))
+        user_info = cur.fetchone()
+        print("oi")
+        # Fecha a conexão
+        cur.close()
+        connection.close()
+        if user_info:        
+            print(user_info)
+            return user_info
+
+        else:
+            return "Deu ruim"
+        
+    # Se der erro é porque não encontrou
+    except:
+       
+        return False
 
 def get_user(email):
     # Enquanto não pega no banco de dados
@@ -70,6 +94,31 @@ def get_db_hash(email):
     if hash:
         return hash
 
+def get_user_id(email):
+
+    # Inicia a conexão com o banco de dados
+    connection = get_connection()
+    cur = connection.cursor()
+  
+    # Tenta pegar o ID pelo Email
+    try:
+        cur.execute("SELECT usr_id FROM usuarios WHERE email = %s", (email,))
+        id = cur.fetchone()[0]
+
+        # Fecha a conexão
+        cur.close()
+        connection.close()
+        if id:        
+            return id
+
+        else:
+            return "Deu ruim, id não encontrado"
+        
+    # Se der erro é porque não encontrou
+    except:
+       
+        return False
+    ...
 # Função para pegar o Hash de um email no banco de dados
 def email_registered(email):
     # Enquanto não pega no banco de dados

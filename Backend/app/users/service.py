@@ -98,13 +98,12 @@ def authenticate_user(request, method):
         email = request.get(EMAIL_PARAM)
         senha = request.get(PASSWORD_PARAM)
         
-        print("PASSOU AQUI")
         # Pega o hash no banco de dados
         user_db_hash = get_db_hash(email)
-        print(user_db_hash)
+
         # Se o hash existir e for igual, autentica, senão retorna
         if user_db_hash and check_password_hash(user_db_hash, senha):
-            session["user_id"] = email
+            session["user_id"] = get_user_id(email)
             return {"success": "Usuário autenticado."}, 200
         
         else:    
