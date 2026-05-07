@@ -97,17 +97,19 @@ def authenticate_user(request, method):
     if method == "Default":
         email = request.get(EMAIL_PARAM)
         senha = request.get(PASSWORD_PARAM)
-
+        
+        print("PASSOU AQUI")
         # Pega o hash no banco de dados
         user_db_hash = get_db_hash(email)
-
+        print(user_db_hash)
         # Se o hash existir e for igual, autentica, senão retorna
         if user_db_hash and check_password_hash(user_db_hash, senha):
             session["user_id"] = email
             return {"success": "Usuário autenticado."}, 200
         
         else:    
-            return {"error": "Email ou senha inválidos."},400
+            print("opa")           
+            return {"error": "Email ou senha inválidos."}, 400
         
     elif method == "Google":
         # Checa se o usuário está no banco de dados
@@ -153,11 +155,12 @@ def register_user(request_data, oauth=None):
     # Checa o método que o usuário escolheu
     request_method, is_valid = check_input(request_data, oauth, register=True)
 
-    if is_valid == False:
-        return jsonify("Não foi reconhecido nenhum dos métodos de registro", 400)
+    if is_valid != True:
+        return request_method, is_valid
  
     # Checa se conseguiu registrar ou não
     registration_complete = register(request_data, request_method)
+
     if registration_complete != True:
         return jsonify(registration_complete, 400)
     
@@ -174,15 +177,17 @@ def login_user(request_data, oauth=None):
 
     # Checa se a entrada é válida
     request_method, is_valid = check_input(request_data, oauth)
-  
-    if is_valid == False:
-        return jsonify("Não foi reconhecido nenhum dos métodos de login", 400)
+    print(request_method, is_valid)
+    if is_valid != True:
+        return request_method, is_valid
    
     # Autentica o usuário com o método e os dados de entrada
     resposta = authenticate_user(request_data, request_method)
     
     # Retorna o resultado
-    return jsonify(resposta), resposta[1]
+    print(resposta)
+    return resposta
+    #return jsonify(resposta), resposta[1]
 
 
 
@@ -218,7 +223,7 @@ def check_input(request, oauth=None, register=False):
                 return {"status_code": "400"}, 400
 
             # Checa se a senha tem entre 6 e 12 números
-            if 6 < len(password) < 12:
+            if not(6 < len(password) < 12):
                 return {"status_code": "400"}, 400
             
             login_type = "Default"

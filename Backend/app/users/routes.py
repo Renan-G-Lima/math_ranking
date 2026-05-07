@@ -78,8 +78,9 @@ def login():
         request_data = request.get_json()
 
         # Loga o usuário e retorna se deu certo
-        return login_user(request_data)
-
+        login = login_user(request_data)
+        print(login)
+        return login
 # Rota para logout do usuário
 @user_blueprint.route("/logout", methods=["GET"])
 def logout():

@@ -50,7 +50,7 @@ def get_db_hash(email):
     # Inicia a conexão com o banco de dados
     connection = get_connection()
     cur = connection.cursor()
-
+  
     # Tenta pegar o Hash pelo Email
     try:
         cur.execute("SELECT password_hash FROM usuarios WHERE email = %s", (email,))
@@ -59,8 +59,12 @@ def get_db_hash(email):
         # Fecha a conexão
         cur.close()
         connection.close()
+        
+        
+        
     # Se der erro é porque não encontrou
     except:
+       
         return False
 
     if hash:
