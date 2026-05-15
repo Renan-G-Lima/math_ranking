@@ -8,6 +8,7 @@ from .service import (
     login_user,
     register_user,
 )
+from .model import get_db_user_info
 
 
 user_blueprint = Blueprint("user", __name__)
@@ -78,8 +79,9 @@ def login():
         request_data = request.get_json()
 
         # Loga o usuário e retorna se deu certo
-        return login_user(request_data)
-
+        login = login_user(request_data)
+        print(login)
+        return login
 # Rota para logout do usuário
 @user_blueprint.route("/logout", methods=["GET"])
 def logout():
@@ -163,3 +165,11 @@ def login_google_callback():
         return response
 
     return "AUTHORIZATION CODE não foi recebido"
+@user_blueprint.route("/user/info", methods=["GET"])
+def get_info():
+    id = session["user_id"]
+    print(id)
+    if id:
+        info = get_db_user_info(id)
+        return jsonify(info)
+        
