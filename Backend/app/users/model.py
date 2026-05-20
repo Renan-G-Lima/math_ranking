@@ -27,7 +27,7 @@ def get_db_user_info(id):
        
         return False
 
-def get_user(email):
+def get_user(usr_id):
     # Enquanto não pega no banco de dados
     #cur.execute("SELECT password_hash FROM usuarios WHERE email = ?", (email))
 
@@ -37,8 +37,9 @@ def get_user(email):
 
     # Tenta pegar o Hash pelo Email
     try:
-        cur.execute("SELECT nick FROM usuarios WHERE email = %s", (email,))
-        nick = cur.fetchone()[0]
+        cur.execute("SELECT nick, curso FROM usuarios WHERE usr_id = %s", (usr_id,))
+        user = cur.fetchone()
+        
 
         # Fecha a conexão
         cur.close()
@@ -47,11 +48,10 @@ def get_user(email):
     except:
         return False
 
-    if nick:
-        return {"nick":nick}
+    if user:
+        return {"nick":user[0], "curso":user[1]}
 
 def insert_default_user(email, hash, time, nick, curso):
-    nick = str(random.randint(1, 10000000000))
     # Inicia a conexão com o banco de dados
     connection = get_connection()
     cur = connection.cursor()
@@ -59,12 +59,16 @@ def insert_default_user(email, hash, time, nick, curso):
         # Adicionao usuário e salva
         cur.execute("INSERT INTO usuarios (email, nick, curso, email_verified, password_hash, created_at) VALUES (%s,%s, %s, %s, %s, %s)",(email, nick, curso, False, hash, time))
         connection.commit()
+
+        
     except Exception as e:
         print(e)
         return "Deu ruim"
     # Fecha a conexão
     cur.close()
     connection.close()
+    print("OPAAA")
+    
 
 # Função para pegar o Hash de um email no banco de dados
 def get_db_hash(email):
@@ -88,7 +92,7 @@ def get_db_hash(email):
         
     # Se der erro é porque não encontrou
     except:
-       
+        print("Tá de putaria")
         return False
 
     if hash:

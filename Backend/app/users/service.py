@@ -219,10 +219,12 @@ def check_input(request, oauth=None, register=False):
                 validate_email(email)
             # Senão retorna
             except EmailNotValidError:
+                print("EMAIL CAGADO")
                 return {"status_code": "400"}, 400
 
             # Checa se a senha tem entre 6 e 12 números
-            if not(6 < len(password) < 12):
+            if not(6 < len(password) < 1000):
+                print("SENHA CAGADA")
                 return {"status_code": "400"}, 400
             
             login_type = "Default"
@@ -242,7 +244,9 @@ def check_input(request, oauth=None, register=False):
             curso = None
 
         if not nick:
+            print("SEM NICK")
             return {"Não foi fornecido nick"} , 400
+        
     
 
     return login_type, is_valid

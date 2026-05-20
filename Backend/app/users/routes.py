@@ -8,7 +8,7 @@ from .service import (
     login_user,
     register_user,
 )
-from .model import get_db_user_info
+from .model import get_db_user_info, get_user
 
 
 user_blueprint = Blueprint("user", __name__)
@@ -120,11 +120,11 @@ def register():
 
 # Rota para autorizar o login do oauth Google
 @user_blueprint.route("/info/user", methods=["GET"])
-def get_user():
+def get_user_route():
 
-    email = session["user_id"]
+    usr_id = session["user_id"]
 
-    info = get_user(email)
+    info = get_user(usr_id)
     
     return jsonify(info)
 
