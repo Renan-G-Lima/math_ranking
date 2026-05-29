@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/reset.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/Pages/home.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -42,94 +43,76 @@
             <a href="challenges" aria-label="link"><i class="bi bi-plus-slash-minus"></i></a>
             <a href="leaderboard" aria-label="link"><i class="bi bi-list-stars"></i></a>
             <a href="settings" aria-label="link"><i class="bi bi-gear-fill"></i></a>
-            <a href="team" aria-label="link"><i class="bi bi-box-arrow-left"></i></a>
+            <a href="logout" aria-label="link"><i class="bi bi-box-arrow-left"></i></a>
         </div>
     </header>
     <section class="_dashboard-grid">
         <div class="usercard">
-            <h1>Seu resumo</h1>
+            <div class="_user-info">
+                <div class="_profile-mask">
+                    <img alt="perfil" src="{{ url_for('static', filename='/Platform/IMG/profile_default.png') }}">
+                </div>
+                <div class="_infos">
+                    <h1>Olá, @user</h1>
+                    <h2>Posição atual no ranking:</h2>
+                    <h1>#Position</h1>
+                </div>
+            </div>
             <div class="user-data">
                 <div class="item-container">
                     <h2>Pontuação atual:</h2>
-                    <div class="content-item-container">
-                        <p>00000000</p>
-                    </div>
+                    <p>00000000</p>
                 </div>
                 <div class="item-container">
-                    <h2>Ranking: </h2>
-                    <div class="content-item-container">
-                        <p>00000000</p>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <h2>Resolvidos: </h2>
-                    <div class="content-item-container">
-                        <p>00000000</p>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <h2>Desafios resolvidos: </h2>
-                    <div class="content-item-container">
-                        <p>X</p>
-                    </div>
-                </div>
-                <div class="item-container">
-                    <h2>Venceu:</h2>
-                    <div class="content-item-container">
-                        <p>X</p>
-                    </div>
-                    <h2>Perdeu:</h2>
-                    <div class="content-item-container">
-                        <p>X</p>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Venceu</td>
+                                <td>Perdeu</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="challenges">
-            <h1>Desafios</h1>
-            <div class="grid-challenges">
-                <div class="card">
+        <div class="dashboard">
+            <h1>Dashboard</h1>
+            <div class="grid-dashboard">
+                <a class="card" href="challenges">
+                    <i class="bi bi-plus-slash-minus"></i>
+                    <h2>Desafios</h2>
+                </a>
+                <a class="card" href="study">
+                    <i class="bi bi-book-half"></i>
+                    <h2>Estudar</h2>
+                </a>
+                <a class="card" href="calculator">
+                    <i class="bi bi-calculator"></i>
+                    <h2>Calculadora</h2>
+                </a>
+                <a class="card" href="versus">
+                    <i class="bi bi-controller"></i>
+                    <h2>Versus</h2>
+                </a>
+                <a class="card" href="leaderboard">
+                    <i class="bi bi-list-ol"></i>
+                    <h2>Ranking</h2>
+                </a>
+                <a class="card">
                     <h2>Algebra</h2>
-                </div>
-                <div class="card">
+                </a>
+                <a class="card">
                     <h2>Algebra</h2>
-                </div>
-                <div class="card">
+                </a>
+                <a class="card">
                     <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
-                <div class="card">
-                    <h2>Algebra</h2>
-                </div>
+                </a>
             </div>
         </div>
     </section>

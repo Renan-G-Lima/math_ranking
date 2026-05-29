@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, redirect, render_template, request, url_for
+from flask import Blueprint, session, jsonify, redirect, render_template, request, url_for
 from ..utils.config import *
 from .service import (
     check_user,
@@ -8,32 +8,61 @@ from .service import (
     login_user,
     register_user,
 )
+from .model import get_db_user_info
+
 
 user_blueprint = Blueprint("user", __name__)
-
-# @user_blueprint.route("/login", methods=["POST"])
-# def login():
-#    if (data := request.get_json()):
-#        result = login_user(data)
-#        return jsonify(result["status"] == "success")
-#
-#    return jsonify(False)
 
 
 @user_blueprint.route("/", methods=["GET"])
 def homepage():
     if is_logged_in():
-        return render_template("Platform/pages/index.html")
-    return render_template("Site/index.html")
+        return render_template(HOME_URL)
+    return render_template(INDEX_URL)
 
+# Rota para apresentação do time
 @user_blueprint.route("/team", methods=["GET"])
 def team():
-    return render_template("Site/team.html")
+    return render_template(TEAM_URL)
 
+# Rota para o sobre do projeto
 @user_blueprint.route("/about", methods=["GET"])
 def about():
-    return render_template("Site/about.html")
+    return render_template(ABOUT_URL)
 
+# Rota paa o perfil do usuário
+@user_blueprint.route("/perfil", methods=["GET"])
+def perfil():
+    return render_template(PERFIL_URL)
+
+# Rota para a tabela de classificação
+@user_blueprint.route("/leaderboard", methods=["GET"])
+def leaderboard():
+    return render_template(LEADERBOARD_URL)
+
+# Rota para as configurações
+@user_blueprint.route("/settings", methods=["GET"])
+def settings():
+    return render_template(SETTINGS_URL)
+
+# Rota dos desafios
+@user_blueprint.route("/challenges", methods=["GET"])
+def challenges():
+    return render_template(CHALLENGES_URL)
+
+# Rota da calculadora
+@user_blueprint.route("/calculator", methods=["GET"])
+def calculator():
+    return render_template(CALCULATOR_URL)
+
+# Especificamente dos estudos.
+@user_blueprint.route("/summStudy", methods=["GET"])
+def summStudy():
+    return render_template(SUMM_URL)
+    
+
+
+# Rota para login do usuário
 @user_blueprint.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -42,7 +71,7 @@ def login():
             return redirect("/")
 
         # Retorno alterado para render_template, a renderização da página não estava sendo exibida
-        return render_template("Platform/pages/login.html")
+        return render_template(LOGIN_URL)
 
     elif request.method == "POST":
 
@@ -50,15 +79,27 @@ def login():
         request_data = request.get_json()
 
         # Loga o usuário e retorna se deu certo
-        return login_user(request_data)
+        login = login_user(request_data)
+        print(login)
+        return login
+# Rota para logout do usuário
+@user_blueprint.route("/logout", methods=["GET"])
+def logout():
+    try:
 
+        if session["user_id"]:
+            session.clear()
+
+        return redirect("/team")
+    except:
+        return redirect("/")
 
 # Rota para registrar um usuário de maneira tradicional
 @user_blueprint.route("/register", methods=["POST"])
 def register():
     # Recebe a requisição do usuário
     request_data = request.get_json()
-
+    
     # Checa se o usuário fornecido já está no banco de dados
     is_valid_response = check_user(request_data)
 
@@ -66,14 +107,29 @@ def register():
     if request_data.get("btn_action") == "register_user":
 
         # Tenta registrar o usuário e retorna se deu certo
+     
         return register_user(request_data)
+        
 
     # Retorna se a entrada é válida
-    return is_valid_response
+
+    #return is_valid_response
+
+    return register_user(request_data)
 
 
 # Rota para autorizar o login do oauth Google
-@user_blueprint.route("/authorize/google", methods=["POST"])
+@user_blueprint.route("/info/user", methods=["GET"])
+def get_user():
+
+    email = session["user_id"]
+
+    info = get_user(email)
+    
+    return jsonify(info)
+
+# Rota para autorizar o login do oauth Google
+@user_blueprint.route("/authorize/google", methods=["GET"])
 def login_google_authorize():
 
     # Prepara a url de autorização
@@ -109,3 +165,11 @@ def login_google_callback():
         return response
 
     return "AUTHORIZATION CODE não foi recebido"
+@user_blueprint.route("/user/info", methods=["GET"])
+def get_info():
+    id = session["user_id"]
+    print(id)
+    if id:
+        info = get_db_user_info(id)
+        return jsonify(info)
+        

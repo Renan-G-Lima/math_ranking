@@ -15,6 +15,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # Parâmetros do login tradicional
 EMAIL_PARAM = "email"
 PASSWORD_PARAM = "password"
+NICK_PARAM = "username"
+CURSO_PARAM = "curso"
 
 # Parâmetros do login Oauth
 OAUTH_PARAM = ""
@@ -28,6 +30,20 @@ GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 GOOGLE_API_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 GOOGLE_API_TOKEN_URL = "https://oauth2.googleapis.com/token"
 # URL de Callback após aautenticação
-GOOGLE_REDIRECT_URI = "http://localhost:5000/callback/google"
+GOOGLE_REDIRECT_URI = "http://localhost:5500/callback/google"
 
 GOOGLE_SCOPE = "openid email"
+
+platform = "Platform/pages/"
+site = "Site/"
+LOGIN_URL = platform + "login.html"
+HOME_URL =platform + "home.html"
+INDEX_URL = site + "index.html"
+TEAM_URL = site +"team.html"
+ABOUT_URL = site + "about.html"
+PERFIL_URL = platform + "perfil.html"
+LEADERBOARD_URL = platform + "leaderboard.html"
+SETTINGS_URL = platform + "settings.html"
+CHALLENGES_URL = platform + "challenges.html"
+CALCULATOR_URL = platform + "calculator/calculator.html"
+SUMM_URL = platform + "prop/summ.html"

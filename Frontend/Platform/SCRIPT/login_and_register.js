@@ -1,5 +1,5 @@
 import {connection_link} from './connection_link.js';
-
+console.log("teste");
 const CL = new connection_link();
 const urlLogin = CL.getUrl("/login");
 
@@ -18,33 +18,56 @@ async function login(){
         const data = await response.json();
 
         if(response.ok && data){
-            return window.location.href= 'home.html';
+           return window.location.href = "/";
         }
-        alert("Usuário incorreto"); //Precisa fazer alterar o elemento do DOM.
+        showElementsOnError(true);
     }
     catch(e){
         console.log("Error: ", e.message);
     }
 }
 
+document.querySelector("#email").addEventListener('focus', () =>{
+    showElementsOnError(false);
+})
+
+document.querySelector('._form_login').addEventListener('submit', function(event) {
+    event.preventDefault();
+    login();
+});
+
+
+
 const urlRegister = CL.getUrl("/register");
 async function register(){
-    const _email = document.getElementById(emailR).value;
-    const _password = document.getElementById(passwordR).value;
-    const _confirmation = document.getElementById(passwordC).value;
+    if(!checkPass){
+        Event.preventDefault();
+        return //fazer mostrar que as senhas estão diferentes.
+    }
+    
+    const _email = document.querySelector("#emailR").value;
+    const _password = document.querySelector("#passwordR").value;
+    const _username = document.querySelector("#usernameR").value;
+    const _role = document.querySelector("#roleR").value;
+    
+    const dataRegister = {
+        email: _email, 
+        password: _password, 
+        username: _username, 
+        curso: _role
+    };
 
-    const dataRegister = {email: _email, password: _password, confirmation: _confirmation}
     try {
         const response = await fetch(urlRegister,{
             method: 'POST',
-            headers: {'Content-type' : 'application/json',}, 
+            headers: {'Content-type' : 'application/json'}, 
             body: JSON.stringify(dataRegister),
         })
 
         const data = await response.json();
 
         if(response.ok && data){
-            window.location.href = "home.html";
+            window.location.href = "/";
         }
     }
     catch(e){
@@ -52,7 +75,47 @@ async function register(){
     }
 }
 
-document.querySelector('._form_login').addEventListener('submit', function(event) {
+document.querySelector("._form_createAcc").addEventListener('submit', function(event) {
     event.preventDefault();
-    login();
+    register();
 });
+
+
+const urlOAuth = CL.getUrl("/authorize/google");
+
+document.querySelector("#oauth").addEventListener("click", () => {
+    console.log(urlOAuth);
+    window.location.href = urlOAuth;
+})
+
+function checkPass(){
+    const pass = document.querySelector("#passwordR").value;
+    const conf = document.querySelector("#passwordC").value;
+
+    if(p === c){ 
+        return true;
+    }
+    return false;
+}
+
+function showElementsOnError(bool){
+    if(bool){
+        document.querySelector(".hidden-message").innerHTML = "Usário ou login incorretos."
+        const em = document.querySelector("#email");
+        em.style.border = "solid 1px red";
+        em.style.borderRadius = "0.5rem";
+    
+        const ps = document.querySelector("#password");
+        ps.style.border = "solid 1px red";
+        ps.style.borderRadius = "0.5rem";
+    }else{
+        document.querySelector(".hidden-message").innerHTML = ""
+        const em = document.querySelector("#email");
+        em.style.border = "";
+        em.style.borderRadius = "";
+    
+        const ps = document.querySelector("#password");
+        ps.style.border = "";
+        ps.style.borderRadius = "";
+    }
+}

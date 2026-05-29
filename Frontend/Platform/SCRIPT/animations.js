@@ -12,33 +12,35 @@ function alternateEye(){
     }
 }
 
-function toggleAnimation(type){
+function toggleAnimation(type) {
     const box = document.getElementById("Box");
-    if(layoutStyle === 0){
-        if(type === "login"){
+
+    if (layoutStyle === 0) {
+        if (type === "login") {
             box.animate([
                 {
-                    transform: "translateX(50%)", 
-                    borderRadius: "0 2em 2em 0em",
+                    right: "0",
+                    borderRadius: "0 2em 2em 0em"
                 },
                 {
-                    transform: "translateX(-50%)", 
-                    borderRadius: "2em 0 0 2em",
+                    right: "50%",
+                    borderRadius: "2em 0 0 2em"
                 }
             ], {
                 duration: 800,
                 fill: "forwards",
                 easing: "ease-in-out"
             });
-        }else if(type === "register"){
+
+        } else if (type === "register") {
             box.animate([
                 {
-                    transform: "translateX(-50%)", 
-                    borderRadius: "2em 0 0 2em",
+                    right: "50%",
+                    borderRadius: "2em 0 0 2em"
                 },
                 {
-                    transform: "translateX(50%)", 
-                    borderRadius: "0 2em 2em 0em",
+                    right: "0",
+                    borderRadius: "0 2em 2em 0em"
                 }
             ], {
                 duration: 800,
@@ -47,7 +49,6 @@ function toggleAnimation(type){
             });
         }
     }
-
 }
 
 window.addEventListener('resize', function(){
