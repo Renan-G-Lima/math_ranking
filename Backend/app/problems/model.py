@@ -1,154 +1,315 @@
 import random
+import math
 
-# Cria a classe para gerar problemas de soma
-class CreatorSumProblem:
+
+# Classe base utilizada para compartilhar as regras de dificuldade para a soma e subtração
+class BaseProblem:
     def __init__(self, difficulty):
         self.difficulty = difficulty
 
     def difficult_level(self):
         if self.difficulty == "easy":
             return 0, 100
+
         elif self.difficulty == "medium":
             return 101, 1000
+
         elif self.difficulty == "hard":
-                return 1001, 99999
+            return 1001, 99999
 
         raise ValueError("Invalid difficulty")
 
-    def sum_generator(self):
+
+# Gera problemas de soma
+class SumProblem(BaseProblem):
+
+    def generate(self):
+
         first_value, last_value = self.difficult_level()
 
         x = random.randint(first_value, last_value)
         y = random.randint(first_value, last_value)
 
         return {
-            "operation": "+",
-            "x": x,
-            "y": y,
+            "problem_type": "sum",
             "difficulty": self.difficulty,
-        }
-
-    def sub_generator(self):
-        first_value, last_value = self.difficult_level()
-
-        x = random.randint(first_value, last_value)
-        y = random.randint(first_value, last_value)
-
-        return {
-            "operation": "-",
-            "x": x,
-            "y": y,
-            "difficulty": self.difficulty,
-        }
-    
-    def mul_generator(self):
-         first_value, last_value = self.difficult_level()
-
-         x = random.randint(first_value, last_value)
-         y = random.randint(first_value, last_value)
-
-         return {
-                "operation": "*",
+            "payload": {
                 "x": x,
-                "y": y,
-                "difficulty": self.difficulty,
-         }
-    
-    def div_generator(self):
-         # No nível fácil, as divisões são simples onde todos os resultados são inteiros
+                "y": y
+            }
+        }
+
+
+# Gera problemas de subtração
+class SubProblem(BaseProblem):
+
+    def generate(self):
+
+        first_value, last_value = self.difficult_level()
+
+        x = random.randint(first_value, last_value)
+        y = random.randint(first_value, last_value)
+
+        return {
+            "problem_type": "subtraction",
+            "difficulty": self.difficulty,
+            "payload": {
+                "x": x,
+                "y": y
+            }
+        }
+
+
+# Gera problemas de multiplicação
+class MulProblem(BaseProblem):
+
+    def generate(self):
+
+        first_value, last_value = self.difficult_level()
+
+        x = random.randint(first_value, last_value)
+        y = random.randint(first_value, last_value)
+
+        return {
+            "problem_type": "multiplication",
+            "difficulty": self.difficulty,
+            "payload": {
+                "x": x,
+                "y": y
+            }
+        }
+
+
+# Gera problemas de divisão
+class DivProblem(BaseProblem):
+
+    def generate(self):
+
+        # No nível fácil as divisões SEMPRE possuem resultado inteiro
         if self.difficulty == "easy":
-            y = random.randint(2, 10)
-            quotient = random.randint(1, 10)
 
-            # Para garantir que o valor de X seja sempre maior/igual a Y estamos atribuindo a X o valor randômico de Y * Q (quociente), com isso sabemos o resultado antes mesmo do cálculo existir de verdade.
-            x = y * quotient
+            while True:
 
-            # Se o valor de X for igual a Y ou maior que 1000, geramos um novo problema
-            if x <= y or x > 1000:
-                return self.div_generator()
+                y = random.randint(2, 10)
 
-            return {
-                "operation": "/",
-                "x": x,
-                "y": y,
-                "difficulty": self.difficulty,
-            }
-         # Os valores máximos sobem até 50 elevando a dificuldade
-        elif self.difficulty == "medium":
-            y = random.randint(2, 50)
+                quotient = random.randint(1, 10)
 
-            # O nível médio na verdade é dado por tudo o que estava no nível easy + 40% de probabilidade de ter divisões onde o resultado é um valor decimal
-            if random.random() < 0.6:
-                quotient = random.randint(2, 50)
+                # Aqui a lógica é invertida, adquirindo primeiro o dividendo, ou seja, eu obtenho primeiro o resultado da conta para depois gerar ela, garantindo assim que nunca exista uma divisão nula, por exemplo: 5 / 0
                 x = y * quotient
-            else:
-                x = random.randint(10, 1000)
 
-                if x %  y == 0:
-                    return self.div_generator()
+                if x > y:
 
-            if x <= y or x > 1000:
-                return self.div_generator()
+                    return {
+                        "problem_type": "division",
+                        "difficulty": self.difficulty,
+                        "payload": {
+                            "x": x,
+                            "y": y
+                        }
+                    }
 
-            return {
-                "operation": "/",
-                "x": x,
-                "y": y,
-                "difficulty": self.difficulty,
-            }
+        # Aqui segue a lógica anterior, porém há 40% de chance de divisões com resultados em números decimais de até 1 casa decimal
+        elif self.difficulty == "medium":
 
-        
-            # No nível hard os valores sobem até 100 e resultados podem ter até 2 casas decimais após a vírgula
+            while True:
 
-            """
-            não esta funcionando corretamente ainda
-            """
-        
+                y = random.randint(2, 50)
+
+                if random.random() < 0.6:
+
+                    quotient = random.randint(2, 50)
+
+                    x = y * quotient
+
+                else:
+
+                    x = random.randint(10, 1000)
+
+                    # Evita que o ramo decimal gere uma divisão inteira
+                    if x % y == 0:
+                        continue
+
+                if x > y:
+
+                    return {
+                        "problem_type": "division",
+                        "difficulty": self.difficulty,
+                        "payload": {
+                            "x": x,
+                            "y": y
+                        }
+                    }
+
+        # Aqui os números decimais podem ter até 2 casas.
         elif self.difficulty == "hard":
-            y = random.randint(3, 100)
 
-            # Recebe a parte inteira do resultado
-            integer_of_result = random.randint(5, 50)
-            # recebe a parte fracionada que fica entre 0.11 e 0.99
-            decimal_part = round(random.uniform(0.11, 0.99), 2)
+            while True:
 
-            # Somamos as duas e atribuímos ao Quociente, definindo assim o resultado da divisão para construir a conta
-            quotient = integer_of_result + decimal_part
+                y = random.randint(3, 100)
 
-            # Antes que a conta exista realmente, já obtemos o valor de X nesse ponto para poder controlar a dificuldade real do calculo
-            x = y * quotient
+                integer_of_result = random.randint(5, 50)
 
-            # Garante que X é um valor inteiro
-            if not float(x).is_integer():
-                return self.div_generator()
-            
-            x = int(x)
+                decimal_part = round(
+                    random.uniform(0.11, 0.99),
+                    2
+                )
 
-            if x <= y or x > 1000:
-                return self.div_generator()
+                quotient = integer_of_result + decimal_part
 
-            return {
-                "operation": "/",
-                "x": x,
-                "y": y,
-                "difficulty": self.difficulty,
-            }
-        
+                x = y * quotient
+
+                # Garante que o dividendo seja um número inteiro
+                if not float(x).is_integer():
+                    continue
+
+                x = int(x)
+
+                if x > y:
+
+                    return {
+                        "problem_type": "division",
+                        "difficulty": self.difficulty,
+                        "payload": {
+                            "x": x,
+                            "y": y
+                        }
+                    }
+
+        raise ValueError("Invalid difficulty")
+
+
+# Gera problemas de sequência de Fibonacci. Cada nível equivale a um tamanho de sequência que vai de x valor até y valor. Isso faz com que a dificuldade seja dinâmica e não repetitiva ainda nos mesmos níveis.
+class FibonacciProblem(BaseProblem):
+
+    def generate(self):
+
+        if self.difficulty == "easy":
+            sequence_size = random.randint(1, 10)
+
+        elif self.difficulty == "medium":
+            sequence_size = random.randint(10, 20)
+
+        elif self.difficulty == "hard":
+            sequence_size = random.randint(21, 30)
+
         else:
             raise ValueError("Invalid difficulty")
-        
-    # Invoca as operações criadas até o momento
-    def generate(self):
-        operations = [
-            self.sum_generator,
-            self.sub_generator,
-            self.mul_generator,
-            self.div_generator
-        ]
 
-        selected_operation = random.choice(operations)
-        return selected_operation()
+        sequence = [0, 1]
+
+        # Cada novo elemento é obtido pela soma dos dois anteriores. Poderia ter utilizado o x, y = y, x + y porém é menos legível
+        while len(sequence) < sequence_size:
+
+            sequence.append(
+                sequence[-1] + sequence[-2]
+            )
+
+        answer = sequence[-1]
+
+        # Substitui o último elemento da sequência por um "?" que será substituído pela resposta do usuário
+        sequence[-1] = "?"
+
+        return {
+            "problem_type": "fibonacci",
+            "difficulty": self.difficulty,
+            "payload": {
+                "sequence": sequence
+            }
+        }
+
+
+# Gera problemas de máximo divisor comum
+class MDCProblem(BaseProblem):
+
+    def generate(self):
+
+        if self.difficulty == "easy":
+
+            x = random.randint(10, 30)
+            y = random.randint(10, 30)
+
+            return {
+                "problem_type": "mdc",
+                "difficulty": self.difficulty,
+                "payload": {
+                    "values": [x, y]
+                }
+            }
+
+        elif self.difficulty == "medium":
+
+            x = random.randint(30, 100)
+            y = random.randint(30, 100)
+
+            return {
+                "problem_type": "mdc",
+                "difficulty": self.difficulty,
+                "payload": {
+                    "values": [x, y]
+                }
+            }
+
+        elif self.difficulty == "hard":
+
+            x = random.randint(50, 200)
+            y = random.randint(50, 200)
+            z = random.randint(50, 200)
+
+            return {
+                "problem_type": "mdc",
+                "difficulty": self.difficulty,
+                "payload": {
+                    "values": [x, y, z]
+                }
+            }
+
+        raise ValueError("Invalid difficulty")
+
+
+# Gera problemas de mínimo múltiplo comum
+class MMCProblem(BaseProblem):
+
+    def generate(self):
+
+        if self.difficulty == "easy":
+
+            x = random.randint(2, 15)
+            y = random.randint(2, 15)
+
+            return {
+                "problem_type": "mmc",
+                "difficulty": self.difficulty,
+                "payload": {
+                    "values": [x, y]
+                }
+            }
+
+        elif self.difficulty == "medium":
+
+            x = random.randint(10, 40)
+            y = random.randint(10, 40)
+
+            return {
+                "problem_type": "mmc",
+                "difficulty": self.difficulty,
+                "payload": {
+                    "values": [x, y]
+                }
+            }
+
+        elif self.difficulty == "hard":
+
+            x = random.randint(20, 60)
+            y = random.randint(20, 60)
+            z = random.randint(20, 60)
+
+            return {
+                "problem_type": "mmc",
+                "difficulty": self.difficulty,
+                "payload": {
+                    "values": [x, y, z]
+                }
+            }
+
+        raise ValueError("Invalid difficulty")
     
-        """
-        Necessário alterar o submission pois o mesmo vai quebrar por não estar preparado para aceitar a função criada na classe para divisão
-        """

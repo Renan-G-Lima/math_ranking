@@ -1,17 +1,41 @@
-from .model import CreatorSumProblem
+from .model import (
+    SumProblem,
+    SubProblem,
+    MulProblem,
+    DivProblem,
+    FibonacciProblem,
+    MDCProblem,
+    MMCProblem
+)
 
 
-def spitter_of_sums(difficulty):
+def generate_problem(problem_type, difficulty):
     try:
-        problem = CreatorSumProblem(difficulty)
+
+        problems = {
+            "sum": SumProblem,
+            "sub": SubProblem,
+            "mul": MulProblem,
+            "div": DivProblem,
+            "fibonacci": FibonacciProblem,
+            "mdc": MDCProblem,
+            "mmc": MMCProblem,
+        }
+
+        selected_problem = problems.get(problem_type)
+
+        if not selected_problem:
+            raise ValueError("Invalid problem type")
+
+        problem = selected_problem(difficulty)
+
         return problem.generate()
 
-    except ValueError:
+    except ValueError as error:
+
         return {
-            "operation": None,
-            "x": None,
-            "y": None,
+            "problem_type": None,
             "difficulty": None,
-            "error": "Invalid difficulty",
+            "payload": None,
+            "error": str(error),
         }
-    
