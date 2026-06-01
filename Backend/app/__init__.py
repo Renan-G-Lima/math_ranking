@@ -7,6 +7,9 @@ from app.utils.config import SECRET_KEY
 from flask import Flask
 from flask_cors import CORS
 
+# Abaixo registrei uma rota totalmente teste vinda da submissions para teste via GET na URL
+from app.submissions.routes_test import submissions_test_blueprint
+
 
 def create_app():
     app = Flask(__name__)
@@ -20,5 +23,8 @@ def create_app():
     app.register_blueprint(problems_blueprint)
     app.register_blueprint(submissions_blueprint)
     app.register_blueprint(ranking_blueprint)
+
+    # Rota de teste da submissions
+    app.register_blueprint(submissions_test_blueprint)
 
     return app
