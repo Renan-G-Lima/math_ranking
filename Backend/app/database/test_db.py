@@ -62,3 +62,5 @@ if __name__ == "__main__":
             f"{user['area']} | ",
             f"{user['avatar']}"
         )
+
+## não funciona
