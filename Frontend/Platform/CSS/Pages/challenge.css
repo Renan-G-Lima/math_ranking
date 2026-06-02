@@ -42,6 +42,12 @@ select {
     width: 100%;
     min-height: 75vh;
     margin-bottom: 1em;
+    align-items: center;
+    justify-content: center;
+}
+
+._question_text{
+  font-size: 50px;
 }
 
 button {
