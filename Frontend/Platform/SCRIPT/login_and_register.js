@@ -1,5 +1,5 @@
 import {connection_link} from './connection_link.js';
-console.log("teste");
+
 const CL = new connection_link();
 const urlLogin = CL.getUrl("/login");
 
