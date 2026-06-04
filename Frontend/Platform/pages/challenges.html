@@ -69,8 +69,8 @@
                     <h1>Resolva</h1>
                     <p class="_question_text"></p>
                 </div>
-                <input type="text">
-                <button type="button">Enviar resposta</button>
+                <input id="sendResolution" type="text">
+                <button type="button" id="buttonSend">Enviar resposta</button>
             </div>
         </section>
         <footer>
@@ -89,6 +89,6 @@
                 </p>
             </div>
         </footer>
-        <script type="module" src="{{ url_for('static', filename='/Platform/SCRIPT/get_problem.js') }}"></script>
+        <script type="module" src="{{ url_for('static', filename='/Platform/SCRIPT/problem.js') }}"></script>
     </body>
 </html>
