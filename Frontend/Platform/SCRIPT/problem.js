@@ -27,10 +27,10 @@ buttonGet.addEventListener("click", function(){
     getProblem();
 });
 
-const urlResponse = CL.getUrl("/submit_test");
+const urlResponse = CL.getUrl("/submit");
 async function sendSolution(){
     const solution = document.querySelector("#sendResolution").value;
-    /*
+    
     const response = await fetch(urlResponse, {
         method: 'POST',
         headers: {'Content-type' : 'application/json'}, 
@@ -39,8 +39,9 @@ async function sendSolution(){
 
     response = await response.json();
 
-    console.log(response);*/
-    const params = new URLSearchParams({
+    console.log(response);
+    
+    /*const params = new URLSearchParams({
         x: problem.payload.x,
         y: problem.payload.y,
         operation: "+",
@@ -49,7 +50,7 @@ async function sendSolution(){
     
     const response = await fetch(`${urlResponse}?${params}`);
     
-    console.log(await response.json());
+    console.log(await response.json());*/
 }
 
 const buttonSend = document.querySelector("#buttonSend");
