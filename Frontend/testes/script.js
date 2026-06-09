@@ -9,7 +9,12 @@ let latestSelected = null;
 document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("mousedown", function(e) {
         latestSelected = selectedCard;
-        selectedCard = e.target;
+
+        selectedCard = e.target.closest(".card");
+        if(latestSelected == null){
+            latestSelected = selectedCard;
+        }
+        if(!card) return;
 
         console.log("Card selecionado:", selectedCard);
         console.log("ID:", selectedCard.id);
@@ -20,13 +25,12 @@ document.querySelectorAll(".card").forEach(card => {
 });
 
 function isSelected(e){
-    if(latestSelected !== selectedCard){
+    if(latestSelected !== selectedCard && latestSelected !== null){
         latestSelected.style.border = "none";
     }
 
     selectedCard.style.border = "white solid 2px";
 }
-
 
 function mouseDown(e){
     console.log("mouseDown")
@@ -54,3 +58,4 @@ function mouseMove(e){
 function mouseUp(e){
     document.removeEventListener('mousemove', mouseMove);
 }
+

@@ -6,27 +6,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="/Frontend/Platform/CSS/Pages/reset.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./mathquill-0.10.1/mathquill.css">
 </head>
 <body>
+    <button type="button" id="gerar" onclick="">gerar</button>
     <div id="container">
-        <div class="card" id="card01">
-            <p>soma</p>
-            <p>05</p>
-            <p>+2</p>
-            <p>_____</p>
-            <br>
-            <p>7</p>
-        </div>
-
         <div class="card" id="card02">
-            <p>soma</p>
-            <p>07</p>
-            <p>+9</p>
-            <p>_____</p>
-            <br>
-            <p>16</p>
+            <p>Solve <span class="formObj">ax^2 + bx + c = 0</span>.</p>
+        </div>
+        <div class="card" id="card01">
+            <p>Solve <span class="formObj"> \frac x^2+2/y = 0</span>.</p>
+        </div>
+        <div class="card" id="card03">
+            <p>Solve <span class="formObj">x + \sqrt y = 0</span>.</p>
         </div>
     </div>
     <script src="/Frontend/testes/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="./mathquill-0.10.1/mathquill.js"></script>
+    <script type="module" src="/Frontend/testes/gerenteDeIOBJ.js"></script>
+    <script>
+    //Mathquil
+        const MQ = MathQuill.getInterface(2);
+        let problemSpan;
+        
+        const  objForm = document.querySelectorAll(".formObj");
+        objForm.forEach(objForm => {
+            problemSpan = objForm;
+            console.log(problemSpan);
+            MQ.StaticMath(problemSpan);
+        })
+
+    </script>
 </body>
 </html>
