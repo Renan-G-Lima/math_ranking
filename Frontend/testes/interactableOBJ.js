@@ -3,6 +3,7 @@ export class interactableOBJ{
     type;
     construction;
     description;
+    
     constructor(ID, type, construction, description = null){
         this.id = ID;
         this.type = type;
