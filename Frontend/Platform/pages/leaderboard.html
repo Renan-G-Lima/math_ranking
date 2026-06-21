@@ -45,53 +45,116 @@
             <a href="team" aria-label="link"><i class="bi bi-box-arrow-left"></i></a>
         </div>
     </header>
-<section class="dashboard">
 
-  <div class="top-3">
-
-    <div class="card-ranking second">
-      <div class="username">Usuário 2</div>
-      <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/silver_medal.png') }}" class="medal">
-      <div class="points">1200 pontos</div>
+    <div class="lb-tabs">
+    <button type="button" class="lb-tab-btn active" data-target="global">
+        <i class="bi bi-globe2"></i>
+        <span>Global</span>
+    </button>
+    
+    <button type="button" class="lb-tab-btn" data-target="versus">
+        <i class="bi bi-people-fill"></i>
+        <span>Versus</span>
+    </button>
     </div>
 
-    <div class="card-ranking first">
-      <img alt="crown" src="{{ url_for('static', filename='/Platform/IMG/crown.png') }}" class="crown">
-      <div class="username">Usuário 1</div>
-      <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/gold_medal.png') }}" class="medal">
-      <div class="points">1500 pontos</div>
+    <div class="global lb-panel active">
+    <section class="dashboard">
+
+    <div class="top-3">
+
+        <div class="card-ranking-g second">
+        <div class="username">Usuário 2</div>
+        <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/silver_medal.png') }}" class="medal">
+        <div class="points">1200 pontos</div>
+        </div>
+
+        <div class="card-ranking-g first">
+        <img alt="crown" src="{{ url_for('static', filename='/Platform/IMG/crown.png') }}" class="crown">
+        <div class="username">Usuário 1</div>
+        <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/gold_medal.png') }}" class="medal">
+        <div class="points">1500 pontos</div>
+        </div>
+
+        <div class="card-ranking-g third">
+        <div class="username">Usuário 3</div>
+        <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/gold_medal.png') }}" class="medal">
+        <div class="points">1000 pontos</div>
+        </div>
     </div>
 
-    <div class="card-ranking third">
-      <div class="username">Usuário 3</div>
-      <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/gold_medal.png') }}" class="medal">
-      <div class="points">1000 pontos</div>
-    </div>
-  </div>
-
-
-</section>
-<section class="leaderboard">
-    <table class="leaderboard-table">
-        <thead>
-            <tr>
-                <th>Posição</th>
-                <th>Usuário</th>
-                <th>Pontos</th>
-                <th>Área</th>
-            </tr>
-        </thead>
-        <tbody class="leaderboard-body">
-            <tr>
-                <td>1</td>
-                <td>Usuário 1</td>
-                <td>900 pontos</td>
-                <td>Área 4</td>
-            </tr>
-        </tbody>
-    </table>
 
     </section>
+    <section class="leaderboard">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Posição</th>
+                    <th>Usuário</th>
+                    <th>Pontos</th>
+                    <th>Área</th>
+                </tr>
+            </thead>
+            <tbody class="leaderboard-body-global">
+                <tr>
+                    <td>1</td>
+                    <td>Usuário 1</td>
+                    <td>900 pontos</td>
+                    <td>Área 4</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="versus lb-panel">
+    <section class="dashboard">
+
+    <div class="top-3">
+
+        <div class="card-ranking-v second">
+        <div class="username">Usuário 2</div>
+        <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/silver_medal.png') }}" class="medal">
+        <div class="points">1200 pontos</div>
+        </div>
+
+        <div class="card-ranking-v first">
+        <img alt="crown" src="{{ url_for('static', filename='/Platform/IMG/crown.png') }}" class="crown">
+        <div class="username">Usuário 1</div>
+        <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/gold_medal.png') }}" class="medal">
+        <div class="points">1500 pontos</div>
+        </div>
+
+        <div class="card-ranking-v third">
+        <div class="username">Usuário 3</div>
+        <img alt="medal" src="{{ url_for('static', filename='/Platform/IMG/gold_medal.png') }}" class="medal">
+        <div class="points">1000 pontos</div>
+        </div>
+    </div>
+
+
+    </section>
+    <section class="leaderboard">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Posição</th>
+                    <th>Usuário</th>
+                    <th>Pontos</th>
+                    <th>Área</th>
+                </tr>
+            </thead>
+            <tbody class="leaderboard-body-versus">
+                <tr>
+                    <td>1</td>
+                    <td>Usuário 1</td>
+                    <td>900 pontos</td>
+                    <td>Área 4</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
     <footer>
         <div class="container">
             <div class="logo_footer">
@@ -109,5 +172,6 @@
         </div>
     </footer>
     <script type="module" src="{{ url_for('static', filename='/Platform/SCRIPT/leaderboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='/Platform/SCRIPT/leaderboard-toggle.js') }}"></script>
 </body>
 </html>
