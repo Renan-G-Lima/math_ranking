@@ -161,20 +161,24 @@ header {
 }
 
 .card-grid {
-    justify-content: center;  /* para grid com menos colunas */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+    display: flex;
+    flex-wrap: wrap;         /* Permite quebrar a linha */
     gap: 2rem;
+    justify-content: center; /* Centraliza a primeira linha E a segunda linha! */
 }
 
 .card {
-    background-color: #1e1e1e;    /* Cards mais escuros */
+    background-color: #1e1e1e;
     border-radius: 10px;
     padding: 2rem;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #333;       /* Borda sutil */
+    border: 1px solid #333;
+    
+    /* Define o tamanho dos cards de forma responsiva (base de 300px, máximo de 300px) */
+    flex: 1 1 300px;
+    max-width: 300px; 
 }
 
 .social-links {
@@ -234,12 +238,13 @@ header {
 footer {
     text-decoration: none;
     background-color: #000000;    /* Mais escuro que o body */
-    color: #60ff60;
+    color: #ceffce;
     text-align: center;
     padding: 2rem;
     font-size: 0.9rem;
     border-top: 1px solid #333;
     justify-content: space-between;
+    font-weight: 400;
 }
 
 footer a {
@@ -361,3 +366,4 @@ h1 {
         margin: 0 auto;
     }
 }
+
