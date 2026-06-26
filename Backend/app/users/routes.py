@@ -86,6 +86,7 @@ def login():
         login = login_user(request_data)
         print(login)
         return login
+    
 # Rota para logout do usuário
 @user_blueprint.route("/logout", methods=["GET"])
 def logout():
@@ -94,7 +95,7 @@ def logout():
         if session["user_id"]:
             session.clear()
 
-        return redirect("/team")
+        return redirect("/")
     except:
         return redirect("/")
 
