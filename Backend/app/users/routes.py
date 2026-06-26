@@ -18,6 +18,10 @@ user_blueprint = Blueprint("user", __name__)
 def homepage():
     if is_logged_in():
         return render_template(HOME_URL)
+    return redirect("/landing")
+
+@user_blueprint.route("/landing", methods=["GET"])
+def landing():
     return render_template(INDEX_URL)
 
 # Rota para apresentação do time
