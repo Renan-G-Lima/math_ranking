@@ -8,6 +8,72 @@
 
 {% block content %}
 
+<section class="profile-card">
+    <div class="first-infos">
+        <div class="profile-picture">
+            <img alt="Foto de perfil" src="{{ url_for('static', filename='/Platform/IMG/profile_default.png') }}">
+        </div>
+        <div class="profile-infos">
+            <h3>@{{ username }}</h3>
+            <br>
+            <h2>Posição no ranking</h2>
+            <div class="profile-rankings">
+                <a class="mini-versus">{{ versus_posicao }}</a>
+                <a class="mini-global">{{ global_posicao }}</a>
+            <div class="card">
+                </div>
+                <div class="mini-global active">
+                    <thead>
+                        <tr>
+                            <th>Pontuação Global</th>
+                            <th>Vitorias</th>
+                            <th>Derrotas</th>
+                            <th>Taxa de acerto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ global_pontuacao }}</td>
+                            <td>{{ global_vitorias }}</td>
+                            <td>{{ global_derrotas }}</td>
+                            <td>{{ global_taxa }}</td>
+                        </tr>
+                    </tbody>
+                </div>
+                <div class="mini-versus">
+                    <thead>
+                        <tr>
+                            <th>Pontuação Versus</th>
+                            <th>Vitorias</th>
+                            <th>Derrotas</th>
+                            <th>Taxa de acerto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ versus_pontuacao }}</td>
+                            <td>{{ versus_vitorias }}</td>
+                            <td>{{ versus_derrotas }}</td>
+                            <td>{{ versus_taxa }}</td>
+                        </tr>
+                    </tbody>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
 <section class="_dashboard-grid">
     <div class="usercard">
         <div class="_user-info">
