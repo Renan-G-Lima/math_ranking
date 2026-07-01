@@ -20,8 +20,8 @@
             <div class="profile-rankings">
                 <a class="mini-versus">{{ versus_posicao }}</a>
                 <a class="mini-global">{{ global_posicao }}</a>
+            </div>
             <div class="card">
-                </div>
                 <div class="mini-global active">
                     <thead>
                         <tr>
@@ -59,7 +59,10 @@
                     </tbody>
                 </div>
             </div>
-            
+            <div class="desempenho">
+                <h2>Desempenho por Área</h2>
+                <div id="grafico-container"></div>
+            </div>
         </div>
     </div>
 </section>
@@ -145,4 +148,8 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block scripts %}
+    <script type="module" src="{{ url_for('static', filename='/Platform/SCRIPT/desempenho_graph.js') }}"></script>
 {% endblock %}
