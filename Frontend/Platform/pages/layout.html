@@ -59,16 +59,27 @@
             </a>
         </div>
         <div class="_menu">
-            <a href="/landing" aria-label="link"><i class="bi bi-lightning-fill"></i></a>
-            <a href="/leaderboard" aria-label="link"><i class="bi bi-bar-chart-line-fill"></i></a>
+            <a href="/landing" aria-label="link"><i class="bi bi-graph-up-arrow"></i></a>
             <a href="/settings" aria-label="link"><i class="bi bi-gear-fill"></i></a>
             <a href="/perfil" aria-label="link"><i class="bi bi-person-badge-fill"></i></a>
         </div>
     </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <div class="_app-shell">
+        <aside class="_sidebar">
+            <nav class="_sidebar-nav">
+                <a href="/" aria-label="Início"><i class="bi bi-house-door-fill"></i></a>
+                <a href="/study" aria-label="Estudar"><i class="bi bi-book-half"></i></a>
+                <a href="/versus" aria-label="Versus"><i class="bi bi-controller"></i></a>
+                <a href="/leaderboard" aria-label="Ranking"><i class="bi bi-bar-chart-line-fill"></i></a>
+            </nav>
+            <a href="/calculator" class="_sidebar-pi" aria-label="Calculadora">π</a>
+        </aside>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
 
     <footer>
         <div class="container">

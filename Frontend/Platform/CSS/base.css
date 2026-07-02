@@ -1,5 +1,3 @@
-/*================================= Reset do Body, header e cabecalho =================================*/
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +7,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #000000;  /* Fundo escuro principal */
-    color: #e0e0e0;            /* Texto claro */ 
+    background-color: #000000;
+    color: #e0e0e0;
     min-height: 100vh;
     display: flex;
     justify-content: space-between;
@@ -26,8 +24,7 @@ body {
 
 /* Header e navegação */
 header {
-    background-color: #000000;   /* Tom mais claro que o fundo */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background-color: #000000;
     padding: 1rem 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -57,23 +54,88 @@ header {
 
 #logo_name span:hover {
     color: #00ff00;
-    text-shadow: 0 0 5px rgb(255, 255, 255);               /* Roxo suave no hover */
+    text-shadow: 0 0 5px rgb(255, 255, 255);
 }
 
 ._menu a, ._login a {
     text-decoration: none;
-    color: #e0e0e0;              /* Links claros */
+    color: #e0e0e0;
     margin-left: 1.5rem;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 ._menu a:hover{
-    color: #00c100;               /* Roxo suave como destaque */
+    color: #00c100;
 }
 
+._app-shell {
+    display: flex;
+    flex: 1;
+}
 
+._sidebar {
+    width: 64px;
+    flex-shrink: 0;
+    background-color: #000000;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+}
 
+._sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+._sidebar-nav a, ._sidebar-pi {
+    color: #6b6b6b;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+._sidebar-nav a:hover, ._sidebar-nav a.active, ._sidebar-pi:hover {
+    color: #00c100;
+}
+
+._sidebar-pi {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    ._sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.8rem 0;
+        border-right: none;
+        border-bottom: 1px solid #1a1a1a;
+    }
+
+    ._app-shell {
+        flex-direction: column;
+    }
+
+    ._sidebar-nav {
+        flex-direction: row;
+        gap: 1.8rem;
+    }
+
+    ._sidebar-pi {
+        margin-left: 1.8rem;
+    }
+}
 
 /* Footer */
 footer {
