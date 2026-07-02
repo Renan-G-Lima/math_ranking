@@ -1,170 +1,565 @@
 /*================================= Home =================================*/
-/*Box geral - todos os itens do body estão dentro dela*/
-._dashboard-grid {
-    display: flex;
-    background-color: #000000;
-    gap: 0.5em;
-    margin-bottom: 2em;
-    justify-content: center;
-    align-content: center;
-    margin-right: 10px;
-}
-/*====================================================*/
-/*Card do usuário*/
-.usercard {
-    background-color: #1e1e1e;
-    border-radius: 2px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    border: 1px solid #333;
-    font-size: 10px;
-    min-width: 50vh;
-    min-height: 40vw;
-    border-radius: 1em;
-    margin-left: 10px;
-}
-    /*Foto do usário e daodos iniciais*/
-    ._profile-mask img{
-        display: flex;
-        mask-image: radial-gradient(black 70%, transparent 10%);
-        width: 100px;
-        image-rendering:optimizeQuality;
-    }
-    ._user-info{
-        margin: 0;
-        padding: 10px;
-        background-color: #4f4f4f;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        border-radius: 0.8em 0.8em 0em 0em;
-    }
 
-    ._infos{ 
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
-
-    /*Conteúdos gerais relacionados ao usuário*/
-    .item-container{
-        display: flex;
-        background-color: #4f4f4f;
-        padding: 0.5rem;
-        margin: 0.3rem;
-        border-radius: 0.5em;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-    }
-
-    .item-container p{
-        width: 50%;
-        font-size: 20px;
-    }
-
-    .item-container table{
-        width: 100%;
-        font-size: 25px;
-    }
-/*====================================================*/
-/*Listagem de links gerais, dashboard*/
-.dashboard{
-    background-color: #1e1e1e;
-    width: 75%;
-    border-radius: 10px;
-    text-align: left;
-    padding: 1rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    border: 1px solid #333;
-}
-
-.grid-dashboard{
+._home-grid {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 0.5rem;
-    place-items: center;
+    grid-template-columns: 280px 1fr 300px;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    align-items: stretch;
 }
 
-.card{
-    text-decoration: none;
-    color: white;
-    background-color: #0a0a0a45;
-    width: 200px;
-    height: 200px;
+/*====================================================*/
+/* Coluna esquerda - perfil */
 
+.profile-card {
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 1em;
+    padding: 1.5rem;
     text-align: center;
-    align-content: center;
-
-    border-radius: 2rem;
-
-    margin-top:20px;
-
-    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
 }
-.card:hover {
-    box-shadow: 0px 0px 10px 0px #00c100;
-    transform: translateY(-10px);
+
+.profile-picture img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #333;
+}
+
+.profile-username {
+    margin-top: 0.8rem;
     color: #00c100;
+    font-size: 1rem;
 }
 
-.card i {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+.ranking-toggle {
+    display: flex;
+    background-color: #0a0a0a;
+    border-radius: 2em;
+    padding: 0.25rem;
+    margin: 1.2rem 0;
+    border: 1px solid #262626;
 }
 
-.card h3 {
-    margin-bottom: 0.5rem;
+.ranking-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #8a8a8a;
+    font-size: 0.7rem;
+    padding: 0.5rem 0.3rem;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.ranking-tab.active {
+    background-color: #00c100;
+    color: #000000;
+    font-weight: bold;
+}
+
+.ranking-panel {
+    display: none;
+}
+
+.ranking-panel.active {
+    display: block;
+}
+
+.ranking-position {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+}
+
+.stat-item {
+    background-color: #1e1e1e;
+    border-radius: 0.6em;
+    padding: 0.6rem 0.3rem;
+    text-align: left;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
     color: #ffffff;
 }
 
-.card p {
-    color: #b0b0b0;
+.stat-label {
+    font-size: 0.65rem;
+    color: #8a8a8a;
+}
+
+.desempenho {
+    text-align: left;
+    margin-top: 1.5rem;
+}
+
+.desempenho h2 {
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    margin-bottom: 0.8rem;
+}
+
+.desempenho-item {
+    margin-bottom: 0.9rem;
+}
+
+.desempenho-item p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    margin-bottom: 0.3rem;
+}
+
+.desempenho-item p strong {
+    color: #e0e0e0;
+}
+
+.desempenho-item p span {
+    color: #8a8a8a;
+}
+
+.desempenho-bar {
+    background-color: #262626;
+    border-radius: 1em;
+    height: 6px;
+    overflow: hidden;
+}
+
+.desempenho-fill {
+    background-color: #00c100;
+    height: 100%;
+    border-radius: 1em;
+}
+
+.streak-box {
+    margin-top: 1.5rem;
+    background-color: #1e1e1e;
+    border-radius: 0.6em;
+    padding: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+}
+
+.streak-box strong {
+    color: #00c100;
+}
+
+.ver-mais {
+    display: block;
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.7rem;
+    color: #8a8a8a;
+    text-decoration: none;
+}
+
+.ver-mais:hover {
+    color: #00c100;
+}
+
+/*====================================================*/
+/* Coluna central */
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    min-width: 0;
+}
+
+.side-column > :last-child {
+    margin-top: auto;
+}
+
+.greeting-card h1 {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.greeting-card p {
+    font-size: 0.85rem;
+    color: #8a8a8a;
+    margin-top: 0.2rem;
+}
+
+.action-cards h2,
+.continue-header h2,
+.side-card-header h2,
+.atividade-card h2,
+.areas-card h2 {
     font-size: 0.95rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.action-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+}
+
+.action-card {
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 1em;
+    padding: 1.2rem 1rem;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: 0.3s ease;
+}
+
+.action-card i {
+    font-size: 1.5rem;
+    color: #00c100;
+}
+
+.action-card h3 {
+    font-size: 0.85rem;
+    margin: 0.6rem 0 0.3rem;
+    color: #ffffff;
+}
+
+.action-card p {
+    font-size: 0.68rem;
+    color: #8a8a8a;
+    min-height: 2.4rem;
+}
+
+.action-btn {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background-color: #00c100;
+    color: #000000;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.4em;
+    text-decoration: none;
+}
+
+.action-card:hover {
+    border-color: #00c100;
+    transform: translateY(-3px);
+}
+
+.daily-challenge {
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 1em;
+    padding: 1.2rem;
+}
+
+.daily-challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.daily-challenge-header h2 {
+    font-size: 0.9rem;
+    color: #00c100;
+    margin: 0;
+}
+
+.daily-challenge-timer {
+    font-size: 0.7rem;
+    color: #8a8a8a;
+}
+
+.daily-challenge-body {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.daily-challenge-formula {
+    background-color: #0a0a0a;
+    border: 1px solid #262626;
+    border-radius: 0.6em;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+    color: #00c100;
+}
+
+.daily-challenge-infos h3 {
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+.daily-challenge-infos p {
+    font-size: 0.68rem;
+    color: #8a8a8a;
+}
+
+.daily-challenge-reward {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    color: #8a8a8a;
+    margin-left: auto;
+}
+
+.daily-challenge-reward strong {
+    color: #00c100;
+}
+
+.continue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.continue-header a {
+    font-size: 0.7rem;
+    color: #8a8a8a;
+    text-decoration: none;
+}
+
+.continue-header a:hover {
+    color: #00c100;
+}
+
+.continue-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.continue-card {
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 1em;
+    padding: 1rem;
+    text-decoration: none;
+    color: #e0e0e0;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.continue-card:hover {
+    border-color: #00c100;
+    transform: translateY(-3px);
+}
+
+.continue-symbol {
+    font-size: 1.5rem;
+    color: #00c100;
+}
+
+.continue-card h3 {
+    font-size: 0.72rem;
+    margin: 0.5rem 0;
+    color: #ffffff;
+}
+
+.continue-card progress {
+    width: 100%;
+    height: 5px;
+    accent-color: #00c100;
+}
+
+/*====================================================*/
+/* Coluna direita */
+
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.ranking-global-card,
+.atividade-card,
+.areas-card {
+    background-color: #141414;
+    border: 1px solid #262626;
+    border-radius: 1em;
+    padding: 1.2rem;
+}
+
+.side-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side-card-header a {
+    font-size: 0.65rem;
+    color: #8a8a8a;
+    text-decoration: none;
+}
+
+.side-card-header a:hover {
+    color: #00c100;
+}
+
+.ranking-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ranking-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.4em;
+}
+
+.ranking-list li.is-user {
+    background-color: #1e1e1e;
+    color: #00c100;
+}
+
+.rank-pos {
+    width: 1.2rem;
+    color: #8a8a8a;
+}
+
+.rank-name {
+    flex: 1;
+    color: inherit;
+}
+
+.rank-score {
+    color: inherit;
+}
+
+.atividade-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.atividade-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+}
+
+.atividade-list i {
+    color: #00c100;
+    margin-top: 0.15rem;
+}
+
+.atividade-list p {
+    flex: 1;
+    color: #b0b0b0;
+}
+
+.atividade-tempo {
+    color: #6b6b6b;
+    font-size: 0.65rem;
+    white-space: nowrap;
+}
+
+.areas-content {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.areas-donut {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #262626;
+    -webkit-mask: radial-gradient(farthest-side, transparent 62%, #000 63%);
+    mask: radial-gradient(farthest-side, transparent 62%, #000 63%);
+}
+
+.areas-legend {
+    list-style: none;
+    font-size: 0.68rem;
+    color: #b0b0b0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.areas-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.areas-legend b {
+    margin-left: auto;
+    color: #e0e0e0;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 /*================================= Responsividade =================================*/
 
-@media (max-width: 1200px){
-    ._dashboard-grid {
-        grid-template-columns: 300px 1fr;
-        font-size: small;
+@media (max-width: 1200px) {
+    ._home-grid {
+        grid-template-columns: 240px 1fr;
     }
 
-    .dashboard {
-        margin-left: auto;
-        margin-right: auto;
+    .side-column {
+        grid-column: 1 / -1;
     }
-    
-    .grid-dashboard{
-        justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        gap: 1rem;
+
+    .action-cards-grid,
+    .continue-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-
-    ._dashboard-grid {
+    ._home-grid {
         grid-template-columns: 1fr;
+        padding: 1rem;
     }
 
-    .dashboard {
-        margin-left: auto;
-        margin-right: auto;
+    .action-cards-grid,
+    .continue-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .grid-dashboard{
-        justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-        gap: 1rem;
+
+    .daily-challenge-body {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .daily-challenge-reward {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-cards-grid,
+    .continue-grid {
+        grid-template-columns: 1fr;
     }
 }
