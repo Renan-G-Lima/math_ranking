@@ -6,30 +6,29 @@ let startY = 0;
 let selectedCard = null;
 let latestSelected = null;
 
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("mousedown", function(e) {
+
+
+document.addEventListener("mousedown", function(e) {
         latestSelected = selectedCard;
 
         selectedCard = e.target.closest(".card");
-        if(latestSelected == null){
-            latestSelected = selectedCard;
+
+        if(!selectedCard) return;
+
+        if(latestSelected !== selectedCard && latestSelected !== null){
+            latestSelected.style.border = "none";
         }
-        if(!card) return;
+    
+        //selectedCard.style.border = "white solid 2px";
 
         console.log("Card selecionado:", selectedCard);
         console.log("ID:", selectedCard.id);
 
         mouseDown(e);
-        isSelected(e);
     });
-});
 
 function isSelected(e){
-    if(latestSelected !== selectedCard && latestSelected !== null){
-        latestSelected.style.border = "none";
-    }
 
-    selectedCard.style.border = "white solid 2px";
 }
 
 function mouseDown(e){
@@ -59,3 +58,22 @@ function mouseUp(e){
     document.removeEventListener('mousemove', mouseMove);
 }
 
+function isColliding(card){
+    const cards = document.querySelectorAll(".card");
+
+    const rect = card.getBoudingClientRect();
+    
+    for(const other  of cards){
+        continue;
+    }
+        const rectO = other.getBoudingClientRect();
+
+        const collision = 
+        rect.left < rectO.right && rect.right > rect0.left && rect.top < rectO.bottom && rect.bottom > rectO.top;
+
+        if(collision){
+            return true;
+        }
+    
+
+}
