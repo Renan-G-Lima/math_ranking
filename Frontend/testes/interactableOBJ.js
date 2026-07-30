@@ -27,5 +27,11 @@ export class interactableOBJ{
         div.appendChild(p);
         container.appendChild(div);
         window.MQ.MathField(div);
+
+        const x = (container.clientWidth - div.offsetWidth) / 2;
+        const y = (container.clientHeight - div.offsetHeight) / 2;
+
+        div.style.left = `${x}px`;
+        div.style.top = `${y}px`;
     }
 }

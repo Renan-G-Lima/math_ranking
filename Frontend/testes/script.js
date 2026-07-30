@@ -48,7 +48,18 @@ function mouseMove(e){
     startY = e.clientY;
 
     selectedCard.style.top = (selectedCard.offsetTop - newY) + 'px';
+    if(selectedCard.offsetTop - newY < 0){
+        selectedCard.style.top = 0 + 'px';
+    }else if(selectedCard.offsetTop - newY > window.innerHeight - selectedCard.offsetHeight){
+        selectedCard.style.top = (window.innerHeight - selectedCard.offsetHeight) + 'px';
+    }
+
     selectedCard.style.left = (selectedCard.offsetLeft - newX) + 'px';
+    if(selectedCard.offsetLeft - newX < 0){
+        selectedCard.style.left = 0 + 'px';
+    } else if(selectedCard.offsetLeft - newX > window.innerWidth - selectedCard.offsetWidth){
+        selectedCard.style.left = (window.innerWidth - selectedCard.offsetWidth) + 'px';
+    }
     
     //console.log({newX, newY});
     //console.log({startX, startY});
@@ -58,22 +69,17 @@ function mouseUp(e){
     document.removeEventListener('mousemove', mouseMove);
 }
 
-function isColliding(card){
-    const cards = document.querySelectorAll(".card");
 
-    const rect = card.getBoudingClientRect();
+document.querySelector("#toggleMenu").addEventListener("click", function(){
+    const leftMenu = document.querySelector(".leftMenu");
+    const toggleButton = document.querySelector("#toggleMenu");
+    leftMenu.style.visibility = leftMenu.style.visibility === "hidden" ? "visible" : "hidden";
     
-    for(const other  of cards){
-        continue;
+    if(leftMenu.style.visibility === "hidden"){
+        toggleButton.style.left = "0px";
+        toggleButton.textContent = "▶";
+    } else {
+        toggleButton.style.left = "300px";
+        toggleButton.textContent = "◀";
     }
-        const rectO = other.getBoudingClientRect();
-
-        const collision = 
-        rect.left < rectO.right && rect.right > rect0.left && rect.top < rectO.bottom && rect.bottom > rectO.top;
-
-        if(collision){
-            return true;
-        }
-    
-
-}
+});
