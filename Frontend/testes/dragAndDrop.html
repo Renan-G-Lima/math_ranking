@@ -9,34 +9,56 @@
     <link rel="stylesheet" href="./mathquill-0.10.1/mathquill.css">
 </head>
 <body>
-    <button type="button" id="gerar" onclick="">gerar</button>
-    <div id="container">
-        <div class="card" id="card02">
-            <p>Solve <span class="formObj">ax^2 + bx + c = 0</span>.</p>
+    <div class="content-world">
+        <div class="responseDiv">
+            <div>
+                <input type="text" id="responseInput" placeholder="Digite a resposta aqui">
+                <button type="button" id="submitResponse">Enviar</button>
+            </div>
         </div>
-        <div class="card" id="card01">
-            <p>Solve <span class="formObj"> \frac x^2+2/y = 0</span>.</p>
+        <button type="button" id="toggleMenu">◀</button>
+        <div class="leftMenu">
+            <button type="button" class="button" id="sumButton" >x + y = 0</button>
+            <button type="button" class="button" id="subButton" >x - y = 0</button>
+            <button type="button" class="button" id="divButton" >\frac{a}{b} = 0</button>
+            <button type="button" class="button" id="multButton">x * y = 0</button>
+            <button type="button" class="button" id="quadraticButton">ax^2 + bx + c = 0</button>
+            <button type="button" class="button" id="sqrtButton">\sqrt{x}</button>
+            <button type="button" class="button" id="nthRootButton">\sqrt[n]{x}</button>
+            <button type="button" class="button" id="powerButton">x^{n}</button>
+            <button type="button" class="button" id="subscriptButton">x_{n}</button>
+            <button type="button" class="button" id="integralButton">\int_a^b f(x) dx</button>
+            <button type="button" class="button" id="sumNotationButton">\sum_{i=1}^{n} i</button>
+            <button type="button" class="button" id="productButton">\prod_{i=1}^{n} i</button>
+            <button type="button" class="button" id="limitButton">\lim_{x\to0} f(x)</button>
+            <button type="button" class="button" id="derivativeButton">\frac{d}{dx}f(x)</button>
+            <button type="button" class="button" id="partialButton">\frac{\partial f}{\partial x}</button>
+            <button type="button" class="button" id="vectorButton">\vec{v}</button>
+            <button type="button" class="button" id="barButton">\overline{AB}</button>
+            <button type="button" class="button" id="parenthesesButton">\left(\frac{a}{b}\right)</button>
+            <button type="button" class="button" id="bracketsButton">\left[x+y\right]</button>
+            <button type="button" class="button" id="absoluteButton">\left|x\right|</button>
+            <button type="button" class="button" id="infinityButton">\infty</button>
+            <button type="button" class="button" id="piButton">\pi</button>
+            <button type="button" class="button" id="thetaButton">\theta</button>
+            <button type="button" class="button" id="alphaButton">\alpha</button>
+            <button type="button" class="button" id="betaButton">\beta</button>
         </div>
-        <div class="card" id="card03">
-            <p>Solve <span class="formObj">x + \sqrt y = 0</span>.</p>
+        <div id="container">
+            
         </div>
     </div>
+    <div class="footer">All rights reserved by MathRanking &copy; 2026</div>
     <script src="/Frontend/testes/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="./mathquill-0.10.1/mathquill.js"></script>
     <script type="module" src="/Frontend/testes/gerenteDeIOBJ.js"></script>
     <script>
-    //Mathquil
-        const MQ = MathQuill.getInterface(2);
-        let problemSpan;
-        
-        const  objForm = document.querySelectorAll(".formObj");
-        objForm.forEach(objForm => {
-            problemSpan = objForm;
-            console.log(problemSpan);
-            MQ.StaticMath(problemSpan);
-        })
-
+        window.MQ = MathQuill.getInterface(2);
+        document.querySelectorAll(".button").forEach(button => 
+        { 
+            window.MQ.StaticMath(button);
+        });
     </script>
 </body>
 </html>

@@ -14,7 +14,7 @@ export class interactableOBJ{
     generateDOMElement(container){
         let div = document.createElement("div");
         div.className = "card";
-        div.id = this.ID;
+        div.id = this.id;
 
         let p = document.createElement("p");
         let span = document.createElement("span");
@@ -26,5 +26,12 @@ export class interactableOBJ{
         p.appendChild(span);
         div.appendChild(p);
         container.appendChild(div);
+        window.MQ.MathField(div);
+
+        const x = (container.clientWidth - div.offsetWidth) / 2;
+        const y = (container.clientHeight - div.offsetHeight) / 2;
+
+        div.style.left = `${x}px`;
+        div.style.top = `${y}px`;
     }
 }
