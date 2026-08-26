@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <meta name="description"
+        content="Math Ranking é uma plataforma de desafios matemáticos com ranking competitivo, níveis de dificuldade progressivos e acompanhamento de desempenho para estudantes e entusiastas da matemática.">
+
+    <meta name="keywords"
+        content="matemática, desafios matemáticos, exercícios de matemática, ranking matemático, gamificação, aprendizado, educação, raciocínio lógico, problemas matemáticos, plataforma educacional">
+
+    <meta name="author" content="Equipe Math Ranking">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
+
+    <link rel="canonical" href="https://mathranking.com.br">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Math Ranking | Plataforma de Desafios Matemáticos">
+    <meta property="og:description"
+        content="Resolva desafios matemáticos, acompanhe seu progresso e dispute posições no ranking da comunidade.">
+    <meta property="og:url" content="https://mathranking.com.br">
+    <meta property="og:site_name" content="Math Ranking">
+    <meta property="og:image"
+        content="https://mathranking.com.br/static/Site/IMG/icon_dark_theme.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Math Ranking | Plataforma de Desafios Matemáticos">
+    <meta name="twitter:description"
+        content="Pratique matemática, resolva desafios e suba no ranking dos melhores jogadores.">
+    <meta name="twitter:image"
+        content="https://mathranking.com.br/static/Site/IMG/icon_dark_theme.png">
+
+    <meta name="theme-color" content="#1e293b">
+
+    <link rel="icon" type="image/png"
+        href="{{ url_for('static', filename='Site/IMG/icon_head.png') }}">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='Site/css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="_logo">
+            <a href="/">
+                <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
+            </a>
+        </div>
+        <div class="_menu">
+            <a href="#start">Início</a>
+            <a href="#about">Sobre</a>
+            <a href="#team">Equipe</a>
+        </div>
+
+        <div class="_login">
+            <a href="login">Entrar</a>
+            <a href="login">Criar conta</a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="logo_footer">
+                <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
+            </div>
+            <p class="about_container">
+                Math Ranking é uma plataforma interativa voltada para estudantes, entusiastas e profissionais que desejam praticar matemática por meio da resolução de desafios. A aplicação oferece problemas de diferentes níveis de dificuldade, permitindo que os usuários
+                evoluam gradualmente conforme seu desempenho, enquanto acompanham seu progresso ao longo do tempo. Além disso, conta com um sistema de ranking competitivo, no qual os participantes podem comparar seus resultados com outros usuários, incentivando
+                o engajamento contínuo e tornando o aprendizado mais dinâmico por meio da gamificação.
+            </p>
+        </div>
+        <div>
+            <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
+            <p>
+                <a href="#team">Desenvolvido pela equipe math_ranking</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

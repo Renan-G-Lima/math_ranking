@@ -18,6 +18,10 @@ user_blueprint = Blueprint("user", __name__)
 def homepage():
     if is_logged_in():
         return render_template(HOME_URL)
+    return redirect("/landing")
+
+@user_blueprint.route("/landing", methods=["GET"])
+def landing():
     return render_template(INDEX_URL)
 
 # Rota para apresentação do time
@@ -82,6 +86,7 @@ def login():
         login = login_user(request_data)
         print(login)
         return login
+    
 # Rota para logout do usuário
 @user_blueprint.route("/logout", methods=["GET"])
 def logout():
@@ -90,7 +95,7 @@ def logout():
         if session["user_id"]:
             session.clear()
 
-        return redirect("/team")
+        return redirect("/")
     except:
         return redirect("/")
 

@@ -1,137 +1,265 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/reset.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/Platform/CSS/Pages/home.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <title>Home</title>
-</head>
-<body>
-    <div>
-    <header>
-    <div class="_logo">
-        <a href="/" id="logo_name">
-            <span class="secondary_color">
-                &lt;
-            </span>
-            <span class="primary_color">
-                /
-            </span>
-            <span>M</span>
-            <span>Δ</span>
-            <span>T</span>
-            <span>H</span>
-            <span>&nbsp;</span>
-            <span>R</span>
-            <span>Δ</span>
-            <span>N</span>
-            <span>K</span>
-            <span>I</span>
-            <span>N</span>
-            <span>G</span>
-            <span class="secondary_color">
-                &gt;
-            </span>
-        </a>
-    </div>
-        <div class="_menu">
-            <a href="perfil" aria-label="link"><i class="bi bi-person-badge-fill"></i></a>
-            <a href="/" aria-label="link"><i class="bi bi-house-fill"></i></a>
-            <a href="challenges" aria-label="link"><i class="bi bi-plus-slash-minus"></i></a>
-            <a href="leaderboard" aria-label="link"><i class="bi bi-list-stars"></i></a>
-            <a href="settings" aria-label="link"><i class="bi bi-gear-fill"></i></a>
-            <a href="logout" aria-label="link"><i class="bi bi-box-arrow-left"></i></a>
+{% extends "Platform/pages/layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block css_style %}
+    {{ url_for('static', filename='Platform/CSS/Pages/home.css') }}
+{% endblock %}
+
+{% block content %}
+
+<section class="_home-grid">
+
+    <aside class="profile-card">
+        <div class="profile-picture">
+            <img alt="Foto de perfil" src="{{ url_for('static', filename='/Platform/IMG/profile_default.png') }}">
         </div>
-    </header>
-    <section class="_dashboard-grid">
-        <div class="usercard">
-            <div class="_user-info">
-                <div class="_profile-mask">
-                    <img alt="perfil" src="{{ url_for('static', filename='/Platform/IMG/profile_default.png') }}">
-                </div>
-                <div class="_infos">
-                    <h1>Olá, @user</h1>
-                    <h2>Posição atual no ranking:</h2>
-                    <h1>#Position</h1>
+        <h3 class="profile-username">@Code Tangent</h3>
+
+        <div class="toggle-group">
+            <div class="ranking-toggle">
+                <button class="ranking-tab active" data-target="global">Posição Global</button>
+                <button class="ranking-tab" data-target="versus">Posição Versus</button>
+            </div>
+
+            <div class="ranking-panel active" data-panel="global">
+                <p class="ranking-position">#4</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">2.145</span>
+                        <span class="stat-label">Pontuação Global</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">128 mil</span>
+                        <span class="stat-label">Vitórias</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">37</span>
+                        <span class="stat-label">Derrotas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">87%</span>
+                        <span class="stat-label">Taxa de acerto</span>
+                    </div>
                 </div>
             </div>
-            <div class="user-data">
-                <div class="item-container">
-                    <h2>Pontuação atual:</h2>
-                    <p>00000000</p>
-                </div>
-                <div class="item-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Venceu</td>
-                                <td>Perdeu</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+            <div class="ranking-panel" data-panel="versus">
+                <p class="ranking-position">#1</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">80 milhão 🌽</span>
+                        <span class="stat-label">Pontuação Versus</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">41</span>
+                        <span class="stat-label">Vitórias</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">22</span>
+                        <span class="stat-label">Derrotas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">65%</span>
+                        <span class="stat-label">Taxa de acerto</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="dashboard">
-            <h1>Dashboard</h1>
-            <div class="grid-dashboard">
-                <a class="card" href="challenges">
-                    <i class="bi bi-plus-slash-minus"></i>
-                    <h2>Desafios</h2>
+
+        <div class="desempenho">
+            <h2>Desempenho por Área</h2>
+            <div class="desempenho-item">
+                <p><strong>Álgebra Linear</strong><span>Avançado</span></p>
+                <div class="desempenho-bar"><div class="desempenho-fill" style="width:80%"></div></div>
+            </div>
+            <div class="desempenho-item">
+                <p><strong>Cálculo Diferencial</strong><span>Intermediário</span></p>
+                <div class="desempenho-bar"><div class="desempenho-fill" style="width:50%"></div></div>
+            </div>
+            <div class="desempenho-item">
+                <p><strong>Cálculo Integral</strong><span>Avançado</span></p>
+                <div class="desempenho-bar"><div class="desempenho-fill" style="width:70%"></div></div>
+            </div>
+            <div class="desempenho-item">
+                <p><strong>Equação Polinomial de 2 Grau</strong><span>Intermediário</span></p>
+                <div class="desempenho-bar"><div class="desempenho-fill" style="width:40%"></div></div>
+            </div>
+        </div>
+
+        <div class="streak-box">
+            <span>Sequência atual</span>
+            <strong>12 dias</strong>
+        </div>
+
+        <a href="/perfil" class="ver-mais">Ver minhas estatísticas completas &rarr;</a>
+    </aside>
+
+    <div class="main-column">
+
+        <div class="greeting-card">
+            <h1>Olá, <span class="primary_color">@Code Tangent</span></h1>
+            <p>Engenheiro(a) de Computação em formação</p>
+        </div>
+
+        <div class="action-cards">
+            <h2>O que você quer fazer hoje?</h2>
+            <div class="action-cards-grid">
+                <a href="/challenges" class="action-card">
+                    <i class="bi bi-bullseye"></i>
+                    <h3>Resolver Desafios</h3>
+                    <p>Desafios gerados automaticamente em vários níveis de dificuldade</p>
+                    <span class="action-btn">Começar</span>
                 </a>
-                <a class="card" href="study">
+                <a href="/study" class="action-card">
                     <i class="bi bi-book-half"></i>
-                    <h2>Estudar</h2>
+                    <h3>Estudar</h3>
+                    <p>Explicação teórica, exemplo resolvido e cálculos para resolver</p>
+                    <span class="action-btn">Explorar</span>
                 </a>
-                <a class="card" href="calculator">
-                    <i class="bi bi-calculator"></i>
-                    <h2>Calculadora</h2>
-                </a>
-                <a class="card" href="versus">
+                <a href="/versus" class="action-card">
                     <i class="bi bi-controller"></i>
-                    <h2>Versus</h2>
+                    <h3>Versus</h3>
+                    <p>Desafie outros usuários em tempo real e suba no ranking</p>
+                    <span class="action-btn">Desafiar</span>
                 </a>
-                <a class="card" href="leaderboard">
-                    <i class="bi bi-list-ol"></i>
-                    <h2>Ranking</h2>
-                </a>
-                <a class="card">
-                    <h2>Algebra</h2>
-                </a>
-                <a class="card">
-                    <h2>Algebra</h2>
-                </a>
-                <a class="card">
-                    <h2>Algebra</h2>
+                <a href="/concurso" class="action-card">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    <h3>Questões de Concurso</h3>
+                    <p>Questões baseadas em perguntas de concurso corrigidas</p>
+                    <span class="action-btn">Acessar</span>
                 </a>
             </div>
         </div>
-    </section>
-</div>
-<footer>
-    <div class="container">
-        <div class="logo_footer">
-            <img alt="logo" src="{{ url_for('static', filename='/Platform/IMG/icon_dark_theme.png') }}">
+
+        <div class="daily-challenge">
+            <div class="daily-challenge-header">
+                <h2><i class="bi bi-calendar-event"></i> Desafio Diário</h2>
+                <span class="daily-challenge-timer">Troca em 03:08:12</span>
+            </div>
+            <div class="daily-challenge-body">
+                <div class="daily-challenge-formula">x² + bx + c</div>
+                <div class="daily-challenge-infos">
+                    <h3>Função polinomial de 3 grau</h3>
+                    <p><strong>Nível:</strong> Médio</p>
+                    <p><strong>Área:</strong> Raízes</p>
+                </div>
+                <div class="daily-challenge-reward">
+                    <span>Recompensa</span>
+                    <strong>+3 Pontos</strong>
+                </div>
+                <a href="/challenges/daily" class="action-btn">Resolver agora</a>
+            </div>
         </div>
-        <p class="about_container">
-            Math Ranking é uma plataforma interativa voltada  para estudantes, entusiastas e profissionais que  desejam praticar matemática por meio da resolução de desafios. A aplicação oferece problemas de diferentes níveis de dificuldade, permitindo que os usuários evoluam gradualmente conforme seu longo do tempo.Além disso, conta com um sistema de ranking competitivo, no qual os participantes podem comparar seus resultados com outros  usuários, incentivando o engajamento contínuo e tornando o aprendizado mais dinâmico por meio da gamificação.
-        </p>
+
+        <div class="continue-estudando profile-card">
+            <div class="continue-header">
+                <h2>Continue estudando</h2>
+                <a href="/study">Ver todos &rarr;</a>
+            </div>
+            <div class="continue-grid">
+                <a href="/study/series-numericas" class="continue-card">
+                    <span class="continue-symbol">Σ</span>
+                    <h3>Séries Numéricas</h3>
+                    <progress max="100" value="38"></progress>
+                </a>
+                <a href="/study/algebra-linear" class="continue-card">
+                    <span class="continue-symbol">Δ</span>
+                    <h3>Álgebra Linear</h3>
+                    <progress max="100" value="78"></progress>
+                </a>
+                <a href="/study/calculo-variavel" class="continue-card">
+                    <span class="continue-symbol">∂</span>
+                    <h3>Cálculo Variável</h3>
+                    <progress max="100" value="39"></progress>
+                </a>
+                <a href="/study/minimo-multiplo" class="continue-card">
+                    <span class="continue-symbol">∞</span>
+                    <h3>Mínimo Múltiplo Comum</h3>
+                    <progress max="100" value="68"></progress>
+                </a>
+            </div>
+        </div>
+
     </div>
-    <div>
-        <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
-        <p>
-            Desenvolvido pela equipe <a href="team"><b>math_ranking</b></a>.
-        </p>
-    </div>
-</footer>
-</body>
-</html>
+
+    <aside class="side-column">
+
+        <div class="ranking-global-card">
+            <div class="side-card-header">
+                <h2>Ranking Global</h2>
+                <a href="/leaderboard">Ver ranking completo &rarr;</a>
+            </div>
+
+            <div class="toggle-group">
+                <div class="ranking-toggle">
+                    <button class="ranking-tab active" data-target="global">Global</button>
+                    <button class="ranking-tab" data-target="versus">Versus</button>
+                </div>
+
+                <div class="ranking-panel active" data-panel="global">
+                    <ol class="ranking-list">
+                        <li><span class="rank-pos">2</span><span class="rank-name">Shrek</span><span class="rank-score">2.390</span></li>
+                        <li><span class="rank-pos">3</span><span class="rank-name">Você não</span><span class="rank-score">2.385</span></li>
+                        <li class="is-user"><span class="rank-pos">4</span><span class="rank-name">Code Tangent</span><span class="rank-score">2.145</span></li>
+                        <li><span class="rank-pos">5</span><span class="rank-name">Diogo rei delas</span><span class="rank-score">2.145</span></li>
+                        <li><span class="rank-pos">6</span><span class="rank-name">Xx_gatolegal_xX</span><span class="rank-score">2.145</span></li>
+                    </ol>
+                </div>
+
+                <div class="ranking-panel" data-panel="versus">
+                    <ol class="ranking-list">
+                        <li class="is-user"><span class="rank-pos">1</span><span class="rank-name">Code Untangent</span><span class="rank-score">80.980.980</span></li>
+                        <li><span class="rank-pos">2</span><span class="rank-name">Diogo rei delas</span><span class="rank-score">1.320</span></li>
+                        <li><span class="rank-pos">3</span><span class="rank-name">joao_do_pe_de_feijao</span><span class="rank-score">1.290</span></li>
+                        <li><span class="rank-pos">4</span><span class="rank-name">Caikyo</span><span class="rank-score">1.140</span></li>
+                        <li><span class="rank-pos">5</span><span class="rank-name">Vinicius Jr país do futebol</span><span class="rank-score">1.080</span></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="atividade-card">
+            <h2>Atividade Recente</h2>
+            <ul class="atividade-list">
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    <p>Você resolveu um desafio Médio <span class="primary_color">+3 pontos</span></p>
+                    <span class="atividade-tempo">há 2h</span>
+                </li>
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    <p>Você resolveu um desafio Médio <span class="primary_color">+3 pontos</span></p>
+                    <span class="atividade-tempo">há 2h</span>
+                </li>
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    <p>Você resolveu um desafio Médio <span class="primary_color">+3 pontos</span></p>
+                    <span class="atividade-tempo">há 2h</span>
+                </li>
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    <p>Você resolveu um desafio Médio <span class="primary_color">+3 pontos</span></p>
+                    <span class="atividade-tempo">há 2h</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="areas-card">
+            <h2>Áreas mais praticadas</h2>
+            <div class="areas-content">
+                <div class="areas-donut" id="areas-donut"></div>
+                <ul class="areas-legend" id="areas-legend"></ul>
+            </div>
+        </div>
+
+    </aside>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="module" src="{{ url_for('static', filename='/Platform/SCRIPT/ranking_toggle.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='/Platform/SCRIPT/area_chart.js') }}"></script>
+{% endblock %}

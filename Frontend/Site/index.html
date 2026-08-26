@@ -1,41 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/Site/css/style.css') }}">
-    <title>Sobre o projeto</title>
-</head>
-<body>
-    <header>
-        <div class="_logo">
-            <a href="/index">
-                <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
-            </a>
-       </div>
-        <div class="_menu">
-            <a href="/index">Início</a>
-            <a href="/about">Sobre</a>
-            <a href="/team">Equipe</a>
-        </div>
+{% extends "Site/layout.html" %} {% block title %}Início{% endblock %} {% block content %}
 
-        <div class="_login">
-            <a href="login">Entrar</a>
-            <a href="login">Criar conta</a>
-        </div>
-
-        <section class="hero">
-            <div class="container">
-                <h1 class="fade-in">Desafie seus conhecimentos em matemática para engenharia</h1>
-                <p class="fade-in">
-                    Resolva problemas de Cálculo, Álgebra Linear, Equações Diferenciais e muito mais. Compare seu desempenho com outros estudantes.
-                </p>
-                <a href="#problemas" class="btn btn-primary fade-in">Começar agora</a>
-            </div>
-        </section>
-    </header>
-
- <section class="categoraes">
+<section class="hero" id="start">
+    <div class="container">
+        <h1 class="fade-in">Desafie seus conhecimentos em matemática para engenharia</h1>
+        <p class="fade-in">
+            Resolva problemas de Cálculo, Álgebra Linear, Equações Diferenciais e muito mais. Compare seu desempenho com outros estudantes.
+        </p>
+        <a href="#problemas" class="btn btn-primary fade-in">Começar agora</a>
+    </div>
+</section>
+<section class="categoraes">
+    <div class="ini" id="ini">
         <div class="container">
             <h2 class="section-title">Categorias</h2>
             <div class="card-grid">
@@ -71,23 +46,106 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
+<section class="hero" id="about">
+    <div class="about">
         <div class="container">
-            <div class="logo_footer">
-                <img alt="logo" src="{{ url_for('static', filename='Site/IMG/icon_dark_theme.png' )}}">
+            <h1 class="fade-in">Math Ranking</h1>
+            <p class="fade-in">
+                Math Ranking é uma plataforma desenvolvida para estudantes, entusiastas e profissionais que desejam praticar matemática por meio da resolução de desafios. Os usuários podem resolver problemas de diferentes níveis de dificuldade, acompanhar sua evolução
+                e competir com outros participantes através de um sistema de ranking.
+            </p>
+            <a href="login" class="btn btn-primary fade-in">Começar agora</a>
+        </div>
+    </div>
+</section>
+
+<section class="categoraes" id="team">
+    <div class="team">
+        <div class="container">
+            <h2 class="section-title">Equipe</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fas fa-vector-square"></i>
+                    <h3>Caiky H. Souza</h3>
+                    <p>
+                        Graduando em Engenharia de Software, autodidata e entusiasta de tecnologia, com interesse em desenvolvimento e Cybersecurity. Possui experiência com Python, HTML, CSS, JavaScript e fundamentos de redes e Linux, buscando evolução contínua.</p>
+                    <p class="social-links">
+                        <a href="https://www.linkedin.com/in/caiky-souza" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
+                        </a>
+
+                        <a href="https://github.com/Caiky-Souza" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
+                        </a>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <i class="fas fa-vector-square"></i>
+                    <h3>Diogo Zoboli</h3>
+                    <p>
+                        Cientista de Dados com foco em análise exploratória e preditiva com Machine Learning, cursando Engenharia de Software. Possui certificações em Ciência da Computação e IA (CS50), buscando evoluir na criação de soluções orientadas a dados.
+                    </p>
+                    <p class="social-links">
+                        <a href="https://www.linkedin.com/in/zobolidiogo/" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
+                        </a>
+
+                        <a href="https://github.com/zobolidiogo" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
+                        </a>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <i class="fas fa-vector-square"></i>
+                    <h3>João V. Oliveira</h3>
+                    <p>
+                        Estudante de Engenharia de Software, com base em lógica de programação, JavaScript, HTML e CSS, e atualmente aprendendo Java. O Math Ranking marcao início da minha jornada no desenvolvimento de software.
+                    </p>
+                    <p class="social-links">
+                        <a href="https://github.com/justjuaum/" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
+                        </a>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <i class="fas fa-vector-square"></i>
+                    <h3>Renan G. Lima</h3>
+                    <p>Analista de TI com experiência em suporte, infraestrutura e desenvolvimento de soluções com Python e C#. Possui certificações em Cybersecurity (CS50) e OCI, com foco em arquitetura de sistemas e integração entre software e infraestrutura.
+                    </p>
+                    <p class="social-links">
+                        <a href="https://www.linkedin.com/in/renan-gabriel-lima/" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
+                        </a>
+
+                        <a href="https://github.com/CodeTangent" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
+                        </a>
+                    </p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-vector-square"></i>
+                    <h3>Vinicius S. Eloi</h3>
+                    <p>
+                        Desenvolvedor com foco em Angular e TypeScript, cursando Engenharia de Software, com experiência na criação de aplicações e APIs utilizando Express.js e MySQL. Possui inglês avançado e interesse em desenvolver soluções que otimizem tarefas e ampliem o
+                        acesso à tecnologia.
+                    </p>
+                    <p class="social-links">
+                        <a href="https://www.linkedin.com/in/vinícius-eloi-26b715321/" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/linkedin_logo.png' )}}" alt="LinkedIn">
+                        </a>
+                        <a href="https://github.com/vini0112" target="_blank" class="social-item">
+                            <img src="{{ url_for('static', filename='Site/IMG/github_logo.png' )}}" alt="GitHub">
+                        </a>
+                    </p>
+                </div>
             </div>
-            <p class="about_container">
-                Math Ranking é uma plataforma interativa voltada para estudantes, entusiastas e profissionais que desejam praticar matemática por meio da resolução de desafios. A aplicação oferece problemas de diferentes níveis de dificuldade, permitindo que os usuários evoluam gradualmente conforme seu desempenho, enquanto acompanham seu progresso ao longo do tempo. Além disso, conta com um sistema de ranking competitivo, no qual os participantes podem comparar seus resultados com outros usuários, incentivando o engajamento contínuo e tornando o aprendizado mais dinâmico por meio da gamificação.
-            </p>
         </div>
-        <div>
-            <p>Todos os direitos reservados. Math Ranking &copy; 2026.</p>
-            <p>
-                Desenvolvido pela equipe <a href="team">math_ranking</a>.
-            </p>
-        </div>
-    </footer>
-</body>
-</html>
+    </div>
+</section>
+{% endblock %}
